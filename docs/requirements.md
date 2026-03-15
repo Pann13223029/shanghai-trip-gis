@@ -112,10 +112,15 @@
   │  description              │    │  photos                   │
   │  address                  │    │  notes                    │
   │  est_duration_min         │    │                           │
-  │  priority                 │    │                           │
-  │  added_by                 │    │                           │
-  │  coordinates [lng, lat]   │    │                           │
-  └───────────────────────────┘    └───────────────────────────┘
+  │  priority                 │    │  Sustainability scorecard │
+  │  added_by                 │    │  (see methodology doc):   │
+  │  coordinates [lng, lat]   │    │  transit_access (0-3)     │
+  └───────────────────────────┘    │  heritage_value (0-3)     │
+                                   │  community_impact (string)│
+                                   │  walkability (0-3)        │
+                                   │  environmental_sensitivity│
+                                   │  sustainability_score     │
+                                   └───────────────────────────┘
 ```
 
 Full example:
@@ -142,12 +147,20 @@ Full example:
     "weather_sensitive": true,
     "added_by": "member_name",
     "last_verified": "2026-03",
-    "sustainability_notes": "",
+    "sustainability_notes": "Iconic waterfront promenade; fully pedestrian, high transit access via Line 2/10",
+    "transit_access": 3,
+    "heritage_value": 2,
+    "community_impact": "positive",
+    "walkability": 3,
+    "environmental_sensitivity": 2,
+    "sustainability_score": 10,
     "photos": [],
     "notes": ""
   }
 }
 ```
+
+Scorecard scoring criteria are defined in [sustainability-methodology.md](sustainability-methodology.md). Set scorecard fields to `null` for POIs where sustainability assessment isn't meaningful (airports, metro stations, generic restaurants).
 
 ### 3.2 Allowed Values (Enums)
 
@@ -157,6 +170,12 @@ Full example:
 | `priority` | `must-visit`, `nice-to-have`, `optional` |
 | `day` | `1`, `2`, `3`, `4`, `5`, `6`, or `null` (if undecided) |
 | `weather_sensitive` | `true` (outdoor/exposed) or `false` (indoor/covered) |
+| `transit_access` | `0`, `1`, `2`, `3`, or `null` (see [methodology](sustainability-methodology.md)) |
+| `heritage_value` | `0`, `1`, `2`, `3`, or `null` |
+| `community_impact` | `positive`, `mixed`, `negative`, `neutral`, or `null` |
+| `walkability` | `0`, `1`, `2`, `3`, or `null` |
+| `environmental_sensitivity` | `0`, `1`, `2`, `3`, or `null` |
+| `sustainability_score` | `0`-`12` (computed sum of numeric scores) or `null` |
 
 ### 3.3 ID Format
 

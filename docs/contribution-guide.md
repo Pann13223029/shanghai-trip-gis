@@ -95,6 +95,15 @@ Each person is the **primary editor** for their assigned files. This means you'r
   weather_sensitive  true (outdoor) | false (indoor)
 
   mode (routes)      walking | metro | taxi | bus | train
+
+  Sustainability scorecard (see sustainability-methodology.md):
+  ──────────────────────────────────────────────────────────
+  transit_access     0 | 1 | 2 | 3 | null
+  heritage_value     0 | 1 | 2 | 3 | null
+  community_impact   positive | mixed | negative | neutral | null
+  walkability        0 | 1 | 2 | 3 | null
+  env_sensitivity    0 | 1 | 2 | 3 | null
+  sustainability_score  0-12 (computed sum) | null
 ```
 
 Use these values exactly. Other values will break the map's filters.
@@ -154,6 +163,12 @@ Open your file in VS Code and add a new Feature to the `"features"` array:
     "added_by": "your_name",
     "last_verified": "2026-03",
     "sustainability_notes": "",
+    "transit_access": null,
+    "heritage_value": null,
+    "community_impact": null,
+    "walkability": null,
+    "environmental_sensitivity": null,
+    "sustainability_score": null,
     "photos": [],
     "notes": ""
   }
@@ -314,4 +329,7 @@ Both people participate in all phases through pair sessions. The above lists who
   Leaflet question?                 leafletjs.com/examples.html
   Need Chinese name?                Dianping or Baidu Maps
   Unfamiliar GIS term?              docs/glossary.md
+  Sustainability scoring?           docs/sustainability-methodology.md
+  Transit analysis (QGIS)?          docs/transit-analysis-guide.md
+  CO2 calculator?                   tools/co2-calculator.py
 ```

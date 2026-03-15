@@ -9,13 +9,14 @@
 // will still work. Use the PDF maps for full offline navigation.
 // ============================================================
 
-const CACHE_NAME = 'shanghai-trip-v1';
+const CACHE_NAME = 'shanghai-trip-v2';
 
 // Files to cache on install
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './css/style.css',
+  './story-template.html',
   '../data/poi/landmarks.geojson',
   '../data/poi/food.geojson',
   '../data/poi/shopping.geojson',
@@ -23,7 +24,17 @@ const ASSETS_TO_CACHE = [
   '../data/poi/nature.geojson',
   '../data/poi/transport.geojson',
   '../data/poi/accommodation.geojson',
-  '../data/poi/suzhou.geojson'
+  '../data/poi/suzhou.geojson',
+  '../data/routes/day-1.geojson',
+  '../data/routes/day-2.geojson',
+  '../data/routes/day-3.geojson',
+  '../data/routes/day-4.geojson',
+  '../data/routes/day-5.geojson',
+  '../data/routes/day-6.geojson',
+  '../data/routes/metro.geojson',
+  '../data/areas/districts.geojson',
+  '../data/areas/neighborhoods.geojson',
+  '../data/analysis/co2-summary.json'
 ];
 
 // When the service worker installs, cache all assets

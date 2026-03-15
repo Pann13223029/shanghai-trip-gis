@@ -80,7 +80,11 @@ Total timeline: ~8 weeks before trip, plus during/after trip phases.
 | Create walking routes for each day in QGIS | Person 1 | `data/routes/day-{1-6}.geojson` |
 | Calculate daily walking distances | Person 1 | Distance summary table |
 | Buffer analysis — what's walkable from hotel? | Person 1 | Buffer layer in QGIS |
-| **Sustainability analysis: transport mode audit** | **Person 2** | Mode mix per day, CO2 estimates |
+| **Run CO2 calculator** (`tools/co2-calculator.py`) | **Person 2** | `data/analysis/co2-summary.json` |
+| **Apply sustainability scorecard** to 20+ POIs | **Person 2** | Scored POIs with 5-dimension ratings ([methodology](sustainability-methodology.md)) |
+| **Transit accessibility analysis** (800m metro buffers) | **Person 2** | % of POIs transit-accessible ([guide](transit-analysis-guide.md)) |
+| **Write carbon context comparison** | **Person 2** | [carbon-context.md](carbon-context.md) |
+| **Write adaptive reuse analysis** | **Person 2** | [adaptive-reuse-analysis.md](adaptive-reuse-analysis.md) |
 | Create QGIS print layout template | Person 1 | Reusable template with title/legend/scale |
 | Export daily PDF maps using template | Person 2 | `offline/day-1.pdf` through `day-6.pdf` |
 | Plan Suzhou day trip with explicit time blocks | Both | Suzhou schedule with transit times |

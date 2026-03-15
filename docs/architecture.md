@@ -13,14 +13,19 @@
   │                   GIT REPOSITORY                         │
   │                                                          │
   │   data/                                                  │
-  │   ├── poi/          (8 category files, ~40 POIs)         │
-  │   ├── routes/       (6 daily + metro)                    │
-  │   └── areas/        (districts + neighborhoods)          │
+  │   ├── poi/          (8 category files, 50 POIs)          │
+  │   ├── routes/       (6 daily + metro, 24 segments)       │
+  │   ├── areas/        (districts + neighborhoods)          │
+  │   └── analysis/     (computed outputs)                   │
+  │       └── co2-summary.json                               │
+  │                                                          │
+  │   tools/            (Analysis scripts)                   │
+  │   └── co2-calculator.py  (Shanghai-specific CO2)         │
   │                                                          │
   │   web/              (Static Leaflet.js app)              │
-  │   ├── index.html    (main map)                           │
+  │   ├── index.html    (main map + sustainability layer)    │
   │   ├── css/style.css                                      │
-  │   └── app.js        (single file, split if >300 lines)   │
+  │   └── story-template.html                                │
   │                                                          │
   │   qgis/             (Desktop GIS project)                │
   │   └── shanghai-trip.qgz                                  │

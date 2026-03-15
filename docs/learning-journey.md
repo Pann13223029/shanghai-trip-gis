@@ -172,11 +172,12 @@ Person 1 creates the template; Person 2 uses it to export remaining days:
 4. **Create Day 1 PDF:** `Project -> New Print Layout` (~45 min for first one)
 5. **Export remaining days** using the same template (~20 min each)
 
-### Sustainability Analysis (Person 2 leads, ~1 hour)
+### Sustainability Analysis (Person 2 leads, ~1.5 hours)
 
-6. **Transport mode audit:** For each route segment, what mode of transport? (~20 min)
-7. **CO2 estimates per day:** walking=0, metro~40g/km, taxi~150g/km per person (~20 min)
-8. **Add `sustainability_notes`** to POIs where relevant (~20 min)
+6. **Run the CO2 calculator:** `python3 tools/co2-calculator.py` — generates per-day and trip-total emissions using Shanghai-specific emission factors. Review the output in `data/analysis/co2-summary.json` (~15 min)
+7. **Apply the sustainability scorecard** to 20+ relevant POIs using the criteria in [sustainability-methodology.md](sustainability-methodology.md): transit_access, heritage_value, community_impact, walkability, environmental_sensitivity (~30 min)
+8. **Transit accessibility analysis:** Follow [transit-analysis-guide.md](transit-analysis-guide.md) to create 800m metro station buffers and calculate what % of POIs are transit-accessible (SDG 11.2) (~30 min)
+9. **Add `sustainability_notes`** to POIs where relevant — use sourced observations, not marketing copy (~15 min)
 
 ```
   CO2 REFERENCE (per person per km):
@@ -208,7 +209,9 @@ Person 1 creates the template; Person 2 uses it to export remaining days:
 - [ ] I created a buffer and understand what it shows
 - [ ] I can visually assess whether a day's POIs are clustered
 - [ ] I exported at least one print-ready PDF map
-- [ ] (Person 2) I calculated CO2 estimates for at least 2 days
+- [ ] (Person 2) I ran the CO2 calculator and reviewed the output
+- [ ] (Person 2) I scored at least 10 POIs using the sustainability scorecard
+- [ ] (Person 2) I completed the transit accessibility analysis (800m buffers)
 
 ### Advanced Extras (Optional)
 - **Spatial join:** Auto-fill "district" for each POI

@@ -74,8 +74,8 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
   │
   ├── README.md                      ← you are here
   ├── .github/
-  │   ├── workflows/validate.yml     CI: auto-validates GeoJSON
-  │   └── ISSUE_TEMPLATE/            POI + bug report templates
+  │   ├── workflows/validate-geojson.yml  CI: auto-validates GeoJSON
+  │   └── ISSUE_TEMPLATE/                 POI + bug report templates
   │
   ├── docs/                          Planning & learning docs
   │   ├── requirements.md            What we're building
@@ -85,10 +85,14 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
   │   ├── contribution-guide.md      How to add data & push
   │   ├── glossary.md                GIS terms in plain English
   │   ├── qgis-quickstart.md         Visual guide to QGIS
-  │   └── overpass-queries.md        Ready-to-use OSM queries
+  │   ├── overpass-queries.md        Ready-to-use OSM queries
+  │   ├── sustainability-methodology.md  Scoring criteria, emission factors, SDG mapping
+  │   ├── transit-analysis-guide.md  800m metro buffer analysis (QGIS)
+  │   ├── adaptive-reuse-analysis.md 6-site heritage preservation comparison
+  │   └── carbon-context.md          Trip CO2 vs commuter, taxi, flight
   │
   ├── data/                          All spatial data (GeoJSON)
-  │   ├── poi/                       Points of interest (8 files)
+  │   ├── poi/                       Points of interest (8 files, 50 POIs)
   │   │   ├── landmarks.geojson      The Bund, Shanghai Tower...
   │   │   ├── food.geojson           Dumplings, hot pot...
   │   │   ├── shopping.geojson       Nanjing Rd, Tianzifang...
@@ -97,11 +101,16 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
   │   │   ├── transport.geojson      Airports, metro hubs...
   │   │   ├── accommodation.geojson  Hotel (anchor point)
   │   │   └── suzhou.geojson         Day trip POIs
-  │   ├── routes/                    Daily walking routes
-  │   └── areas/                     District boundaries
+  │   ├── routes/                    Daily walking routes (24 segments)
+  │   ├── areas/                     District boundaries
+  │   └── analysis/                  Computed outputs
+  │       └── co2-summary.json       CO2 per segment, day, and trip
+  │
+  ├── tools/                         Analysis scripts
+  │   └── co2-calculator.py          Transport CO2 calculator (Shanghai-specific)
   │
   ├── web/                           Interactive web map
-  │   ├── index.html                 Leaflet.js starter template
+  │   ├── index.html                 Leaflet.js map + sustainability layer
   │   ├── css/style.css              Responsive styles
   │   ├── story-template.html        Post-trip story map
   │   └── sw.js                      Service worker (offline)
