@@ -43,6 +43,34 @@
     <button class="day-btn" data-day="4">D4</button>
     <button class="day-btn" data-day="5">D5</button>
     <button class="day-btn" data-day="6">D6</button>
+    <button id="sustainability-btn" class="day-btn sustainability-btn">&#127807; Sustainability</button>
+  </div>
+
+  <!-- Sustainability legend (hidden by default) -->
+  <div id="sustainability-legend" class="hidden">
+    <div class="legend-title">Sustainability Score</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#1a5c2a; width:18px; height:18px;"></span>
+        <span>10–12 &nbsp;Excellent</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#2e7d45; width:15px; height:15px;"></span>
+        <span>7–9 &nbsp;&nbsp;&nbsp;Good</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#52a869; width:12px; height:12px;"></span>
+        <span>4–6 &nbsp;&nbsp;&nbsp;Moderate</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#8fc49a; width:10px; height:10px;"></span>
+        <span>1–3 &nbsp;&nbsp;&nbsp;Low</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#b0b0b0; width:8px; height:8px;"></span>
+        <span>N/A &nbsp;&nbsp;&nbsp;Not rated</span>
+      </div>
+    </div>
   </div>
 
   <!-- Info panel (bottom) -->
@@ -186,6 +214,138 @@
 
 
     // ============================================================
+    // SUSTAINABILITY MODE HELPERS
+    // ============================================================
+
+    // Return fill color based on sustainability_score (null → gray)
+    function sustainabilityColor(score) {
+      if (score === null || score === undefined) return '#b0b0b0';
+      if (score >= 10) return '#1a5c2a';
+      if (score >= 7)  return '#2e7d45';
+      if (score >= 4)  return '#52a869';
+      return '#8fc49a';
+    }
+
+    // Return radius based on sustainability_score
+    function sustainabilityRadius(score) {
+      if (score === null || score === undefined) return 5;
+      if (score >= 10) return 12;
+      if (score >= 7)  return 10;
+      if (score >= 4)  return 8;
+      return 6;
+    }
+
+    // Build popup content for sustainability mode
+    function createSustainabilityPopup(feature) {
+      const p = feature.properties;
+      const coords = feature.geometry.coordinates;
+      const amapUrl = `https://uri.amap.com/marker?position=${coords[0]},${coords[1]}&name=${encodeURIComponent(p.name_cn || p.name_en)}`;
+
+      const scoreDisplay = (p.sustainability_score !== null && p.sustainability_score !== undefined)
+        ? p.sustainability_score + '/12'
+        : 'Not rated';
+
+      const scoreColor = sustainabilityColor(p.sustainability_score);
+
+      // Sub-score row helper (returns '–' if field is undefined/null)
+      function sub(val) {
+        return (val !== null && val !== undefined) ? val + '/3' : '–';
+      }
+
+      return `
+        <div class="popup-content">
+          <h3 class="popup-title">${p.name_en}</h3>
+          <p class="popup-chinese">${p.name_cn || ''}</p>
+          <div class="sustainability-score-badge" style="background:${scoreColor}">
+            &#127807; Sustainability Score: <strong>${scoreDisplay}</strong>
+          </div>
+          <table class="sustainability-table">
+            <tr><td>Transit Access</td><td>${sub(p.transit_access)}</td></tr>
+            <tr><td>Heritage Value</td><td>${sub(p.heritage_value)}</td></tr>
+            <tr><td>Community Impact</td><td>${p.community_impact || '–'}</td></tr>
+            <tr><td>Walkability</td><td>${sub(p.walkability)}</td></tr>
+            <tr><td>Environmental Sensitivity</td><td>${sub(p.environmental_sensitivity)}</td></tr>
+          </table>
+          ${p.sustainability_notes ? `<p class="popup-notes">${p.sustainability_notes}</p>` : ''}
+          <div class="popup-footer">
+            <span class="popup-id">${p.id || ''}</span>
+            <a href="${amapUrl}" target="_blank" class="popup-amap">Open in Amap</a>
+          </div>
+        </div>
+      `;
+    }
+
+    // Apply sustainability styling to all loaded layers
+    function applySustainabilityStyles() {
+      allLayers.forEach(layer => {
+        const score = layer._poiSustainabilityScore;
+        layer.setStyle({
+          fillColor:   sustainabilityColor(score),
+          color:       '#fff',
+          weight:      2,
+          opacity:     1,
+          fillOpacity: score !== null && score !== undefined ? 0.88 : 0.6
+        });
+        layer.setRadius(sustainabilityRadius(score));
+
+        // Swap popup
+        layer.unbindPopup();
+        layer.bindPopup(createSustainabilityPopup(layer._poiFeature), {
+          maxWidth: 300,
+          className: 'custom-popup'
+        });
+      });
+    }
+
+    // Restore normal (category-color) styling
+    function restoreCategoryStyles() {
+      allLayers.forEach(layer => {
+        const category = layer._poiCategory;
+        const color = CATEGORY_COLORS[category] || '#999';
+        const day = layer._poiDay;
+        const active = (selectedDay === 'all') || (day === parseInt(selectedDay)) || (day === null);
+
+        layer.setStyle({
+          fillColor:   color,
+          color:       '#fff',
+          weight:      2,
+          opacity:     active ? 1 : 0.3,
+          fillOpacity: active ? 0.85 : 0.15
+        });
+        layer.setRadius(active ? 8 : 5);
+
+        // Swap popup back
+        layer.unbindPopup();
+        layer.bindPopup(createPopup(layer._poiFeature), {
+          maxWidth: 300,
+          className: 'custom-popup'
+        });
+      });
+    }
+
+    // Toggle sustainability mode on / off
+    function toggleSustainabilityMode() {
+      sustainabilityMode = !sustainabilityMode;
+
+      const btn = document.getElementById('sustainability-btn');
+      const legend = document.getElementById('sustainability-legend');
+      const layerControl = document.querySelector('.leaflet-control-layers');
+
+      if (sustainabilityMode) {
+        btn.classList.add('active', 'sustainability-active');
+        legend.classList.remove('hidden');
+        if (layerControl) layerControl.style.opacity = '0.4';
+        applySustainabilityStyles();
+      } else {
+        btn.classList.remove('active', 'sustainability-active');
+        legend.classList.add('hidden');
+        if (layerControl) layerControl.style.opacity = '';
+        restoreCategoryStyles();
+      }
+    }
+
+
+    // ============================================================
     // DATA LOADING
     // Fetches all GeoJSON files and adds them to the map
     // ============================================================
@@ -194,6 +354,7 @@
     const allLayers = [];         // every marker layer
     const categoryGroups = {};    // L.layerGroup per category
     let selectedDay = 'all';
+    let sustainabilityMode = false;
 
     // Load a single GeoJSON file and add its features to the map
     async function loadGeoJSON(filePath, category) {
@@ -219,9 +380,13 @@
               className: 'custom-popup'
             });
 
-            // Store reference for day filtering
+            // Store references for day filtering and sustainability mode
             layer._poiDay = feature.properties.day;
             layer._poiCategory = feature.properties.category || category;
+            layer._poiFeature = feature;
+            layer._poiSustainabilityScore = feature.properties.sustainability_score !== undefined
+              ? feature.properties.sustainability_score
+              : null;
             allLayers.push(layer);
           }
         }).addTo(categoryGroups[category]);
@@ -259,28 +424,44 @@
     function filterByDay(day) {
       selectedDay = day;
 
+      // In sustainability mode, day filter only dims/shows markers without
+      // overriding the sustainability colours.
       allLayers.forEach(layer => {
         const layerDay = layer._poiDay;
         const show = (day === 'all') || (layerDay === parseInt(day)) || (layerDay === null);
 
-        if (show) {
-          layer.setStyle({ fillOpacity: 0.85, opacity: 1 });
-          layer.setRadius(8);
+        if (sustainabilityMode) {
+          // Keep sustainability colours; just adjust opacity to indicate day
+          const score = layer._poiSustainabilityScore;
+          layer.setStyle({
+            fillOpacity: show ? (score !== null && score !== undefined ? 0.88 : 0.6) : 0.15,
+            opacity:     show ? 1 : 0.3
+          });
+          layer.setRadius(show ? sustainabilityRadius(score) : 5);
         } else {
-          layer.setStyle({ fillOpacity: 0.15, opacity: 0.3 });
-          layer.setRadius(5);
+          if (show) {
+            layer.setStyle({ fillOpacity: 0.85, opacity: 1 });
+            layer.setRadius(8);
+          } else {
+            layer.setStyle({ fillOpacity: 0.15, opacity: 0.3 });
+            layer.setRadius(5);
+          }
         }
       });
     }
 
-    // Wire up day filter buttons
-    document.querySelectorAll('.day-btn').forEach(btn => {
+    // Wire up day filter buttons (exclude the sustainability toggle)
+    document.querySelectorAll('.day-btn[data-day]').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.day-btn[data-day]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         filterByDay(btn.dataset.day);
       });
     });
+
+
+    // Wire up sustainability toggle button
+    document.getElementById('sustainability-btn').addEventListener('click', toggleSustainabilityMode);
 
 
     // ============================================================
