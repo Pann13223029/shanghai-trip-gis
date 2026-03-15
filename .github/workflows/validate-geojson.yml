@@ -1,0 +1,35 @@
+name: Validate GeoJSON
+
+on:
+  push:
+    paths:
+      - 'data/**/*.geojson'
+  pull_request:
+    paths:
+      - 'data/**/*.geojson'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate all GeoJSON files
+        run: |
+          failed=0
+          for f in $(find data -name '*.geojson' -size +0c); do
+            if python3 -m json.tool "$f" > /dev/null 2>&1; then
+              echo "OK: $f"
+            else
+              echo "INVALID JSON: $f"
+              failed=1
+            fi
+          done
+          if [ "$failed" -eq 1 ]; then
+            echo ""
+            echo "Some GeoJSON files have syntax errors."
+            echo "Paste the file contents into https://geojsonlint.com/ to find the issue."
+            exit 1
+          fi
+          echo ""
+          echo "All GeoJSON files are valid."

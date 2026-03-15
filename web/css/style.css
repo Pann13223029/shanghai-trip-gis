@@ -1,0 +1,243 @@
+/* ============================================================
+   SHANGHAI TRIP MAP — STYLES
+   ============================================================
+   This file controls the visual appearance of the web map.
+   Modify colors, fonts, and layout here.
+   ============================================================ */
+
+/* --- Reset & Base --- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f0f0;
+}
+
+/* --- Map Container --- */
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* --- Day Filter Buttons --- */
+
+#day-filter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 4px;
+  background: white;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.day-btn {
+  border: none;
+  background: #f5f5f5;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.day-btn:hover {
+  background: #e0e0e0;
+}
+
+.day-btn.active {
+  background: #3498db;
+  color: white;
+}
+
+/* --- Info Panel (bottom) --- */
+
+#info-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+/* --- Popup Styles --- */
+
+.custom-popup .leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 0;
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 0;
+  width: 280px !important;
+}
+
+.popup-content {
+  padding: 14px 16px;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.popup-chinese {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.popup-badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.popup-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  background: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.popup-badge-gray {
+  background: #bdc3c7;
+}
+
+.popup-desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.popup-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.popup-notes {
+  font-size: 12px;
+  color: #777;
+  font-style: italic;
+  border-left: 3px solid #eee;
+  padding-left: 8px;
+  margin-bottom: 8px;
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.popup-id {
+  font-size: 11px;
+  color: #bbb;
+  font-family: monospace;
+}
+
+.popup-amap {
+  font-size: 12px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.popup-amap:hover {
+  text-decoration: underline;
+}
+
+/* --- Layer Control Override --- */
+
+.leaflet-control-layers {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  padding: 8px 12px !important;
+}
+
+.leaflet-control-layers-base,
+.leaflet-control-layers-overlays {
+  font-size: 13px;
+}
+
+.leaflet-control-layers-overlays label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 0;
+}
+
+/* --- Mobile Responsive --- */
+
+@media (max-width: 600px) {
+  #day-filter {
+    top: auto;
+    bottom: 44px;
+    right: 50%;
+    transform: translateX(50%);
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .day-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  #info-panel {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .custom-popup .leaflet-popup-content {
+    width: 240px !important;
+  }
+
+  .popup-chinese {
+    font-size: 18px;
+  }
+
+  /* Larger touch targets on mobile */
+  .leaflet-control-layers label {
+    padding: 4px 0;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4920, 31.2275]
+      },
+      "properties": {
+        "id": "cultural-001",
+        "name_en": "Yu Garden",
+        "name_cn": "豫园",
+        "category": "cultural",
+        "day": null,
+        "description": "Classical Chinese garden from the Ming Dynasty (1559), featuring pavilions, rockeries, and koi ponds",
+        "address": "218 Anren St, Huangpu District",
+        "est_duration_min": 90,
+        "est_cost_cny": 40,
+        "opening_hours": "8:30-17:00",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Arrive early to avoid crowds. The surrounding bazaar area is free to explore."
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.8053, 31.1434]
+      },
+      "properties": {
+        "id": "transport-001",
+        "name_en": "Shanghai Pudong International Airport",
+        "name_cn": "上海浦东国际机场",
+        "category": "transport",
+        "day": 1,
+        "description": "Shanghai's main international airport, connected to the city by Maglev train and Metro Line 2",
+        "address": "Pudong New Area",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Maglev to Longyang Rd: 8 min, 50 CNY. Metro Line 2 to city center: ~60 min, 7 CNY."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.3195, 31.1949]
+      },
+      "properties": {
+        "id": "transport-002",
+        "name_en": "Shanghai Hongqiao Railway Station",
+        "name_cn": "上海虹桥火车站",
+        "category": "transport",
+        "day": 6,
+        "description": "High-speed rail hub for the Suzhou day trip — trains depart every 15-20 minutes",
+        "address": "Minhang District",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "6:00-23:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "High-speed rail is the most sustainable intercity transport option",
+        "photos": [],
+        "notes": "Shanghai to Suzhou: 25-30 min, ~40 CNY. Book tickets in advance via 12306 app or Trip.com."
+      }
+    }
+  ]
+}

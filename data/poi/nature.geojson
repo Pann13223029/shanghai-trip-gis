@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4725, 31.2312]
+      },
+      "properties": {
+        "id": "nature-001",
+        "name_en": "People's Park",
+        "name_cn": "人民公园",
+        "category": "nature",
+        "day": null,
+        "description": "Central park in downtown Shanghai, popular for morning tai chi and the famous 'marriage market' on weekends",
+        "address": "231 Nanjing West Rd, Huangpu District",
+        "est_duration_min": 45,
+        "est_cost_cny": 0,
+        "opening_hours": "6:00-18:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Green space in urban core; observe local community use of public parks",
+        "photos": [],
+        "notes": "Adjacent to Shanghai Museum. Good rest stop between Nanjing Road and The Bund."
+      }
+    }
+  ]
+}

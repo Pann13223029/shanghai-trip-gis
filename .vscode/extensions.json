@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "jumpinjelly.geojson-map-preview",
+    "randomfractalsinc.geo-data-viewer",
+    "eriklynd.json-tools",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "ritwickdey.LiveServer",
+    "ecmel.vscode-html-css",
+    "esbenp.prettier-vscode"
+  ]
+}

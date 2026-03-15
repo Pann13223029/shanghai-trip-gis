@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4907, 31.2397]
+      },
+      "properties": {
+        "id": "landmark-001",
+        "name_en": "The Bund",
+        "name_cn": "外滩",
+        "category": "landmark",
+        "day": null,
+        "description": "Iconic 1.5km waterfront promenade along the Huangpu River with panoramic views of the Pudong skyline",
+        "address": "Zhongshan East 1st Rd, Huangpu District",
+        "est_duration_min": 60,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Best visited at sunset for skyline photos. Very crowded on weekends."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4956, 31.2397]
+      },
+      "properties": {
+        "id": "landmark-002",
+        "name_en": "Oriental Pearl Tower",
+        "name_cn": "东方明珠塔",
+        "category": "landmark",
+        "day": null,
+        "description": "Shanghai's iconic TV tower with observation decks and a glass floor at 259m",
+        "address": "1 Century Ave, Pudong, Shanghai",
+        "est_duration_min": 90,
+        "est_cost_cny": 199,
+        "opening_hours": "8:00-21:30",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Book tickets online to skip the queue."
+      }
+    }
+  ]
+}

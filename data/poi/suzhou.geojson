@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.6275, 31.3236]
+      },
+      "properties": {
+        "id": "suzhou-001",
+        "name_en": "Humble Administrator's Garden",
+        "name_cn": "拙政园",
+        "category": "nature",
+        "day": 6,
+        "description": "Largest and most famous classical garden in Suzhou — a UNESCO World Heritage Site dating to 1509",
+        "address": "178 Dongbei St, Gusu District, Suzhou",
+        "est_duration_min": 90,
+        "est_cost_cny": 70,
+        "opening_hours": "7:30-17:30",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "UNESCO World Heritage Site; example of traditional Chinese sustainable garden design",
+        "photos": [],
+        "notes": "Arrive at opening to avoid tour groups. Audio guide available in English."
+      }
+    }
+  ]
+}

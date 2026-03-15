@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shanghai Trip Story Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #333;
+      background: #fafafa;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .hero .chinese {
+      font-size: 2rem;
+      opacity: 0.6;
+    }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* --- Day Section --- */
+    .day-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .day-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a2e;
+    }
+
+    .day-section .day-subtitle {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+
+    .day-map {
+      width: 100%;
+      height: 350px;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .day-narrative {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .day-photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .day-photos img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .day-photos .photo-placeholder {
+      width: 100%;
+      height: 180px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      font-size: 0.85rem;
+      border: 2px dashed #ddd;
+    }
+
+    /* --- Reflection Section --- */
+    .reflection {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .reflection h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #1a1a2e;
+    }
+
+    .reflection p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #555;
+      text-align: left;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      font-size: 0.85rem;
+      border-top: 1px solid #eee;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .chinese { font-size: 1.4rem; }
+      .day-section { padding: 2rem 1rem; }
+      .day-map { height: 250px; }
+      .day-photos { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       STORY MAP TEMPLATE
+       ============================================================
+       MODULE 7: Fill in this template with your trip content.
+
+       For each day:
+       1. Replace the narrative placeholder text with your real story
+       2. Replace photo placeholders with your trip photos
+       3. The mini-maps will show that day's POIs automatically
+
+       You do NOT need to write JavaScript for this — just edit
+       the HTML content below.
+       ============================================================ -->
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Shanghai & Suzhou</h1>
+    <p class="chinese">上海 & 苏州</p>
+    <p class="subtitle">A GIS-powered journey through China's most dynamic city</p>
+    <p class="subtitle"><!-- REPLACE: Month Year --></p>
+    <p class="scroll-hint">Scroll to explore our trip</p>
+  </section>
+
+  <!-- DAY 1 -->
+  <section class="day-section" id="day-1">
+    <h2>Day 1 — Arrival</h2>
+    <p class="day-subtitle"><!-- REPLACE: e.g., "Pudong Airport to The Bund" --></p>
+    <div class="day-map" id="map-day-1"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE: Write 2-3 paragraphs about your Day 1 experience. What did you see? What surprised you? How did the map help you navigate? --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 1 photo 1</div>
+      <div class="photo-placeholder">Day 1 photo 2</div>
+      <div class="photo-placeholder">Day 1 photo 3</div>
+      <!-- REPLACE: <img src="assets/photos/day-1/photo-name.jpg" alt="Description"> -->
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day-section" id="day-2">
+    <h2>Day 2</h2>
+    <p class="day-subtitle"><!-- REPLACE --></p>
+    <div class="day-map" id="map-day-2"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 2 photo 1</div>
+      <div class="photo-placeholder">Day 2 photo 2</div>
+      <div class="photo-placeholder">Day 2 photo 3</div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day-section" id="day-3">
+    <h2>Day 3</h2>
+    <p class="day-subtitle"><!-- REPLACE --></p>
+    <div class="day-map" id="map-day-3"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 3 photo 1</div>
+      <div class="photo-placeholder">Day 3 photo 2</div>
+      <div class="photo-placeholder">Day 3 photo 3</div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day-section" id="day-4">
+    <h2>Day 4</h2>
+    <p class="day-subtitle"><!-- REPLACE --></p>
+    <div class="day-map" id="map-day-4"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 4 photo 1</div>
+      <div class="photo-placeholder">Day 4 photo 2</div>
+      <div class="photo-placeholder">Day 4 photo 3</div>
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day-section" id="day-5">
+    <h2>Day 5</h2>
+    <p class="day-subtitle"><!-- REPLACE --></p>
+    <div class="day-map" id="map-day-5"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 5 photo 1</div>
+      <div class="photo-placeholder">Day 5 photo 2</div>
+      <div class="photo-placeholder">Day 5 photo 3</div>
+    </div>
+  </section>
+
+  <!-- DAY 6 — SUZHOU -->
+  <section class="day-section" id="day-6">
+    <h2>Day 6 — Suzhou Day Trip</h2>
+    <p class="day-subtitle"><!-- REPLACE: e.g., "Classical gardens and silk markets" --></p>
+    <div class="day-map" id="map-day-6"></div>
+    <div class="day-narrative">
+      <p><!-- REPLACE --></p>
+    </div>
+    <div class="day-photos">
+      <div class="photo-placeholder">Day 6 photo 1</div>
+      <div class="photo-placeholder">Day 6 photo 2</div>
+      <div class="photo-placeholder">Day 6 photo 3</div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="reflection">
+    <h2>Reflections</h2>
+    <p><!-- REPLACE: What did you learn about GIS through this project? How did spatial thinking change the way you planned and experienced the trip? What would you do differently next time? --></p>
+    <br>
+    <p><!-- OPTIONAL (sustainability track): How did you observe sustainable/unsustainable tourism practices? What did the transport mode analysis reveal? How does this connect to SDG 11 or SDG 12? --></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built with Leaflet.js, QGIS, and OpenStreetMap</p>
+    <p>Shanghai Trip GIS Project &mdash; <!-- REPLACE: Year --></p>
+  </footer>
+
+  <!-- Mini-maps for each day section -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // ============================================================
+    // MINI-MAP INITIALIZATION
+    // Creates a small map for each day section showing that day's POIs
+    // ============================================================
+
+    const CATEGORY_COLORS = {
+      landmark: '#e74c3c', food: '#e67e22', shopping: '#9b59b6',
+      cultural: '#3498db', nature: '#27ae60', transport: '#7f8c8d',
+      accommodation: '#f1c40f'
+    };
+
+    const ALL_DATA_FILES = [
+      '../data/poi/landmarks.geojson',
+      '../data/poi/food.geojson',
+      '../data/poi/shopping.geojson',
+      '../data/poi/cultural.geojson',
+      '../data/poi/nature.geojson',
+      '../data/poi/transport.geojson',
+      '../data/poi/accommodation.geojson',
+      '../data/poi/suzhou.geojson'
+    ];
+
+    // Load all POI data
+    async function loadAllPOIs() {
+      const allFeatures = [];
+      for (const path of ALL_DATA_FILES) {
+        try {
+          const res = await fetch(path);
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (data.features) allFeatures.push(...data.features);
+        } catch (e) { /* skip missing files */ }
+      }
+      return allFeatures;
+    }
+
+    // Create a mini-map for a specific day
+    function createDayMap(elementId, features, center, zoom) {
+      const mapEl = document.getElementById(elementId);
+      if (!mapEl || features.length === 0) return;
+
+      const miniMap = L.map(elementId, {
+        scrollWheelZoom: false,
+        dragging: true,
+        zoomControl: false
+      }).setView(center, zoom);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OSM &copy; CARTO',
+        maxZoom: 19
+      }).addTo(miniMap);
+
+      features.forEach(f => {
+        const coords = f.geometry.coordinates;
+        const color = CATEGORY_COLORS[f.properties.category] || '#999';
+        L.circleMarker([coords[1], coords[0]], {
+          radius: 7, fillColor: color, color: '#fff',
+          weight: 2, fillOpacity: 0.85
+        }).addTo(miniMap)
+          .bindPopup(`<b>${f.properties.name_en}</b><br>${f.properties.name_cn || ''}`);
+      });
+
+      // Load route for this day if it exists
+      const dayNum = elementId.replace('map-day-', '');
+      fetch(`../data/routes/day-${dayNum}.geojson`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.features) {
+            L.geoJSON(data, {
+              style: { color: '#3498db', weight: 3, opacity: 0.7, dashArray: '8 4' }
+            }).addTo(miniMap);
+          }
+        })
+        .catch(() => {});
+    }
+
+    // Initialize all mini-maps
+    loadAllPOIs().then(allFeatures => {
+      for (let day = 1; day <= 6; day++) {
+        const dayFeatures = allFeatures.filter(f => f.properties.day === day);
+        // Default centers: Days 1-5 = Shanghai, Day 6 = Suzhou
+        const center = day === 6 ? [31.30, 120.63] : [31.23, 121.47];
+        const zoom = day === 6 ? 13 : 13;
+        createDayMap(`map-day-${day}`, dayFeatures, center, zoom);
+      }
+    });
+  </script>
+
+</body>
+</html>

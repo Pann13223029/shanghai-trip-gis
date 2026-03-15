@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4925, 31.2272]
+      },
+      "properties": {
+        "id": "food-001",
+        "name_en": "Nanxiang Steamed Bun Restaurant",
+        "name_cn": "南翔馒头店",
+        "category": "food",
+        "day": null,
+        "description": "Famous xiaolongbao (soup dumplings) since 1900, located next to Yu Garden",
+        "address": "85 Yuyuan Rd, Huangpu District",
+        "est_duration_min": 45,
+        "est_cost_cny": 30,
+        "opening_hours": "9:00-21:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Ground floor is cheaper but longer queue. Upper floors have table service at higher prices."
+      }
+    }
+  ]
+}
