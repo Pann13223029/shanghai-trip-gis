@@ -1,5 +1,18 @@
 # Contribution Guide
 
+```
+  ┌─────────────────────────────────────────────────────────┐
+  │                   YOUR WORKFLOW                          │
+  │                                                         │
+  │   1. Fetch   ──→  Get latest changes from GitHub        │
+  │   2. Edit    ──→  Add/modify POIs in your files         │
+  │   3. Validate ─→  Check at geojsonlint.com              │
+  │   4. Commit  ──→  Describe what you changed             │
+  │   5. Push    ──→  Upload to GitHub                      │
+  │                                                         │
+  └─────────────────────────────────────────────────────────┘
+```
+
 A step-by-step guide for adding data and making changes to the Shanghai Trip GIS project. Written for beginners — no prior Git or GIS experience needed.
 
 ---
@@ -17,202 +30,260 @@ A step-by-step guide for adding data and making changes to the Shanghai Trip GIS
 
 ### 2. Clone the Repository
 
-1. Open **GitHub Desktop**
-2. Click **File -> Clone Repository**
-3. Select `shanghai-trip-gis` from the list (or paste the repo URL)
-4. Choose a local folder and click **Clone**
+```
+  GitHub Desktop:
+
+  ┌─────────────────────────────────────────────┐
+  │  File → Clone Repository                    │
+  │                                             │
+  │  ┌───────────────────────────────────────┐  │
+  │  │ shanghai-trip-gis                     │  │
+  │  └───────────────────────────────────────┘  │
+  │                                             │
+  │  Local path: /Users/you/shanghai-trip-gis   │
+  │                                             │
+  │              [Clone]                         │
+  └─────────────────────────────────────────────┘
+```
 
 ### 3. Open in VS Code
 
 1. In GitHub Desktop, click **Open in Visual Studio Code**
-2. Install the recommended extension: **GeoJSON Map Preview** (lets you see your GeoJSON on a map inside VS Code)
+2. VS Code will suggest recommended extensions — click **Install All**
+3. The **GeoJSON Map Preview** extension lets you see your data on a map inside VS Code
 
 ---
 
-## File Ownership
+## File Responsibility
 
-**Each member owns specific files.** Only edit files assigned to you. This prevents merge conflicts (the #1 source of beginner Git frustration).
+```
+  ┌───────────────────────────────────────────────────────┐
+  │                                                       │
+  │  Person 1 (Lead)           Person 2                   │
+  │  primary files:            primary files:             │
+  │  ┌────────────────────┐    ┌────────────────────┐     │
+  │  │ landmarks.geojson  │    │ cultural.geojson   │     │
+  │  │ food.geojson       │    │ shopping.geojson   │     │
+  │  │ transport.geojson  │    │ nature.geojson     │     │
+  │  │ accommodation      │    │ suzhou.geojson     │     │
+  │  └────────────────────┘    └────────────────────┘     │
+  │                                                       │
+  │  Either person CAN edit any file.                     │
+  │  Just use a clear commit message.                     │
+  │                                                       │
+  └───────────────────────────────────────────────────────┘
+```
 
-| Member | Owned Files | Categories |
-|--------|-------------|------------|
-| Member A | `landmarks.geojson`, `accommodation.geojson` | Landmarks, Accommodation |
-| Member B | `food.geojson`, `transport.geojson` | Food, Transport |
-| Member C | `shopping.geojson`, `cultural.geojson` | Shopping, Cultural/Historical |
-| Member D | `nature.geojson`, `suzhou.geojson` | Nature/Parks, Suzhou |
-
-**What if I find a great restaurant but I own landmarks?**
-Tell Member B (the food file owner) and they'll add it. You can share the details in the group chat — name, coordinates, description — and the owner enters it. This mirrors how professional GIS teams work.
+Each person is the **primary editor** for their assigned files. This means you're responsible for the quality and completeness of those files. But cross-editing is fine — if you find a great restaurant while researching nature POIs, just add it to `food.geojson` with a clear commit message.
 
 ---
 
 ## Allowed Values Reference
 
-Use ONLY these values for constrained fields. Using other values will cause filtering bugs on the map.
+```
+  Field              Allowed Values
+  ──────────────────────────────────────────────────────────
+  category           landmark | food | shopping | cultural
+                     nature | transport | accommodation
 
-| Field | Allowed Values |
-|-------|---------------|
-| `category` | `landmark`, `food`, `shopping`, `cultural`, `nature`, `transport`, `accommodation` |
-| `priority` | `must-visit`, `nice-to-have`, `optional` |
-| `day` | `1`, `2`, `3`, `4`, `5`, `6`, or `null` (undecided) |
-| `weather_sensitive` | `true` (outdoor/exposed), `false` (indoor/covered) |
-| `mode` (routes) | `walking`, `metro`, `taxi`, `bus`, `train` |
+  priority           must-visit | nice-to-have | optional
+
+  day                1 | 2 | 3 | 4 | 5 | 6 | null
+
+  weather_sensitive  true (outdoor) | false (indoor)
+
+  mode (routes)      walking | metro | taxi | bus | train
+```
+
+Use these values exactly. Other values will break the map's filters.
 
 ---
 
-## Adding a New Point of Interest (POI)
+## Adding a New POI
 
 ### Method A: Using geojson.io (Easiest)
 
-1. Go to [geojson.io](https://geojson.io/)
-2. Navigate to Shanghai
-3. Click the **marker tool** and place your point on the map
-4. In the right panel, edit the properties:
-   ```json
-   {
-     "id": "cultural-001",
-     "name_en": "Yu Garden",
-     "name_cn": "豫园",
-     "category": "cultural",
-     "day": 2,
-     "description": "Classical Chinese garden from the Ming Dynasty",
-     "address": "218 Anren St, Huangpu District",
-     "est_duration_min": 90,
-     "est_cost_cny": 40,
-     "opening_hours": "8:30-17:00",
-     "priority": "must-visit",
-     "weather_sensitive": false,
-     "added_by": "your_name",
-     "last_verified": "2026-03",
-     "sustainability_notes": "",
-     "photos": [],
-     "notes": ""
-   }
-   ```
-5. Click **Save -> GeoJSON** and download the file
-6. Open the downloaded file, **copy just the Feature** (not the whole FeatureCollection)
-7. Paste it into YOUR assigned category file in `data/poi/` (e.g., `cultural.geojson`)
+```
+  ┌─────────────────────────────────────────────────────────┐
+  │  geojson.io                                             │
+  │  ┌─────────────────────────┬──────────────────────────┐ │
+  │  │                         │  {                       │ │
+  │  │      MAP VIEW           │    "type": "Feature",   │ │
+  │  │                         │    "properties": {      │ │
+  │  │   Click to place a      │      "name_en": "...",  │ │
+  │  │   marker ──→ ●          │      "name_cn": "...",  │ │
+  │  │                         │      ...                │ │
+  │  │                         │    }                    │ │
+  │  │                         │  }                      │ │
+  │  └─────────────────────────┴──────────────────────────┘ │
+  │                                                         │
+  │  1. Navigate to Shanghai                                │
+  │  2. Click marker tool, place your point                 │
+  │  3. Edit properties in the right panel                  │
+  │  4. Save → GeoJSON → download                           │
+  │  5. Copy the Feature into your category file            │
+  └─────────────────────────────────────────────────────────┘
+```
 
 ### Method B: Editing GeoJSON Directly
 
-1. Open YOUR assigned file in `data/poi/` (e.g., `food.geojson`)
-2. Find the `"features": [...]` array
-3. Add a new Feature object:
-   ```json
-   {
-     "type": "Feature",
-     "geometry": {
-       "type": "Point",
-       "coordinates": [121.4925, 31.2272]
-     },
-     "properties": {
-       "id": "food-001",
-       "name_en": "Nanxiang Steamed Bun Restaurant",
-       "name_cn": "南翔馒头店",
-       "category": "food",
-       "day": 2,
-       "description": "Famous xiaolongbao since 1900, next to Yu Garden",
-       "address": "85 Yuyuan Rd, Huangpu District",
-       "est_duration_min": 45,
-       "est_cost_cny": 30,
-       "opening_hours": "9:00-21:00",
-       "priority": "must-visit",
-       "weather_sensitive": false,
-       "added_by": "your_name",
-       "last_verified": "2026-03",
-       "sustainability_notes": "",
-       "photos": [],
-       "notes": ""
-     }
-   }
-   ```
-4. Remember: coordinates are `[longitude, latitude]` — lng first!
+Open your file in VS Code and add a new Feature to the `"features"` array:
+
+```json
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [121.4925, 31.2272]
+  },
+  "properties": {
+    "id": "food-012",
+    "name_en": "Nanxiang Steamed Bun Restaurant",
+    "name_cn": "南翔馒头店",
+    "category": "food",
+    "day": 2,
+    "description": "Famous xiaolongbao since 1900, next to Yu Garden",
+    "address": "85 Yuyuan Rd, Huangpu District",
+    "est_duration_min": 45,
+    "est_cost_cny": 30,
+    "opening_hours": "9:00-21:00",
+    "priority": "must-visit",
+    "weather_sensitive": false,
+    "added_by": "your_name",
+    "last_verified": "2026-03",
+    "sustainability_notes": "",
+    "photos": [],
+    "notes": ""
+  }
+}
+```
 
 ### How to Find Coordinates
 
-**Before the trip (use Google Maps):**
-1. Open [Google Maps](https://maps.google.com)
-2. Search for the place
-3. Right-click on the exact location -> the coordinates appear (e.g., `31.2272, 121.4925`)
-4. **Swap the order** for GeoJSON: `[121.4925, 31.2272]` (lng, lat)
+```
+  BEFORE THE TRIP (Google Maps):
+  ┌──────────────────────────────────────────────┐
+  │  1. Search for the place on Google Maps      │
+  │  2. Right-click → coordinates appear         │
+  │     e.g., 31.2272, 121.4925                  │
+  │  3. SWAP THE ORDER for GeoJSON:              │
+  │     [121.4925, 31.2272]                      │
+  │      ↑ lng      ↑ lat                        │
+  │                                              │
+  │  ⚠ GeoJSON = [lng, lat]                     │
+  │  ⚠ Google  = lat, lng    ← opposite!        │
+  └──────────────────────────────────────────────┘
 
-**During the trip in China (use Dianping or Amap):**
-Google Maps is blocked in China. Use Dianping (大众点评) for restaurants or Amap (高德地图) for general places. See [architecture.md — China Tech Constraints](architecture.md#china-tech-constraints).
+  IN CHINA (Google is blocked):
+  Use Dianping (大众点评) for restaurants
+  Use Amap (高德地图) for general places
+```
 
 ### ID Assignment
 
-Each POI needs a unique ID in the format `{category}-{nnn}`:
-- Check your file for the highest existing number
-- Use the next number: if the last entry is `food-007`, your new entry is `food-008`
-- IDs are zero-padded to 3 digits: `001`, `002`, ..., `099`, `100`
+```
+  Check your file for the highest existing number:
+  food-009, food-010, food-011
+                              └──→ next is food-012
+```
 
 ---
 
 ## Pushing Your Changes
 
-### Step-by-Step (GitHub Desktop)
+### Step-by-Step
 
-1. **Before you start editing**, click **Fetch origin** in GitHub Desktop to get the latest changes
-2. Edit ONLY your assigned files
-3. When done, open **GitHub Desktop**
-4. You'll see your changed files in the left panel
-5. **Verify** you only changed files you own (if you see someone else's file, undo it)
-6. Write a short description in the **Summary** box:
-   - Good: `Add 5 food POIs in Huangpu district`
-   - Bad: `update`
-7. Click **Commit to main**
-8. Click **Push origin**
+```
+  GitHub Desktop:
+
+  ┌─────────────────────────────────────────────────────────┐
+  │                                                         │
+  │  1. Click [Fetch origin]     ← get latest changes       │
+  │                                                         │
+  │  2. (edit your files)                                   │
+  │                                                         │
+  │  3. See changed files        ← left panel               │
+  │     in GitHub Desktop                                   │
+  │                                                         │
+  │  4. Write a summary:                                    │
+  │     ┌─────────────────────────────────────────────┐     │
+  │     │ Add 5 food POIs in Huangpu district         │     │
+  │     └─────────────────────────────────────────────┘     │
+  │     Good: "Add 5 food POIs in Huangpu district"         │
+  │     Bad:  "update"                                      │
+  │                                                         │
+  │  5. Click [Commit to main]                              │
+  │                                                         │
+  │  6. Click [Push origin]                                 │
+  │                                                         │
+  └─────────────────────────────────────────────────────────┘
+```
 
 ### Before You Push — Checklist
 
-- [ ] I only edited files assigned to me
-- [ ] Every POI has a unique `id` in the correct format
-- [ ] Coordinates are in `[longitude, latitude]` order
-- [ ] Coordinates place the marker at the correct building (verified on geojson.io satellite view)
-- [ ] `name_cn` is filled in (use Google Translate or Dianping if needed)
-- [ ] `category` matches the filename (food POI in `food.geojson`)
-- [ ] `priority` is one of: `must-visit`, `nice-to-have`, `optional`
-- [ ] `day` is 1-6 or `null`
-- [ ] `added_by` has your name
-- [ ] The file is still valid JSON (validated at geojsonlint.com)
-
-### Validating Your GeoJSON
-
-Paste your file contents into [geojsonlint.com](https://geojsonlint.com/) to check for errors. A GitHub Action will also validate your files automatically after you push — if you see a red X on your commit, check the action log.
+```
+  ☐  Every POI has a unique id in the correct format
+  ☐  Coordinates are [longitude, latitude] order
+  ☐  Coordinates place the marker correctly (check geojson.io satellite view)
+  ☐  name_cn is filled in
+  ☐  category matches the filename
+  ☐  priority is: must-visit | nice-to-have | optional
+  ☐  day is 1-6 or null
+  ☐  added_by has your name
+  ☐  File passes validation at geojsonlint.com
+  ☐  Commit message describes what you changed
+```
 
 ### If Something Goes Wrong
 
-- **"Conflict" message in GitHub Desktop** -> Don't try to resolve it yourself. Tell the team lead. This usually means someone edited a file that isn't theirs.
-- **Red X on your commit in GitHub** -> Your GeoJSON has a syntax error. Open the file, paste it into geojsonlint.com, fix the error, commit again.
-- **Accidentally edited the wrong file** -> In GitHub Desktop, right-click the file and choose "Discard changes."
+```
+  PROBLEM                          FIX
+  ─────────────────────────────    ──────────────────────────────
+  "Conflict" message               Person 1 (Lead) resolves it.
+                                   Person 2: don't try to fix.
+
+  Red X on your commit             GeoJSON syntax error. Paste
+  in GitHub                        file into geojsonlint.com,
+                                   fix the error, commit again.
+
+  Accidentally edited the          Right-click the file in
+  wrong file                       GitHub Desktop → Discard changes
+```
 
 ---
 
-## Rotating Roles
+## Responsibilities
 
-Each project phase, you'll take on a different role:
+```
+  ┌─────────────────────────────────────────────────────────┐
+  │  PERSON 1 (Lead)                                        │
+  │                                                         │
+  │  · Web map development (Leaflet.js)                     │
+  │  · Git & GitHub deployment                              │
+  │  · Spatial analysis in QGIS (buffers, distances)        │
+  │  · Architecture & technical decisions                   │
+  │  · Creates QGIS print layout template                   │
+  │  · Resolves any Git conflicts                           │
+  ├─────────────────────────────────────────────────────────┤
+  │  PERSON 2                                               │
+  │                                                         │
+  │  · POI research & curation                              │
+  │  · QGIS cartography & layer styling                     │
+  │  · Sustainability analysis (transport modes, CO2)       │
+  │  · Exports daily PDF maps using print template          │
+  │  · Story map narrative writing                          │
+  │  · Tests web map on mobile, reviews Chinese labels      │
+  ├─────────────────────────────────────────────────────────┤
+  │  BOTH                                                   │
+  │                                                         │
+  │  · Itinerary planning (day assignments)                 │
+  │  · Learning modules (pair sessions)                     │
+  │  · Trip data collection (photos, notes, GPS)            │
+  │  · Final review & polish                                │
+  └─────────────────────────────────────────────────────────┘
+```
 
-### Data Collector
-- Research places to visit using travel blogs, Dianping, Google Maps, and recommendations
-- Add POIs to YOUR assigned GeoJSON files with complete properties
-- Verify coordinates are accurate (check satellite view on geojson.io)
-
-### Cartographer
-- Style map layers in QGIS (colors, icons, labels)
-- Design the visual look of the web map
-- Create print layouts for offline backup PDFs
-- Ensure the map is readable and beautiful
-
-### Web Dev
-- Build and maintain the Leaflet.js web application (starting from the provided template)
-- Add new features (layer toggles, popups, day filter)
-- Test on mobile devices
-- Deploy updates to GitHub Pages
-
-### Analyst
-- Run spatial analysis in QGIS (distances, buffers, cluster visualization)
-- Optimize daily itineraries based on geographic efficiency
-- Generate analysis outputs (distance tables, buffer maps)
-- Present findings to the group for itinerary decisions
+Both people participate in all phases through pair sessions. The above lists who **leads** each activity, not who does it alone.
 
 ---
 
@@ -230,10 +301,15 @@ Each project phase, you'll take on a different role:
 
 ## Getting Help
 
-- **GeoJSON syntax error?** -> Paste into [geojsonlint.com](https://geojsonlint.com/)
-- **Can't find coordinates?** -> Right-click on Google Maps (pre-trip) or use Amap (in China)
-- **Git conflict?** -> Tell the team lead. Do NOT try to resolve it yourself.
-- **Accidentally edited wrong file?** -> Right-click -> Discard changes in GitHub Desktop
-- **QGIS is confusing?** -> Check the [QGIS Training Manual](https://docs.qgis.org/3.34/en/docs/training_manual/)
-- **Leaflet question?** -> Check the [Leaflet Tutorials](https://leafletjs.com/examples.html)
-- **Need Chinese name for a place?** -> Search on [Dianping](https://www.dianping.com/) or [Baidu Maps](https://map.baidu.com/)
+```
+  QUESTION                          WHERE TO LOOK
+  ─────────────────────────────    ──────────────────────────────
+  GeoJSON syntax error?             geojsonlint.com
+  Can't find coordinates?           Google Maps (pre-trip)
+                                    Amap / Dianping (in China)
+  Git conflict?                     Person 1 (Lead) handles it
+  QGIS confusing?                   docs/qgis-quickstart.md
+  Leaflet question?                 leafletjs.com/examples.html
+  Need Chinese name?                Dianping or Baidu Maps
+  Unfamiliar GIS term?              docs/glossary.md
+```

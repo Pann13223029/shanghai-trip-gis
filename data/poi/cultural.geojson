@@ -26,6 +26,162 @@
         "photos": [],
         "notes": "Arrive early to avoid crowds. The surrounding bazaar area is free to explore."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4725, 31.2305]
+      },
+      "properties": {
+        "id": "cultural-002",
+        "name_en": "Shanghai Museum",
+        "name_cn": "上海博物馆",
+        "category": "cultural",
+        "day": null,
+        "description": "One of China's finest museums, with 11 permanent galleries spanning ancient bronzes, ceramics, calligraphy, jade, and Ming-Qing furniture across a striking circular building on People's Square",
+        "address": "201 Renmin Ave, Huangpu District",
+        "est_duration_min": 150,
+        "est_cost_cny": 0,
+        "opening_hours": "9:00-17:00 (closed Mon; last entry 16:00)",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Free admission but timed-entry tickets required — book online in advance via the official WeChat channel or website. English audio guide available. The bronze gallery and ancient ceramics collection are highlights."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4444, 31.2480]
+      },
+      "properties": {
+        "id": "cultural-003",
+        "name_en": "Jade Buddha Temple",
+        "name_cn": "玉佛禅寺",
+        "category": "cultural",
+        "day": null,
+        "description": "Active Buddhist temple founded in 1882, housing two prized jade Buddha statues brought from Burma — a serene island of calm in a dense urban neighborhood",
+        "address": "170 Anyuan Rd, Putuo District",
+        "est_duration_min": 60,
+        "est_cost_cny": 50,
+        "opening_hours": "8:00-16:30",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "The reclining jade Buddha on the upper floor is the more impressive of the two. Respectful dress required (no shorts/sleeveless). The temple vegetarian restaurant is popular at lunch (open 11:00-14:00)."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4958, 31.2653]
+      },
+      "properties": {
+        "id": "cultural-004",
+        "name_en": "Shanghai Jewish Refugees Museum",
+        "name_cn": "上海犹太难民纪念馆",
+        "category": "cultural",
+        "day": null,
+        "description": "Moving museum in the historic Ohel Moshe Synagogue documenting the 20,000+ Jewish refugees who found sanctuary in Shanghai's Hongkou district during WWII (1933-1945)",
+        "address": "62 Changyang Rd, Hongkou District",
+        "est_duration_min": 90,
+        "est_cost_cny": 50,
+        "opening_hours": "9:00-17:00 (closed on Jewish holidays)",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Deeply affecting exhibit with personal stories, photographs, and artifacts. The surrounding Tilanqiao area still has many original 1930s-40s buildings from the Jewish ghetto. Allow extra time to walk the neighborhood."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4578, 31.2084]
+      },
+      "properties": {
+        "id": "cultural-005",
+        "name_en": "Propaganda Poster Art Centre",
+        "name_cn": "上海宣传画艺术中心",
+        "category": "cultural",
+        "day": null,
+        "description": "Basement museum in the French Concession housing a private collection of over 3,000 original Chinese propaganda posters from the 1950s-1980s — one of Shanghai's most unusual museums",
+        "address": "Basement, Building B, 868 Huashan Rd, Xuhui District",
+        "est_duration_min": 60,
+        "est_cost_cny": 35,
+        "opening_hours": "10:00-17:00 (closed Tue)",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Easy to miss — look for the small sign in the residential compound. Run by a passionate private collector. High-quality reproduction prints available to buy. Combine with French Concession walking tour nearby."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4590, 31.2170]
+      },
+      "properties": {
+        "id": "cultural-006",
+        "name_en": "French Concession Walking Area",
+        "name_cn": "法租界",
+        "category": "cultural",
+        "day": null,
+        "description": "Shanghai's most atmospheric neighborhood — tree-lined avenues of Art Deco villas, boutique cafes, independent bookshops, and remnants of 1920s-40s colonial-era architecture",
+        "address": "Wukang Rd / Fuxing Rd area, Xuhui District",
+        "est_duration_min": 120,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Many historic heritage buildings preserved; walkable neighborhood that rewards foot exploration over taxi",
+        "photos": [],
+        "notes": "Start at Wukang Mansion (武康大楼) at the tip of Wukang Rd — the iconic bow-fronted building is a beloved photo spot. Walk to Fuxing Park, Xintiandi, and Tianzifang. Best explored on foot or by bike. Weekend afternoons are lively."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4863, 31.2017]
+      },
+      "properties": {
+        "id": "cultural-007",
+        "name_en": "Power Station of Art",
+        "name_cn": "上海当代艺术博物馆",
+        "category": "cultural",
+        "day": null,
+        "description": "China's first state-run contemporary art museum, occupying a converted 1985 power plant with a chimney repurposed as a public observation tower — hosts the Shanghai Biennale",
+        "address": "200 Huayuangang Rd, Huangpu District",
+        "est_duration_min": 120,
+        "est_cost_cny": 0,
+        "opening_hours": "11:00-19:00 (closed Mon; last entry 18:00)",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Industrial heritage building given new life through adaptive reuse; champions sustainable urban renewal",
+        "photos": [],
+        "notes": "Free admission. The industrial architecture is as impressive as the art. The 165m chimney lookout (open on weekends) offers a different perspective of the city. Located on the South Bund waterfront — combine with a riverfront walk."
+      }
     }
   ]
 }

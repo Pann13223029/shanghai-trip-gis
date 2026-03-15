@@ -1,12 +1,29 @@
 # GIS Learning Journey
 
-A structured 7-module curriculum woven into the project phases. Each module combines theory, hands-on practice, and a project deliverable so learning directly contributes to the trip map.
+```
+  ┌─────────────────────────────────────────────────────────┐
+  │                  LEARNING PATH                           │
+  │                                                         │
+  │  Module 1 ──→ Module 2 ──→ Module 3 ──→ Module 4       │
+  │  What is       Coordinates   GeoJSON &    Analysis &    │
+  │  GIS?          & Projections Spatial Data  Print Maps   │
+  │                                                         │
+  │  ──→ Module 5a ──→ Module 5b ──→ Module 6 ──→ Module 7 │
+  │      Read the      Build &       Cartographic  Story    │
+  │      web map       deploy        design        map      │
+  │                                                         │
+  │  ⏱ ~18-22 hours total across all modules                │
+  │  👥 Pair learning: both people work together             │
+  └─────────────────────────────────────────────────────────┘
+```
+
+A structured 7-module curriculum for 2 people. Each module combines theory, hands-on practice, and a project deliverable. Work through modules together as pair learning sessions — discuss, explore, and help each other.
 
 ---
 
 ## Module 1 -- What is GIS? (Phase 0, Week 1)
 
-**Estimated time: 1.5-2 hours**
+**Estimated time: 1-1.5 hours | Both people**
 
 ### Concepts
 - What Geographic Information Systems are and why they matter
@@ -15,17 +32,17 @@ A structured 7-module curriculum woven into the project phases. Each module comb
 - Raster vs. Vector data (we'll focus on vector)
 
 ### Hands-On (~45 min)
-1. Open [OpenStreetMap](https://www.openstreetmap.org/) and explore Shanghai (~10 min)
+1. Open [OpenStreetMap](https://www.openstreetmap.org/) and explore Shanghai together (~10 min)
 2. Open [Overpass Turbo](https://overpass-turbo.eu/) and run a simple query (~15 min):
    ```
    node["tourism"="attraction"](31.1,121.3,31.4,121.6);
    out body;
    ```
-   This finds all tourist attractions in Shanghai -- you just ran your first spatial query!
+   You just ran your first spatial query — it finds all tourist attractions in Shanghai!
 3. Explore [kepler.gl demo](https://kepler.gl/demo) to see what's possible with GIS visualization (~20 min)
 
 ### Deliverable
-- Each member writes 2-3 sentences: "What surprised me about GIS?" (add to a shared discussion)
+- Discuss together: "What surprised us about GIS? How could this apply to sustainable tourism?"
 
 ### Self-Check
 - [ ] I can explain what GIS stands for and why it's useful
@@ -36,212 +53,279 @@ A structured 7-module curriculum woven into the project phases. Each module comb
 
 ## Module 2 -- Coordinates & Projections (Phase 0, Week 1-2)
 
-**Estimated time: 1.5-2 hours**
+**Estimated time: 1.5 hours | Both people**
 
 ### Concepts
 - Latitude and longitude -- how every point on Earth gets an address
 - WGS84 (EPSG:4326) -- the coordinate system GPS and GeoJSON use
-- Why maps distort the Earth (projections), and why we mostly don't worry about it at city scale
-- How to read coordinates: `[121.4737, 31.2304]` = [longitude, latitude] (GeoJSON order!)
-- **China's GCJ-02 offset** -- Chinese maps deliberately shift coordinates by 200-400m. Our project uses WGS84 only (see [architecture.md](architecture.md#8-gcj-02-coordinate-offset-strategy))
+- Why maps distort the Earth, and why we mostly don't worry at city scale
+- **The GeoJSON gotcha:** `[lng, lat]` not `[lat, lng]`!
+- **China's GCJ-02 offset** -- why we avoid Chinese tile providers (see [architecture.md](architecture.md#8-gcj-02-coordinate-offset-strategy))
+
+```
+  ⚠  THE #1 BEGINNER MISTAKE:
+
+  Google Maps shows:    31.2304, 121.4737   (lat, lng)
+  GeoJSON needs:       [121.4737, 31.2304]  (lng, lat)
+                        ↑ swap!              ↑ swap!
+```
 
 ### Hands-On (~45 min)
-1. Find the coordinates of a favorite Shanghai spot on Google Maps (right-click -> coordinates) (~10 min)
-2. Notice: Google shows `lat, lng` but GeoJSON uses `[lng, lat]` -- a classic gotcha! (~5 min)
-3. Plot 3 points on [geojson.io](https://geojson.io/) and inspect the generated GeoJSON (~15 min)
-4. Open QGIS, add OpenStreetMap as a base layer, and zoom to Shanghai (~15 min)
+1. Find coordinates of a favorite Shanghai spot on Google Maps (~10 min)
+2. Swap the order and plot 3 points on [geojson.io](https://geojson.io/) (~15 min)
+3. Open QGIS, add OpenStreetMap base layer, zoom to Shanghai (~15 min)
+4. Verify your points appear in the right locations on both tools (~5 min)
 
 ### Deliverable
-- Each member creates 1 POI on geojson.io and saves it as a `.geojson` file
-- Push it to the repo in `data/poi/`
+- Each person creates 1 POI on geojson.io and pushes it to the repo
 
 ### Self-Check
 - [ ] I can find coordinates for any location using Google Maps
 - [ ] I know why GeoJSON uses `[lng, lat]` instead of `[lat, lng]`
-- [ ] I can explain why we don't use Chinese map tiles in our web map (GCJ-02)
+- [ ] I can explain why we don't use Chinese map tiles (GCJ-02)
 - [ ] I successfully opened QGIS and loaded a base map
 
 ---
 
 ## Module 3 -- GeoJSON & Spatial Data (Phase 1, Week 3)
 
-**Estimated time: 2-3 hours**
+**Estimated time: 2-2.5 hours | Both people**
 
 ### Concepts
+
+```
+  THREE GEOMETRY TYPES:
+
+  Point               LineString           Polygon
+  (a location)        (a path)             (an area)
+
+       ●              ●───●───●            ●───●
+                          │               │     │
+  POI marker          Walking route       ●───●
+                                          District
+```
+
 - GeoJSON specification: Features, FeatureCollections, geometry types
-- **Point** -- a single location (POI)
-- **LineString** -- a path/route
-- **Polygon** -- an area/boundary
-- Properties -- attaching information to geometry (name, category, description)
-- Feature Collections -- grouping multiple features into one file
-- Our POI schema: `id`, `name_en`, `name_cn`, `category`, `day`, `priority` (see [contribution-guide.md](contribution-guide.md#allowed-values-reference))
+- Properties -- attaching information to geometry (name, category, etc.)
+- Our POI schema: `id`, `name_en`, `name_cn`, `category`, `day`, `priority`
+- See [contribution-guide.md](contribution-guide.md#allowed-values-reference) for allowed values
 
 ### Hands-On (~1.5 hours)
-1. Open a `.geojson` file in a text editor -- read the structure (~15 min)
-2. Add properties to a point: `id`, `name_en`, `name_cn`, `category`, `description` (~15 min)
-3. Create a simple walking route as a LineString on geojson.io (click multiple points) (~15 min)
+1. Open a `.geojson` file in VS Code -- read the structure (~15 min)
+2. Add full properties to a point: `id`, `name_en`, `name_cn`, etc. (~15 min)
+3. Create a walking route as a LineString on geojson.io (~15 min)
 4. Draw a polygon around a neighborhood on geojson.io (~15 min)
-5. Load all three geometry types into QGIS -- see them as separate layers (~15 min)
-6. Validate your GeoJSON at [geojsonlint.com](https://geojsonlint.com/) (~5 min)
+5. Load all three types into QGIS -- see them as separate layers (~15 min)
+6. Validate at [geojsonlint.com](https://geojsonlint.com/) (~5 min)
 
 ### Deliverable
-- Each member adds 5-10 POIs to their assigned category file with full properties
-- One member creates a test route (LineString) between 2 POIs
-- One member creates a test area (Polygon) around a district
+- Each person adds 5-8 POIs to their primary category files with full properties
+- Person 1 creates a test route (LineString) between 2 POIs
+- Person 2 creates a test area (Polygon) around a district
 
 ### Self-Check
 - [ ] I can explain the difference between a Feature and a FeatureCollection
 - [ ] I know Point, LineString, and Polygon geometry types
 - [ ] I can write a valid POI with all required properties
-- [ ] My GeoJSON passes validation at geojsonlint.com
+- [ ] My GeoJSON passes validation
 
 ---
 
 ## Module 4 -- Spatial Analysis & Print Maps (Phase 2, Week 4-5)
 
-**Estimated time: 3-4 hours (spread across 2 weeks)**
+**Estimated time: 3-4 hours (spread across 2 weeks) | Both people, Person 2 leads sustainability**
 
 ### Concepts
-- **Distance calculation** -- how far is A from B? (straight-line vs. walking)
+- **Distance calculation** -- how far is A from B?
 - **Buffers** -- "show me everything within 500m of the hotel"
 - **Clustering** -- are our POIs grouped efficiently or scattered?
-- **Print layouts** -- exporting maps from QGIS as PDFs for offline use
-- Why analysis matters: turning raw data into actionable decisions
+- **Print layouts** -- exporting maps as PDFs for offline use
+- **Sustainability analysis** -- transport mode mix and CO2 estimates
 
 ### Hands-On: Analysis (in QGIS, ~1.5 hours)
-1. **Measure distance:** Use the measure tool to check walking distances between Day 1 POIs (~20 min)
-   - `View -> Panels -> check "Sketching"` or use the ruler tool in toolbar
-2. **Buffer:** Create a 500m and 1km buffer around the hotel POI (~30 min)
+
+Both people work through these together:
+
+1. **Measure distance:** Use the measure tool between Day 1 POIs (~20 min)
+2. **Buffer:** Create 500m and 1km buffers around the hotel (~30 min)
    - `Vector -> Geoprocessing -> Buffer`
-   - This answers: "What's within easy walking distance of where we sleep?"
-3. **Cluster check:** Visualize POIs colored by day -- are same-day POIs near each other? (~20 min)
-   - Style the layer: `Right-click -> Properties -> Symbology -> Categorized -> Column: day`
-   - If Day 3 POIs are scattered across the city, consider reassigning some
+3. **Cluster check:** Color POIs by day -- are same-day POIs grouped? (~20 min)
 
-### Hands-On: Print Layout (in QGIS, ~1.5 hours)
-4. **Create a daily PDF map:** Export Day 1's itinerary as a print-ready PDF (~45 min)
-   - `Project -> New Print Layout`
-   - Add map, title, legend, and scale bar
-   - Export as PDF: `Layout -> Export as PDF`
-5. **Repeat** for remaining days (these become your offline backup maps) (~30 min each after the first)
+```
+  GOOD clustering:                 BAD clustering:
+  ┌──────────────────┐             ┌──────────────────┐
+  │      ●2 ●2       │             │   ●2          ●3 │
+  │       ●2         │             │        ●2        │
+  │           ●3 ●3  │             │  ●3       ●2     │
+  │           ●3     │             │     ●3           │
+  │ ●1               │             │  ●1       ●2     │
+  │ ●1 ●1            │             │        ●1        │
+  └──────────────────┘             └──────────────────┘
+  Each day is compact.             Days are scattered!
+  Minimal walking.                 Reassign some POIs.
+```
 
-### Optional: Sustainability Enrichment
-For the team member interested in sustainability analysis:
-- Calculate what percentage of each day's transport is walking/metro vs. taxi
-- Compare daily CO2 estimates by transport mode (walking = 0, metro ~ 40g/km, taxi ~ 150g/km per person)
-- Add `sustainability_notes` to POIs where relevant (e.g., "locally sourced ingredients", "accessible via Line 2")
+### Hands-On: Print Layout (~1.5 hours)
+
+Person 1 creates the template; Person 2 uses it to export remaining days:
+
+4. **Create Day 1 PDF:** `Project -> New Print Layout` (~45 min for first one)
+5. **Export remaining days** using the same template (~20 min each)
+
+### Sustainability Analysis (Person 2 leads, ~1 hour)
+
+6. **Transport mode audit:** For each route segment, what mode of transport? (~20 min)
+7. **CO2 estimates per day:** walking=0, metro~40g/km, taxi~150g/km per person (~20 min)
+8. **Add `sustainability_notes`** to POIs where relevant (~20 min)
+
+```
+  CO2 REFERENCE (per person per km):
+  ┌──────────────┬──────────────────┐
+  │  Walking     │     0 g          │
+  │  Metro       │   ~40 g          │
+  │  Bus         │   ~80 g          │
+  │  Taxi        │  ~150 g          │
+  └──────────────┴──────────────────┘
+
+  Example Day 2:
+  Hotel → Yu Garden (metro, 3km)     = 120g
+  Yu Garden → Nanxiang (walk, 0.2km) =   0g
+  Nanxiang → Tianzifang (metro, 4km) = 160g
+  Tianzifang → Hotel (taxi, 5km)     = 750g
+  ─────────────────────────────────────
+  Day 2 total:                       1,030g = ~1kg CO2
+```
 
 ### Deliverable
 - Buffer layer around hotel exported as GeoJSON
 - Daily distance estimates documented
 - At least one itinerary improvement based on analysis
-- PDF maps for all 6 days (offline fallback for the trip)
+- PDF maps for all 6 days
+- Transport mode audit and CO2 summary (Person 2)
 
 ### Self-Check
 - [ ] I can measure distances between points in QGIS
 - [ ] I created a buffer and understand what it shows
-- [ ] I can visually assess whether a day's POIs are clustered or scattered
-- [ ] I exported at least one print-ready PDF map from QGIS
+- [ ] I can visually assess whether a day's POIs are clustered
+- [ ] I exported at least one print-ready PDF map
+- [ ] (Person 2) I calculated CO2 estimates for at least 2 days
 
 ### Advanced Extras (Optional)
-These are powerful QGIS features you can explore if you finish early or want to go deeper:
-- **Spatial join:** Join district polygons to POIs to auto-fill "district" property (`Vector -> Data Management -> Join attributes by location`)
-- **Nearest neighbor:** For each POI, find the next closest POI (`Processing -> Distance to nearest hub`)
+- **Spatial join:** Auto-fill "district" for each POI
+- **Nearest neighbor:** Find each POI's closest neighbor
 
 ---
 
-## Module 5a -- Understanding Web Maps (Phase 3, Week 5-6)
+## Module 5a -- Understanding the Web Map (Phase 3, Week 5-6)
 
-**Estimated time: 2-3 hours**
+**Estimated time: 2 hours | Both people, Person 1 leads**
 
-This module uses a **starter template** that already works. Your job is to understand it and customize it -- not to build from scratch.
+```
+  This module uses a STARTER TEMPLATE that already works.
+  Your job: understand it and customize it — not build from scratch.
+
+  Person 1 (Lead) walks Person 2 through the code.
+  Person 2 makes at least one modification by the end.
+```
 
 ### Concepts
 - How web maps work: tiles, layers, zoom levels
-- What HTML, CSS, and JavaScript do (the 3 languages of the web)
+- What HTML, CSS, and JavaScript do
 - Leaflet.js basics: map object, tile layers, markers, popups
-- Loading external data (GeoJSON files) into a web map
+- Loading GeoJSON data into a web map
 
-### Hands-On (~2 hours)
-1. **Open the starter template:** Open `web/index.html` in Chrome. You should see a working map of Shanghai with sample markers (~5 min)
-2. **Read the code:** Open `web/index.html` in VS Code. Read through the comments. Don't worry about understanding every line -- focus on the structure (~20 min)
-3. **Change the starting view:** Find the `setView` line and change the coordinates to center on your hotel (~10 min)
-4. **Swap the base map style:** Change the tile URL from OSM Standard to CartoDB Positron (~10 min)
-5. **Add your data:** Replace the sample GeoJSON path with one of your real POI files. See your actual data appear on the map! (~20 min)
-6. **Customize a popup:** Find the popup template and modify what information appears when you click a marker (~20 min)
-7. **Test on your phone:** Open the file via a local server or push to GitHub Pages and check mobile layout (~15 min)
+### Hands-On (~1.5 hours)
+1. Open `web/index.html` in Chrome via Live Server -- see the working map (~5 min)
+2. Read through the code in VS Code -- focus on structure, not every line (~20 min)
+3. Change the starting view coordinates to center on your hotel (~10 min)
+4. Swap the base map style (try different CartoDB options) (~10 min)
+5. Load a different POI file -- see your data appear (~20 min)
+6. Customize a popup -- change what info appears when you click (~20 min)
+7. **Person 2:** Make one modification on your own (e.g., change a color, edit popup text) (~15 min)
 
 ### Deliverable
 - The starter template loads your real POI data from at least 2 category files
-- You've customized the popup to show Chinese name, category, and description
-- You've tested on a phone browser
+- Popups show Chinese name, category, and description
+- Person 2 has made at least one independent code modification
 
 ### Self-Check
 - [ ] I can explain what tiles are and why maps load in squares
 - [ ] I can change the map's center point and zoom level
 - [ ] I successfully loaded real GeoJSON data onto the web map
-- [ ] I modified a popup template to show different information
+- [ ] (Person 2) I made at least one code change on my own
 
 ---
 
 ## Module 5b -- Building Features & Deploying (Phase 3, Week 6-7)
 
-**Estimated time: 3-4 hours**
-
-Now that you understand the starter template, add features and deploy the live map.
+**Estimated time: 3-4 hours | Person 1 leads, Person 2 reviews**
 
 ### Concepts
 - Layer groups and layer controls in Leaflet.js
 - Styling GeoJSON features (custom icons, colored lines)
-- Making web pages responsive for mobile screens
-- Deploying a static site to GitHub Pages
+- Making web pages responsive for mobile
+- Deploying to GitHub Pages
 
-### Hands-On (~3 hours)
-1. **Load all POI categories:** Add all 7+ category GeoJSON files as separate layer groups (~30 min)
-2. **Add layer toggle controls:** Use `L.control.layers` to let users show/hide categories (~30 min)
-3. **Add day filter:** Create buttons or a dropdown that shows only POIs for a selected day (~30 min)
-4. **Add route lines:** Load the daily route GeoJSON files and display them as colored lines (~20 min)
-5. **Custom icons:** Use different colored markers for each category (Leaflet `L.divIcon` or icon images) (~30 min)
-6. **Mobile polish:** Test on phones, adjust popup width, increase touch targets (~20 min)
-7. **Deploy to GitHub Pages:** Push to GitHub, enable Pages in repo Settings, verify the live URL works (~20 min)
+### Hands-On (Person 1 builds, Person 2 tests, ~3 hours)
+1. Load all POI categories as separate layer groups (~30 min)
+2. Add layer toggle controls (`L.control.layers`) (~30 min)
+3. Add day filter buttons (~30 min)
+4. Add route lines for each day (~20 min)
+5. Custom colored markers for each category (~30 min)
+6. **Person 2 tests on mobile:** check popup sizes, touch targets, Chinese names (~20 min)
+7. Deploy to GitHub Pages (~20 min)
 
 ### Deliverable
 - Working web map with all categories, layer toggles, and day filter
-- Deployed at `https://<username>.github.io/shanghai-trip-gis/`
-- Works on mobile phones
+- Deployed and accessible on phones
+- Person 2 has tested and reported 3+ findings
 
 ### Self-Check
-- [ ] I can add a new data layer to the map by loading a GeoJSON file
 - [ ] Layer toggle controls work (show/hide categories)
-- [ ] The map is deployed and accessible via a public URL
+- [ ] Day filter correctly fades non-selected POIs
 - [ ] The map works on a phone screen
+- [ ] The map is deployed at a public URL
 
 ---
 
 ## Module 6 -- Cartographic Design (Phase 4, Week 7-8)
 
-**Estimated time: 2-3 hours**
+**Estimated time: 2-3 hours | Both people**
 
 ### Concepts
 - Map design principles: hierarchy, contrast, simplicity
 - Color theory for maps (colorblind-friendly palettes)
-- Typography on maps (labels, annotations)
 - Legend design
 - The difference between a "map" and a "good map"
 
 ### Hands-On (~2 hours)
-1. Review the web map critically: What's cluttered? What's hard to read? (~15 min)
-2. Apply a consistent color palette (use [ColorBrewer](https://colorbrewer2.org/)) (~20 min)
-3. Design a clean legend for the web map (~20 min)
-4. Improve popups -- is the most important info (Chinese name!) prominent enough? (~20 min)
-5. Export a "hero image" of the full map from QGIS for portfolio use (~30 min)
-   - Use the print layout skills from Module 4
-   - Design a polished composition with title, legend, and attribution
+
+Both people do a **pair review** of the web map:
+
+1. Review critically: What's cluttered? Hard to read? (~15 min)
+2. Apply a consistent color palette ([ColorBrewer](https://colorbrewer2.org/)) (~20 min)
+3. Design a clean legend (~20 min)
+4. Improve popups -- is the Chinese name prominent enough? (~20 min)
+5. Export a "hero image" from QGIS for portfolio (~30 min)
+
+```
+  THE DESIGN TEST:
+  ┌──────────────────────────────────────────┐
+  │  Show the map to someone who hasn't      │
+  │  seen it before. Ask:                    │
+  │                                          │
+  │  "What is this map showing?"             │
+  │                                          │
+  │  If they can answer correctly in          │
+  │  5 seconds → good design                 │
+  │  If they're confused → needs work         │
+  └──────────────────────────────────────────┘
+```
 
 ### Deliverable
 - Polished web map with intentional design choices
 - One QGIS print layout exported as PNG/PDF (portfolio hero image)
-- Each member can explain one design decision they made and why
+- Each person can explain one design decision they contributed
 
 ### Self-Check
 - [ ] I can name 3 principles of good map design
@@ -253,57 +337,78 @@ Now that you understand the starter template, add features and deploy the live m
 
 ## Module 7 -- Story Map (Phase 6, Post-Trip)
 
-**Estimated time: 2-3 hours**
+**Estimated time: 2-3 hours | Both people, Person 2 leads narrative**
 
-A **story map** combines maps with narrative text and photos to tell the story of your trip. We provide a template -- your job is to fill it with your content.
+```
+  STORY MAP = maps + photos + narrative
+
+  ┌─────────────────────────────────┐
+  │  Hero: "Shanghai & Suzhou"      │
+  │  ┌───────────────────────────┐  │
+  │  │  Day 1 Map   │ Narrative  │  │
+  │  │  ● ● ●       │ "We       │  │
+  │  │              │ arrived..."│  │
+  │  ├───────────────┤           │  │
+  │  │  📷 📷 📷     │           │  │
+  │  └───────────────┴───────────┘  │
+  │  Day 2...                       │
+  │  Day 3...                       │
+  │  ┌───────────────────────────┐  │
+  │  │  Sustainability Reflection│  │ ← Person 2
+  │  │  GIS Methodology Reflect. │  │ ← Person 1
+  │  └───────────────────────────┘  │
+  └─────────────────────────────────┘
+```
 
 ### Concepts
 - Story maps as a GIS communication tool
-- Geotagged photography -- photos with embedded location data
-- Narrative cartography -- using maps to tell stories, not just show data
-- Portfolio presentation -- framing your work for an audience
+- Narrative cartography -- maps that tell stories
+- Portfolio presentation -- framing work for an audience
 
 ### Hands-On (~2 hours)
-1. **Gather content:** Collect your best photos, GPS traces, and trip notes from each day (~30 min)
-2. **Open the story template:** Open `web/story-template.html` and read the placeholder sections (~10 min)
-3. **Fill in each day:** Replace placeholder text and photo paths with your real content (~45 min)
-4. **Add actual routes:** If you recorded GPS traces, add them as "actual route" layers alongside the planned routes (~20 min)
-5. **Write a reflection:** Add a closing section connecting what you learned to your field of study (~15 min)
 
-### Optional: Sustainability Reflection
-For the team member focused on sustainability:
-- Compare planned vs. actual transport modes -- did you walk more or less than planned?
-- Reflect on sustainable tourism observations from the trip
-- Connect findings to SDG 11 (Sustainable Cities) or SDG 12 (Responsible Consumption)
+| Task | Owner |
+|------|-------|
+| Gather photos, GPS traces, trip notes | Both |
+| Open `web/story-template.html`, read placeholders | Both |
+| Fill in day-by-day narrative | Person 2 |
+| Add GPS traces as actual-route layers | Person 1 |
+| Write sustainability reflection (SDG 11/12) | Person 2 |
+| Write GIS methodology reflection | Person 1 |
+| Final polish and screenshots | Both |
 
 ### Deliverable
 - Completed story map with photos, notes, and real trip data
-- Project reflection in README.md
+- Sustainability reflection connecting GIS findings to SDGs
 - Portfolio-ready screenshots
 
 ### Self-Check
-- [ ] Each day of the trip has at least one photo and a short narrative
+- [ ] Each day has at least one photo and a short narrative
 - [ ] The story map loads and scrolls correctly
-- [ ] I wrote a reflection connecting GIS to my field of study
-- [ ] I have at least one portfolio-quality screenshot of the final map
+- [ ] (Person 2) Sustainability reflection connects to SDG 11 or 12
+- [ ] (Person 1) GIS methodology reflection explains tools and techniques used
+- [ ] I have at least one portfolio-quality screenshot
 
 ---
 
 ## Skills Matrix
 
-By the end of this project, each member will have practiced:
+```
+  By the end, both people will have practiced:
 
-| Skill | Module | Tool Used |
-|-------|--------|-----------|
-| Understanding GIS concepts | 1 | Discussion |
-| Reading coordinates | 2 | Google Maps, geojson.io |
-| Creating spatial data | 3 | geojson.io, text editor |
-| Using desktop GIS software | 4 | QGIS |
-| Performing spatial analysis | 4 | QGIS |
-| Creating print maps for offline use | 4 | QGIS Print Layout |
-| Reading and customizing web maps | 5a | Leaflet.js, HTML/CSS/JS |
-| Building and deploying web maps | 5b | Leaflet.js, GitHub Pages |
-| Cartographic design | 6 | QGIS, Leaflet.js |
-| Version control & collaboration | All | Git, GitHub Desktop |
-| Real-world data collection | Trip | Phone GPS, camera |
-| Storytelling with maps | 7 | Story map template |
+  Skill                          Module  Tool
+  ────────────────────────────────────────────────
+  Understanding GIS concepts     1       Discussion
+  Reading coordinates            2       Google Maps, geojson.io
+  Creating spatial data          3       geojson.io, VS Code
+  Using desktop GIS software     4       QGIS
+  Spatial analysis               4       QGIS
+  Creating print maps            4       QGIS Print Layout
+  Sustainability analysis        4       QGIS + spreadsheet
+  Reading web map code           5a      Leaflet.js, HTML/CSS/JS
+  Building web map features      5b      Leaflet.js, GitHub Pages
+  Cartographic design            6       QGIS, Leaflet.js
+  Version control                All     Git, GitHub Desktop
+  Real-world data collection     Trip    Phone GPS, camera
+  Storytelling with maps         7       Story map template
+```

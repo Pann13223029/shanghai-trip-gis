@@ -52,6 +52,214 @@
         "photos": [],
         "notes": "Book tickets online to skip the queue."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5013, 31.2355]
+      },
+      "properties": {
+        "id": "landmark-003",
+        "name_en": "Shanghai Tower",
+        "name_cn": "上海中心大厦",
+        "category": "landmark",
+        "day": null,
+        "description": "The tallest building in China at 632m, with the world's highest observation deck at 546m (119th floor) and a 360-degree panoramic view",
+        "address": "501 Yincheng Middle Rd, Lujiazui, Pudong",
+        "est_duration_min": 90,
+        "est_cost_cny": 180,
+        "opening_hours": "8:30-22:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "LEED Platinum certified; features double-skin facade and wind turbines for renewable energy",
+        "photos": [],
+        "notes": "Book tickets in advance online. The elevator to the 119th floor is the world's fastest at 18m/s. Clear days offer views 100km out."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5001, 31.2376]
+      },
+      "properties": {
+        "id": "landmark-004",
+        "name_en": "Jin Mao Tower",
+        "name_cn": "金茂大厦",
+        "category": "landmark",
+        "day": null,
+        "description": "88-story Art Deco skyscraper inspired by traditional Chinese pagoda architecture, housing the Grand Hyatt hotel on upper floors",
+        "address": "88 Century Ave, Lujiazui, Pudong",
+        "est_duration_min": 60,
+        "est_cost_cny": 120,
+        "opening_hours": "8:30-21:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Observation deck on 88th floor. The Grand Hyatt atrium is worth seeing even if not staying. Good alternative if Shanghai Tower is sold out."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5007, 31.2368]
+      },
+      "properties": {
+        "id": "landmark-005",
+        "name_en": "Shanghai World Financial Center",
+        "name_cn": "上海环球金融中心",
+        "category": "landmark",
+        "day": null,
+        "description": "492m skyscraper with a distinctive trapezoid opening at the top; features a glass-floored sky walk observation deck at 474m",
+        "address": "100 Century Ave, Lujiazui, Pudong",
+        "est_duration_min": 60,
+        "est_cost_cny": 160,
+        "opening_hours": "8:00-23:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "The 100th floor sky walk has transparent glass panels. Nicknamed 'the bottle opener' by locals. All three Lujiazui towers make a great combined visit."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4985, 31.2387]
+      },
+      "properties": {
+        "id": "landmark-006",
+        "name_en": "Lujiazui Skyline Viewpoint",
+        "name_cn": "陆家嘴天际线",
+        "category": "landmark",
+        "day": null,
+        "description": "The open riverside promenade in Lujiazui offering the classic view back across the Huangpu River to The Bund — the best free vantage point for the Pudong skyline",
+        "address": "Lujiazui Ring Rd, Pudong",
+        "est_duration_min": 30,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Free alternative to paid observation decks. Walk the riverside path for changing angles on all three towers. Stunning at night when the towers are lit up."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4935, 31.2462]
+      },
+      "properties": {
+        "id": "landmark-007",
+        "name_en": "Waibaidu Bridge",
+        "name_cn": "外白渡桥",
+        "category": "landmark",
+        "day": null,
+        "description": "Shanghai's oldest steel bridge (1908), spanning the Suzhou Creek at its confluence with the Huangpu River — a beloved historic landmark and photo spot",
+        "address": "Waibaidu Bridge, Huangpu District (north end of The Bund)",
+        "est_duration_min": 20,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Just a 5-minute walk north of The Bund. The view from the bridge looking south toward Pudong is excellent. Good for early-morning photography."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.6656, 31.1445]
+      },
+      "properties": {
+        "id": "landmark-008",
+        "name_en": "Shanghai Disney Resort",
+        "name_cn": "上海迪士尼度假区",
+        "category": "landmark",
+        "day": null,
+        "description": "Asia's newest Disney park opened 2016, featuring the largest Disney castle in the world (Enchanted Storybook Castle) and unique China-exclusive attractions",
+        "address": "Shendi Ring Rd, Pudong New Area",
+        "est_duration_min": 480,
+        "est_cost_cny": 599,
+        "opening_hours": "9:00-21:00 (varies seasonally)",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Reachable via Metro Line 11. Book tickets well in advance especially for weekends and holidays. Full day needed. The Zootopia land opened in 2023 is unique to Shanghai."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.0916, 31.1113]
+      },
+      "properties": {
+        "id": "landmark-009",
+        "name_en": "Zhujiajiao Ancient Town",
+        "name_cn": "朱家角古镇",
+        "category": "landmark",
+        "day": null,
+        "description": "1,700-year-old water town on the outskirts of Shanghai with stone bridges, canal-side Ming and Qing dynasty architecture, and traditional snack streets",
+        "address": "Zhujiajiao Town, Qingpu District",
+        "est_duration_min": 180,
+        "est_cost_cny": 0,
+        "opening_hours": "8:00-17:00 (individual sites charge entry)",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Historic preservation area; explore on foot or by gondola to reduce environmental impact",
+        "photos": [],
+        "notes": "About 40km west of central Shanghai; take Bus 1000 from Pu'an Rd or Metro Line 17 to Zhujiajiao station. Free to wander — individual temples and mansions charge 5-20 CNY each. Try the sticky rice dumplings (粽子)."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4505, 31.1750]
+      },
+      "properties": {
+        "id": "landmark-010",
+        "name_en": "Longhua Temple and Pagoda",
+        "name_cn": "龙华寺",
+        "category": "landmark",
+        "day": null,
+        "description": "Shanghai's oldest and largest Buddhist temple complex, featuring a 40m-tall seven-story pagoda dating to 977 AD, active monastery with monks in residence",
+        "address": "2853 Longhua Rd, Xuhui District",
+        "est_duration_min": 90,
+        "est_cost_cny": 10,
+        "opening_hours": "7:00-17:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Adjacent to Longhua Martyrs Memorial Cemetery. The temple complex is active — dress respectfully. Peach blossom festival in March draws large crowds."
+      }
     }
   ]
 }

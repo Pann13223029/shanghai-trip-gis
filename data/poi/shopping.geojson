@@ -26,6 +26,136 @@
         "photos": [],
         "notes": "The east end connects to The Bund. Very crowded on evenings and weekends."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4656, 31.2133]
+      },
+      "properties": {
+        "id": "shopping-002",
+        "name_en": "Tianzifang",
+        "name_cn": "田子坊",
+        "category": "shopping",
+        "day": null,
+        "description": "Maze of narrow alleyways (longtang) in the French Concession converted into an artisan market with independent boutiques, studios, cafes, and galleries",
+        "address": "210 Taikang Rd, Xuhui District",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "10:00-22:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Adaptive reuse of historic lilong (lane) housing; supports independent local artisans and small businesses",
+        "photos": [],
+        "notes": "Best for browsing unique Shanghai-themed art prints, ceramics, and gifts. Some resident artists still live and work on upper floors. Enter via Taikang Rd or Ruijin 2nd Rd."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4736, 31.2196]
+      },
+      "properties": {
+        "id": "shopping-003",
+        "name_en": "Xintiandi",
+        "name_cn": "新天地",
+        "category": "shopping",
+        "day": null,
+        "description": "Upscale pedestrian entertainment district built from restored 1920s Shikumen stone-gate houses, now home to flagship restaurants, international boutiques, and galleries",
+        "address": "Taicang Rd / Madang Rd, Huangpu District",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "Shops/restaurants 10:00-24:00, outdoor area 24/7",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Historic Shikumen architecture preserved and adaptively reused rather than demolished",
+        "photos": [],
+        "notes": "North block is more commercial (shops/restaurants); South block is quieter with galleries and the Shikumen Open House Museum (20 CNY). Good for evening dining and drinks. Walking distance to Tianzifang."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5399, 31.2206]
+      },
+      "properties": {
+        "id": "shopping-004",
+        "name_en": "AP Xinyang Fashion & Gifts Market",
+        "name_cn": "亚太新阳服装礼品市场",
+        "category": "shopping",
+        "day": null,
+        "description": "Massive underground market near Science & Technology Museum metro station, famous among expats for tailored suits, electronics, bags, and souvenirs at negotiable prices",
+        "address": "Near Science & Technology Museum Metro Station, Century Ave, Pudong",
+        "est_duration_min": 120,
+        "est_cost_cny": 0,
+        "opening_hours": "10:00-21:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Bargaining is expected and necessary — start at 10-20% of the asking price. Best for electronics accessories, tailor-made clothing, and luggage. The adjacent Science & Technology Museum is worth a visit if you have kids."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4921, 31.2283]
+      },
+      "properties": {
+        "id": "shopping-005",
+        "name_en": "Yuyuan Bazaar",
+        "name_cn": "豫园商城",
+        "category": "shopping",
+        "day": null,
+        "description": "Traditional-style bazaar surrounding Yu Garden with hundreds of shops selling Chinese handicrafts, silk, jade, antiques, tea, and souvenir items",
+        "address": "Yuyuan Rd, Huangpu District",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "9:00-22:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Prices are tourist-level but the setting is picturesque. Good for Chinese tea sets, silk scarves, and traditional snacks as gifts. The zigzag bridge over the koi pond is a classic Shanghai photo spot."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4373, 31.2481]
+      },
+      "properties": {
+        "id": "shopping-006",
+        "name_en": "M50 Creative Park",
+        "name_cn": "M50创意园",
+        "category": "shopping",
+        "day": null,
+        "description": "Former textile mill on Suzhou Creek converted into Shanghai's premier contemporary art district, housing over 100 galleries, studios, and creative businesses",
+        "address": "50 Moganshan Rd, Putuo District",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "10:00-18:00 (most galleries closed Mon)",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Industrial heritage building adaptively reused; supports emerging Chinese contemporary artists",
+        "photos": [],
+        "notes": "Free to enter the complex. Individual galleries are free or charge a small fee. Best on weekends when more studios are open. The building facades are covered in murals and street art. Good cafe options inside."
+      }
     }
   ]
 }

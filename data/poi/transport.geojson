@@ -52,6 +52,110 @@
         "photos": [],
         "notes": "Shanghai to Suzhou: 25-30 min, ~40 CNY. Book tickets in advance via 12306 app or Trip.com."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.3363, 31.1980]
+      },
+      "properties": {
+        "id": "transport-003",
+        "name_en": "Shanghai Hongqiao International Airport (Terminal 2)",
+        "name_cn": "上海虹桥国际机场（T2航站楼）",
+        "category": "transport",
+        "day": null,
+        "description": "Hongqiao Airport Terminal 2, serving domestic and a small number of international flights; directly connected to Hongqiao Railway Station via covered walkway — a single integrated transport hub",
+        "address": "2550 Hongqiao Rd, Minhang District",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "T2 is linked to Hongqiao Railway Station by a 10-minute walking connection. Metro Lines 2 and 10 serve the hub. Terminal 1 is for older domestic routes and is a separate building."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4687, 31.2300]
+      },
+      "properties": {
+        "id": "transport-004",
+        "name_en": "People's Square Metro Station",
+        "name_cn": "人民广场站",
+        "category": "transport",
+        "day": null,
+        "description": "Shanghai's most central metro interchange, where Lines 1, 2, and 8 converge — effectively the zero-point of the metro network, giving access to virtually all major attractions",
+        "address": "People's Square, Nanjing West Rd, Huangpu District",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "5:30-23:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "The underground concourse is huge — allow extra time when transferring between lines. Adjacent to Shanghai Museum, People's Park, and Nanjing Road. Most useful hub for trip planning."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4992, 31.2386]
+      },
+      "properties": {
+        "id": "transport-005",
+        "name_en": "Lujiazui Metro Station",
+        "name_cn": "陆家嘴站",
+        "category": "transport",
+        "day": null,
+        "description": "Metro Line 2 station directly under the Lujiazui financial district, serving the Oriental Pearl Tower, Shanghai Tower, Jin Mao Tower, and the IFC Mall complex",
+        "address": "Lujiazui Ring Rd, Pudong New Area",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "5:30-23:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Exit 1 leads toward the riverfront; Exit 2 toward the skyscrapers. From People's Square, take Line 2 east (2 stops). The circular underground walkway connecting the three towers is a useful dry-weather shortcut."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4555, 31.2499]
+      },
+      "properties": {
+        "id": "transport-006",
+        "name_en": "Shanghai Railway Station",
+        "name_cn": "上海火车站",
+        "category": "transport",
+        "day": null,
+        "description": "One of Shanghai's main railway terminals serving regular-speed and some high-speed trains to cities across China; also a Metro Lines 1, 3, and 4 interchange",
+        "address": "Moling Rd, Zhabei District",
+        "est_duration_min": 0,
+        "est_cost_cny": 0,
+        "opening_hours": "6:00-23:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Less common for high-speed rail than Hongqiao or Hongqiao Railway Station, but useful for overnight trains (e.g., to Beijing or Guangzhou). The north and south squares can be confusing — check your ticket for the correct entrance."
+      }
     }
   ]
 }

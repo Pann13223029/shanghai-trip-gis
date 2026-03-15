@@ -26,6 +26,266 @@
         "photos": [],
         "notes": "Ground floor is cheaper but longer queue. Upper floors have table service at higher prices."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4693, 31.2334]
+      },
+      "properties": {
+        "id": "food-002",
+        "name_en": "Yang's Fried Dumplings (Huanghe Rd)",
+        "name_cn": "小杨生煎（黄河路店）",
+        "category": "food",
+        "day": null,
+        "description": "Shanghai's most famous shengjianbao (pan-fried pork dumplings) — crispy bottomed, soup-filled, and made fresh all day at this flagship Huanghe Road location",
+        "address": "97 Huanghe Rd, Huangpu District",
+        "est_duration_min": 20,
+        "est_cost_cny": 20,
+        "opening_hours": "7:00-21:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Order at the counter, pay first, then collect. 4 dumplings per order. Bite a small hole to let steam out before eating or you'll burn your mouth. Lines move fast."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5093, 31.2363]
+      },
+      "properties": {
+        "id": "food-003",
+        "name_en": "Din Tai Fung (IFC Mall)",
+        "name_cn": "鼎泰丰（国金中心店）",
+        "category": "food",
+        "day": null,
+        "description": "World-renowned Taiwanese xiaolongbao chain — consistently excellent soup dumplings, reliable for travelers who want a benchmark experience",
+        "address": "L3-315, IFC Mall, 8 Century Ave, Pudong",
+        "est_duration_min": 60,
+        "est_cost_cny": 120,
+        "opening_hours": "11:00-22:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "More expensive than local alternatives but zero-risk quality. Open kitchen lets you watch dumpling wrappers being folded. Convenient if already visiting Lujiazui."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4687, 31.2336]
+      },
+      "properties": {
+        "id": "food-004",
+        "name_en": "Jia Jia Tang Bao",
+        "name_cn": "佳家汤包",
+        "category": "food",
+        "day": null,
+        "description": "Beloved local hole-in-the-wall known for its exceptionally thin-skinned, intensely flavored xiaolongbao — a local favorite over the tourist-heavy Nanxiang",
+        "address": "90 Huanghe Rd, Huangpu District",
+        "est_duration_min": 30,
+        "est_cost_cny": 25,
+        "opening_hours": "7:00-13:30 (sells out early)",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Opens early and often sells out by noon. Cash only. No English menu — point at what others are eating. A 5-minute walk from Yang's Fried Dumplings."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4930, 31.2432]
+      },
+      "properties": {
+        "id": "food-005",
+        "name_en": "Lost Heaven (The Bund)",
+        "name_cn": "花马天堂（外滩店）",
+        "category": "food",
+        "day": null,
+        "description": "Upscale Yunnan cuisine restaurant in a beautifully restored heritage building near The Bund, known for aromatic minority-ethnic dishes and a curated cocktail list",
+        "address": "17 Yan'an East Rd, Huangpu District",
+        "est_duration_min": 90,
+        "est_cost_cny": 250,
+        "opening_hours": "11:30-14:30, 18:00-22:30",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Yunnan cuisine uses diverse wild mushrooms and herbs; menu changes seasonally",
+        "photos": [],
+        "notes": "Reservations strongly recommended for dinner. Try the cross-bridge noodles, grilled goat cheese, and Yunnan ham. Excellent cocktail program. Worth the splurge."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4921, 31.2268]
+      },
+      "properties": {
+        "id": "food-006",
+        "name_en": "Chenghuangmiao Street Food Area",
+        "name_cn": "城隍庙小吃",
+        "category": "food",
+        "day": null,
+        "description": "Dense cluster of street food stalls and snack shops surrounding the City God Temple, serving Shanghai classics: smelly tofu, sesame cakes, tanghulu, and more",
+        "address": "City God Temple area, Fangbang Middle Rd, Huangpu District",
+        "est_duration_min": 60,
+        "est_cost_cny": 50,
+        "opening_hours": "9:00-22:00",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Prices are tourist-inflated but the variety and atmosphere are worth it. Go hungry. Popular items: 酒酿圆子 (glutinous rice balls in sweet wine), 梨膏糖 (pear candy). Adjacent to Yu Garden."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4771, 31.2222]
+      },
+      "properties": {
+        "id": "food-007",
+        "name_en": "Yunnan South Road Food Street",
+        "name_cn": "云南南路美食街",
+        "category": "food",
+        "day": null,
+        "description": "One of Shanghai's classic local food streets packed with unpretentious Shanghai-style restaurants serving smoked fish, braised pork, and homestyle Shanghainese cooking",
+        "address": "Yunnan South Rd, Huangpu District",
+        "est_duration_min": 60,
+        "est_cost_cny": 60,
+        "opening_hours": "10:00-22:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Less touristy than Chenghuangmiao. Good for a proper sit-down meal of authentic Shanghainese cuisine. Lunch sets are good value."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4598, 31.2298]
+      },
+      "properties": {
+        "id": "food-008",
+        "name_en": "Wujiang Road Food Street",
+        "name_cn": "吴江路美食街",
+        "category": "food",
+        "day": null,
+        "description": "Lively pedestrian food street off West Nanjing Road with a mix of popular local chains, bubble tea shops, grilled skewers, and international fast-casual options",
+        "address": "Wujiang Rd, Jing'an District",
+        "est_duration_min": 45,
+        "est_cost_cny": 40,
+        "opening_hours": "10:00-22:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Convenient when exploring West Nanjing Road and Jing'an Temple area. Good for an affordable lunch or afternoon snack break."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4357, 31.2105]
+      },
+      "properties": {
+        "id": "food-009",
+        "name_en": "1221 Restaurant",
+        "name_cn": "1221餐厅",
+        "category": "food",
+        "day": null,
+        "description": "Established Shanghainese restaurant beloved by locals and expats alike for its refined Benbang cuisine — braised pork belly, drunken chicken, and wonton soup done right",
+        "address": "1221 Yan'an West Rd, Changning District",
+        "est_duration_min": 90,
+        "est_cost_cny": 150,
+        "opening_hours": "11:00-14:00, 17:00-22:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Reservations recommended. Long-standing local favorite that doesn't pander to tourists. Good choice for a proper Shanghainese dinner. English menu available."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4741, 31.2351]
+      },
+      "properties": {
+        "id": "food-010",
+        "name_en": "Haidilao Hot Pot (Nanjing Rd)",
+        "name_cn": "海底捞（南京路店）",
+        "category": "food",
+        "day": null,
+        "description": "China's most famous hot pot chain, celebrated for over-the-top hospitality — free manicures, snacks, and children's activities while you wait for your table",
+        "address": "Near Nanjing East Rd, Huangpu District",
+        "est_duration_min": 120,
+        "est_cost_cny": 150,
+        "opening_hours": "24/7",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Expect waits of 1-2 hours on weekend evenings — add your name to the queue app (扫码取号) as soon as you know you want to go. The service spectacle is part of the experience."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4715, 31.2199]
+      },
+      "properties": {
+        "id": "food-011",
+        "name_en": "Ultraviolet by Paul Pairet",
+        "name_cn": "Ultraviolet餐厅",
+        "category": "food",
+        "day": null,
+        "description": "One of Asia's most avant-garde dining experiences: a single table for 10 guests, multi-sensory 20-course tasting menu with synchronized light, sound, and scent — consistently on World's 50 Best",
+        "address": "Secret location revealed upon reservation, Shanghai",
+        "est_duration_min": 240,
+        "est_cost_cny": 6000,
+        "opening_hours": "Dinner only, reservation required weeks in advance",
+        "priority": "nice-to-have",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "Book via uvbypp.cc months in advance. Pickup by minivan from a meeting point. Extremely exclusive — only 10 seats per night. For serious food enthusiasts with a large budget."
+      }
     }
   ]
 }

@@ -26,6 +26,110 @@
         "photos": [],
         "notes": "Arrive at opening to avoid tour groups. Audio guide available in English."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.5887, 31.3388]
+      },
+      "properties": {
+        "id": "suzhou-002",
+        "name_en": "Tiger Hill",
+        "name_cn": "虎丘",
+        "category": "landmark",
+        "day": 6,
+        "description": "Suzhou's most iconic landmark — a 2,500-year-old hill topped by the Yunyan Pagoda (961 AD), which leans 3 degrees due to uneven foundations. Called the 'number one attraction under heaven' by Su Dongpo",
+        "address": "8 Huqiu Rd, Gusu District, Suzhou",
+        "est_duration_min": 90,
+        "est_cost_cny": 80,
+        "opening_hours": "7:30-17:30",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "",
+        "photos": [],
+        "notes": "The pagoda cannot be entered due to structural preservation, but the hill itself has multiple interesting sites including Sword Pool (剑池), the alleged burial site of the King of Wu. Arrive early. About 15 min by taxi from the garden cluster."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.6316, 31.3224]
+      },
+      "properties": {
+        "id": "suzhou-003",
+        "name_en": "Pingjiang Road Historic District",
+        "name_cn": "平江路历史街区",
+        "category": "cultural",
+        "day": 6,
+        "description": "Suzhou's best-preserved ancient canal street, following the same path it did 800 years ago — narrow stone-paved lanes running alongside a quiet canal with whitewashed houses, teahouses, and craft shops",
+        "address": "Pingjiang Rd, Gusu District, Suzhou",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7 (shops ~9:00-21:00)",
+        "priority": "must-visit",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "One of China's best examples of living historic urban fabric; residents still live alongside the canal",
+        "photos": [],
+        "notes": "Free to walk. Start at the south end near the Suzhou Museum and walk north. Great for photography — the canal reflections are beautiful. A gondola ride on the canal (~100 CNY/person) is worth the splurge. Afternoon light is best for photos."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.6261, 31.3241]
+      },
+      "properties": {
+        "id": "suzhou-004",
+        "name_en": "Suzhou Museum",
+        "name_cn": "苏州博物馆",
+        "category": "cultural",
+        "day": 6,
+        "description": "World-class museum designed by architect I.M. Pei (his 'last gift to his hometown'), blending modernist geometry with traditional Suzhou garden aesthetics — the building itself is the main attraction",
+        "address": "204 Dongbei St, Gusu District, Suzhou",
+        "est_duration_min": 90,
+        "est_cost_cny": 0,
+        "opening_hours": "9:00-17:00 (closed Mon; last entry 16:00)",
+        "priority": "must-visit",
+        "weather_sensitive": false,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Architecture references traditional Suzhou whitewash-and-tile aesthetic using modern sustainable materials",
+        "photos": [],
+        "notes": "Free but timed-entry reservation required — book in advance online. The central courtyard with its abstract rockery inspired by Song Dynasty painting is stunning. Directly adjacent to the Humble Administrator's Garden — combine in the same morning."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.6275, 31.3219]
+      },
+      "properties": {
+        "id": "suzhou-005",
+        "name_en": "Lion Grove Garden",
+        "name_cn": "狮子林",
+        "category": "nature",
+        "day": 6,
+        "description": "UNESCO World Heritage garden famous for its extraordinary labyrinthine rockery of limestone peaks resembling lions, built in 1342 by a Buddhist monk as a memorial to his teacher",
+        "address": "23 Yuanlin Rd, Gusu District, Suzhou",
+        "est_duration_min": 60,
+        "est_cost_cny": 30,
+        "opening_hours": "7:30-17:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "UNESCO World Heritage Site; one of four classic Suzhou gardens on the World Heritage list",
+        "photos": [],
+        "notes": "Smaller and quicker to visit than Humble Administrator's Garden. The maze of caves and tunnels through the rockery is genuinely fun to explore. Combines well with the Suzhou Museum (a 5-minute walk). I.M. Pei visited as a child and incorporated its forms into his later work."
+      }
     }
   ]
 }

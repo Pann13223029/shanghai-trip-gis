@@ -3,66 +3,43 @@
 ## System Overview
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    DATA SOURCES                          │
-│  geojson.io  ·  QGIS  ·  Overpass API  ·  Manual edit  │
-└──────────────────────┬──────────────────────────────────┘
-                       │ GeoJSON files
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│                   GIT REPOSITORY                         │
-│                                                          │
-│  data/                                                   │
-│  ├── poi/           (Point features by category)         │
-│  │   ├── landmarks.geojson                               │
-│  │   ├── food.geojson                                    │
-│  │   ├── shopping.geojson                                │
-│  │   ├── cultural.geojson                                │
-│  │   ├── nature.geojson                                  │
-│  │   ├── transport.geojson                               │
-│  │   ├── accommodation.geojson                           │
-│  │   └── suzhou.geojson                                  │
-│  ├── routes/        (LineString features)                │
-│  │   ├── day-1.geojson  ...  day-6.geojson               │
-│  │   └── metro.geojson                                   │
-│  └── areas/         (Polygon features)                   │
-│      ├── districts.geojson                               │
-│      └── neighborhoods.geojson                           │
-│                                                          │
-│  web/               (Static web application)             │
-│  ├── index.html                                          │
-│  ├── css/style.css                                       │
-│  ├── js/                                                 │
-│  │   ├── app.js           (Main application logic)       │
-│  │   ├── map.js           (Map initialization & layers)  │
-│  │   ├── controls.js      (UI controls & filters)        │
-│  │   └── popups.js        (Popup templates)              │
-│  └── assets/                                             │
-│      ├── icons/           (Category marker icons)        │
-│      └── photos/          (Trip photos, post-trip)       │
-│                                                          │
-│  qgis/              (Desktop GIS project)                │
-│  └── shanghai-trip.qgz                                   │
-└──────────────────────┬──────────────────────────────────┘
-                       │ git push
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│               GITHUB PAGES (Hosting)                     │
-│                                                          │
-│  Static files served from /web directory                 │
-│  URL: https://<user>.github.io/shanghai-trip-gis/        │
-│                                                          │
-│  ⚠ May be blocked/slow in mainland China (see below)    │
-└──────────────────────┬──────────────────────────────────┘
-                       │ HTTPS
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│                   END USERS                               │
-│                                                          │
-│  Desktop browser  ←→  Planning & analysis (pre-trip)     │
-│  Mobile browser   ←→  Reference map (during trip)        │
-│  Amap / Baidu     ←→  Primary navigation in China        │
-└─────────────────────────────────────────────────────────┘
+  ┌─────────────────────────────────────────────────────────┐
+  │                     DATA SOURCES                         │
+  │   geojson.io  ·  QGIS  ·  Overpass API  ·  VS Code     │
+  └──────────────────────┬──────────────────────────────────┘
+                         │ GeoJSON files
+                         ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │                   GIT REPOSITORY                         │
+  │                                                          │
+  │   data/                                                  │
+  │   ├── poi/          (8 category files, ~40 POIs)         │
+  │   ├── routes/       (6 daily + metro)                    │
+  │   └── areas/        (districts + neighborhoods)          │
+  │                                                          │
+  │   web/              (Static Leaflet.js app)              │
+  │   ├── index.html    (main map)                           │
+  │   ├── css/style.css                                      │
+  │   └── app.js        (single file, split if >300 lines)   │
+  │                                                          │
+  │   qgis/             (Desktop GIS project)                │
+  │   └── shanghai-trip.qgz                                  │
+  └──────────────────────┬──────────────────────────────────┘
+                         │ git push
+                         ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │               GITHUB PAGES (Hosting)                     │
+  │   Static files served from repo root                     │
+  │   ⚠ May be blocked/slow in mainland China               │
+  └──────────────────────┬──────────────────────────────────┘
+                         │ HTTPS
+                         ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │                    END USERS                              │
+  │   Desktop browser  ←→  Planning & analysis (pre-trip)    │
+  │   Mobile browser   ←→  Reference map (during trip)       │
+  │   Amap / Baidu     ←→  Primary navigation in China       │
+  └─────────────────────────────────────────────────────────┘
 ```
 
 ## Key Architecture Decisions
@@ -74,10 +51,10 @@
 **Why:**
 - Zero cost (free GitHub Pages hosting)
 - No server maintenance or deployment complexity
-- GeoJSON files in Git = built-in version control and collaboration
+- GeoJSON files in Git = built-in version control
 - Beginners don't need to learn backend development
 
-**Trade-off:** No real-time collaboration (must push/pull via Git). Acceptable for a 4-person team.
+**Trade-off:** No real-time collaboration (must push/pull via Git). Acceptable for a 2-person team.
 
 ### 2. GeoJSON as the Single Data Format
 
@@ -89,7 +66,7 @@
 - Industry standard — works in QGIS, Leaflet, geojson.io, and every GIS tool
 - No data conversion needed between tools
 
-**Trade-off:** Large datasets can make files unwieldy. Not an issue at our scale (< 100 POIs).
+**Trade-off:** Large datasets can make files unwieldy. Not an issue at our scale (< 50 POIs).
 
 ### 3. Leaflet.js Over Alternatives
 
@@ -102,19 +79,16 @@
 - Excellent documentation and tutorials
 - Lightweight (~40KB)
 
-**Trade-off:** No vector tiles or 3D. Not needed for this project.
-
 ### 4. OpenStreetMap Tiles with WGS84 Coordinates
 
-**Decision:** Use free OSM-compatible tile servers (OSM Standard, CartoDB Positron/Dark Matter) with WGS84 coordinates only. Do NOT use Chinese tile providers (Gaode/Amap) in the web map.
+**Decision:** Use free OSM-compatible tile servers (CartoDB Voyager) with WGS84 coordinates only. Do NOT use Chinese tile providers (Gaode/Amap) in the web map.
 
 **Why:**
 - Free, no API key, no usage limits for small projects
-- WGS84 coordinates (what Google Maps, geojson.io, and GPS use) align correctly with these tiles
+- WGS84 coordinates align correctly with these tiles
 - No coordinate conversion needed
-- Multiple style options available
 
-**See:** [China Tech Constraints](#china-tech-constraints) and [GCJ-02 Coordinate Offset](#8-gcj-02-coordinate-offset-strategy) for why we avoid Chinese tile providers.
+**See:** [GCJ-02 Coordinate Offset](#8-gcj-02-coordinate-offset-strategy) for why we avoid Chinese tile providers.
 
 ### 5. QGIS for Desktop Analysis
 
@@ -127,26 +101,30 @@
 - Can directly read/write GeoJSON
 - Cross-platform (Windows, Mac, Linux)
 
-### 6. One GeoJSON File Per Category with Strict Ownership
+### 6. Primary File Responsibility (Not Exclusive Ownership)
 
-**Decision:** Split POIs into separate files by category. Each team member owns specific files and is the only person who edits them.
+**Decision:** Each person is the primary editor for ~4 category files. Cross-editing is allowed with communication.
+
+```
+  Person 1 (Lead)                Person 2
+  primary files:                 primary files:
+  ┌────────────────────┐         ┌────────────────────┐
+  │ landmarks.geojson  │         │ cultural.geojson   │
+  │ food.geojson       │         │ shopping.geojson   │
+  │ transport.geojson  │         │ nature.geojson     │
+  │ accommodation      │         │ suzhou.geojson     │
+  └────────────────────┘         └────────────────────┘
+
+  Cross-editing is fine. Use a clear commit message.
+```
 
 **Why:**
-- Eliminates merge conflicts — the #1 cause of beginner Git frustration
-- Maps cleanly to Leaflet layer groups (one layer per file)
-- Natural ownership boundaries for team members
-- Mirrors real-world data governance (you don't edit someone else's data layer)
+- With 2 people, merge conflict risk is minimal
+- The Lead can resolve any Git issues
+- Rigid ownership creates unnecessary friction at this team size
+- Primary responsibility ensures someone "owns" data quality per file
 
-**Ownership assignments:**
-
-| Member | Owned Files |
-|--------|-------------|
-| Member A | `landmarks.geojson`, `accommodation.geojson` |
-| Member B | `food.geojson`, `transport.geojson` |
-| Member C | `shopping.geojson`, `cultural.geojson` |
-| Member D | `nature.geojson`, `suzhou.geojson` |
-
-If you discover a POI that belongs in someone else's file, tell the owner and they will add it. This is a feature, not a bug — it mirrors professional GIS team workflows.
+**If you discover a POI for someone else's primary file:** Just add it with a descriptive commit message, or share the details so the primary owner can add it.
 
 ### 7. GitHub for Collaboration
 
@@ -158,151 +136,187 @@ If you discover a POI that belongs in someone else's file, tell the owner and th
 - Learning Git is a transferable professional skill
 - Issues for task tracking
 
-**Beginner accommodation:** We'll use GitHub Desktop (GUI) instead of command-line Git to lower the barrier.
+**Beginner accommodation:** GitHub Desktop (GUI) instead of command-line Git.
 
 ### 8. GCJ-02 Coordinate Offset Strategy
 
-**Decision:** Use WGS84 coordinates exclusively. Never use Chinese tile providers (Gaode/Amap/Baidu) in the web map. Use native Chinese map apps for actual on-the-ground navigation.
+```
+  THE PROBLEM:
+  ┌─────────────────────────────────────────────────────────┐
+  │                                                         │
+  │  China mandates GCJ-02 coordinates for domestic maps.   │
+  │  This shifts WGS84 positions by 200-400 meters.         │
+  │                                                         │
+  │  Our data (WGS84):     ●  (correct position)            │
+  │  On Chinese tiles:        ●  (shifted 300m!)             │
+  │                                                         │
+  │  Result: markers appear in rivers, wrong buildings.     │
+  │                                                         │
+  └─────────────────────────────────────────────────────────┘
 
-**The problem:** China mandates that all domestic map services use the GCJ-02 coordinate system, which applies a deliberate, non-linear offset of 200-400 meters to WGS84 coordinates. This means:
-- Coordinates from Google Maps / geojson.io / GPS = WGS84 (correct on OSM tiles)
-- Chinese map tiles (Gaode, Baidu) = GCJ-02 (shifted)
-- If you display WGS84 markers on Chinese tiles, every marker will be 200-400m off — appearing in rivers, roads, or wrong buildings
+  OUR STRATEGY:
+  ┌─────────────────────────────────────────────────────────┐
+  │  1. Store all coordinates in WGS84 (GeoJSON standard)   │
+  │  2. Use only WGS84-aligned tiles (OSM, CartoDB)         │
+  │  3. For navigation in China → use Amap/Baidu native     │
+  │  4. Escape hatch: gcoord library for conversion         │
+  └─────────────────────────────────────────────────────────┘
+```
 
-**Our strategy:**
-1. Store all coordinates in WGS84 (the GeoJSON standard per RFC 7946)
-2. Use only WGS84-aligned tile providers in the web map (OSM, CartoDB)
-3. For actual navigation in Shanghai, use Amap or Baidu Maps native apps (they handle GCJ-02 internally)
-4. The custom web map is a **planning and portfolio tool**, not a primary navigation replacement in China
+### 9. Single-File Web App (Start Simple)
 
-**Escape hatch:** If we ever need Chinese tiles in the web map, the [`gcoord`](https://github.com/hujiulong/gcoord) JavaScript library can convert WGS84 ↔ GCJ-02 on the fly. But this adds complexity we should avoid unless strictly necessary.
+**Decision:** Start with all JavaScript in a single `app.js` file. Split into `map.js`, `controls.js`, `popups.js` only if it exceeds ~300 lines.
+
+**Why:**
+- 2 people don't need file-per-developer separation
+- Single file is simpler to understand, debug, and maintain
+- The current starter template (`web/index.html`) already has inline JS — this is the natural next step
+- Can always split later if needed
 
 ## China Tech Constraints
 
-**This section is critical.** China's Great Firewall (GFW) blocks or degrades many tools this project depends on. Plan for this before the trip.
+```
+  ┌─────────────────────────────────────────────────────────┐
+  │  ⚠  CRITICAL: Read this before the trip                │
+  │                                                         │
+  │  China's Great Firewall blocks many tools we use.       │
+  │  Plan for this BEFORE entering China.                   │
+  └─────────────────────────────────────────────────────────┘
+```
 
 ### Blocked or Unreliable in China
 
-| Tool | Status in China | Impact | Mitigation |
-|------|----------------|--------|------------|
-| GitHub Pages | Intermittently blocked | Web map may not load | Prepare offline PDF maps; pre-cache via service worker before entering China |
-| Google Maps | Blocked | Cannot find coordinates on the ground | Use **Amap** (高德地图) or **Baidu Maps** (百度地图) instead |
-| Google services (Translate, Search) | Blocked | Cannot look things up | Use **Bing** or **Baidu** search; download offline translation packs |
-| geojson.io | May be slow | Cannot create POIs visually | Do all data creation before the trip |
-| Overpass Turbo | May be slow | Cannot query OSM | Download needed data before the trip |
-| OpenStreetMap tiles | Slow but usually works | Map loads slowly | Service worker cache + PDF fallback |
+```
+  Tool              Status in China     Mitigation
+  ──────────────────────────────────────────────────────────
+  GitHub Pages      Intermittently      PDF maps + service
+                    blocked             worker pre-cache
 
-### Required Preparation Before Entering China
+  Google Maps       Blocked             Use Amap (高德地图)
+                                        or Baidu Maps
 
-1. **VPN** — Install and test a VPN before arrival (ExpressVPN, Astrill, or similar). Many VPNs are blocked; test before the trip.
-2. **Offline maps** — Download Shanghai and Suzhou offline maps in **Amap** or **Organic Maps** (free, uses OSM data)
-3. **Chinese map apps** — Install and set up before arrival:
-   - **Amap / 高德地图** — navigation, walking directions, transit
-   - **Dianping / 大众点评** — restaurant reviews (China's Yelp)
-   - **WeChat / 微信** — communication (everyone in China uses it)
-   - **Alipay / 支付宝** — mobile payments (set up international version)
-4. **PDF maps** — Export daily itinerary maps from QGIS as PDFs (see Module 4)
-5. **Service worker** — Pre-load the web map on your phone's browser while still on reliable internet (hotel WiFi with VPN)
+  Google services   Blocked             Use Bing or Baidu
+  (Translate, etc)                      Download offline packs
 
-### Recommended Workflow
+  geojson.io        May be slow         Do all data creation
+                                        before the trip
 
-- **Pre-trip (outside China):** Use Google Maps, geojson.io, GitHub, and the web map freely for planning
-- **During trip (in China):** Use Amap for navigation, Dianping for food, the custom web map as reference (via VPN or service worker cache), and PDF maps as reliable fallback
-- **Post-trip (outside China):** Use all tools freely for the story map
+  OSM tiles         Slow but works      PDF fallback
+```
+
+### Required Prep Before Entering China
+
+```
+  ☐  VPN installed and tested (ExpressVPN, Astrill, etc.)
+  ☐  Amap (高德地图) — navigation + offline maps downloaded
+  ☐  Dianping (大众点评) — restaurant reviews
+  ☐  WeChat (微信) — communication
+  ☐  Alipay (支付宝) — mobile payments
+  ☐  PDF maps exported from QGIS (offline/day-1.pdf through day-6.pdf)
+  ☐  Web map pre-loaded on phone browser (hotel WiFi + VPN)
+```
+
+### Workflow by Location
+
+```
+  PRE-TRIP (outside China):
+  ├── Google Maps, geojson.io, GitHub ← all work freely
+  └── Build and deploy the web map
+
+  DURING TRIP (in China):
+  ├── Amap ← primary navigation
+  ├── Dianping ← food discovery
+  ├── Web map via VPN or cache ← reference
+  └── PDF maps ← reliable offline fallback
+
+  POST-TRIP (outside China):
+  └── All tools work freely for story map
+```
 
 ## Map Layer Architecture
 
 ```
-Base Layer (pick one):
-├── OpenStreetMap Standard
-├── CartoDB Positron (light/minimal)  ← recommended for clean look
-└── CartoDB Dark Matter (dark theme)
+  Base Layer:
+  └── CartoDB Voyager (colorful, good labels)
 
-Overlay Layers (toggleable):
-├── POI Layers (one per category)
-│   ├── Landmarks (red markers)
-│   ├── Food (orange markers)
-│   ├── Shopping (purple markers)
-│   ├── Cultural/Historical (blue markers)
-│   ├── Nature/Parks (green markers)
-│   ├── Transport (gray markers)
-│   └── Accommodation (yellow markers)
-│
-├── Route Layers (one per day)
-│   ├── Day 1 route (dashed line)
-│   ├── Day 2 route
-│   ├── ...
-│   └── Day 6 route (Suzhou)
-│
-├── Area Layers
-│   ├── District boundaries (thin outline)
-│   └── Neighborhood highlights (semi-transparent fill)
-│
-└── Analysis Layers (generated in QGIS)
-    ├── Hotel walking buffer (500m, 1km rings)
-    └── POI clusters
+  Overlay Layers (toggleable):
+  ├── POI Layers (one per category)
+  │   ├── ■ Landmarks      (red markers)
+  │   ├── ■ Food            (orange markers)
+  │   ├── ■ Shopping        (purple markers)
+  │   ├── ■ Cultural        (blue markers)
+  │   ├── ■ Nature/Parks    (green markers)
+  │   ├── ■ Transport       (gray markers)
+  │   └── ■ Accommodation   (yellow markers)
+  │
+  ├── Route Layers (one per day)
+  │   ├── Day 1 route (dashed line)
+  │   ├── ...
+  │   └── Day 6 route (Suzhou)
+  │
+  ├── Area Layers
+  │   ├── District boundaries
+  │   └── Neighborhood highlights
+  │
+  └── Analysis Layers (from QGIS)
+      ├── Hotel walking buffer (500m, 1km)
+      └── POI clusters
 ```
 
 ## Popup Template
 
 ```
-┌──────────────────────────────────────┐
-│  The Bund                            │
-│  外滩              [landmark] Day 1   │
-│                                      │
-│  Iconic waterfront promenade         │
-│  with views of Pudong skyline        │
-│                                      │
-│  Duration: ~60 min   Cost: Free      │
-│  Hours: 24/7                         │
-│  ID: landmark-001                    │
-│                                      │
-│  [Open in Amap]                      │
-└──────────────────────────────────────┘
+  ┌──────────────────────────────────────┐
+  │  The Bund                            │
+  │  外滩              [landmark] Day 1   │
+  │                                      │
+  │  Iconic waterfront promenade         │
+  │  with views of Pudong skyline        │
+  │                                      │
+  │  Duration: ~60 min   Cost: Free      │
+  │  Hours: 24/7                         │
+  │  ID: landmark-001                    │
+  │                                      │
+  │  [Open in Amap]                      │
+  └──────────────────────────────────────┘
 ```
-
-The "Open in Amap" link uses the format `https://uri.amap.com/marker?position=lng,lat&name=外滩` to hand off navigation to a Chinese map app that works locally.
 
 ## Technology Versions
 
 | Technology | Version | Notes |
 |-----------|---------|-------|
 | Leaflet.js | 1.9.x | Latest stable, loaded via CDN |
-| QGIS | 3.36+ | LTR (Long Term Release) recommended |
-| GeoJSON | RFC 7946 | Standard specification (WGS84 only) |
-| GitHub Pages | -- | Served from `/web` directory |
-| HTML/CSS/JS | Vanilla | No frameworks — keep it simple for beginners |
+| QGIS | 3.36+ | LTR recommended |
+| GeoJSON | RFC 7946 | WGS84 only |
+| GitHub Pages | -- | Served from repo root |
+| HTML/CSS/JS | Vanilla | No frameworks |
 
 ## Offline Strategy
 
-The web map is primarily a **planning and portfolio tool**. For on-the-ground navigation in China, use native Chinese map apps (Amap, Baidu Maps). That said, we want the web map to be accessible during the trip as a reference.
+```
+  ┌──────────────────────────────────────────────────────────┐
+  │  OFFLINE RELIABILITY RANKING                              │
+  │                                                           │
+  │  1. Amap offline maps    ████████████  High (just works)  │
+  │  2. QGIS PDF exports     ████████████  High (no internet) │
+  │  3. Service worker cache  ██████░░░░░  Medium (needs load) │
+  │  4. VPN + GitHub Pages    ████░░░░░░░  Low (VPN may fail)  │
+  │                                                           │
+  │  Strategy: prepare tiers 1+2 as primary.                  │
+  │  Tier 3 is nice-to-have. Tier 4 is bonus.                │
+  └──────────────────────────────────────────────────────────┘
+```
 
-### Tier 1: Service Worker (App Caching)
+### Tier 1: Amap Offline Maps
+Download Shanghai and Suzhou offline maps in Amap. Use for actual turn-by-turn navigation.
 
-Cache the web app's static assets (HTML, CSS, JS, GeoJSON data files) via a service worker. This is ~200KB total and straightforward to implement. Once cached, the app shell and all POI data are available offline. The map tiles themselves will not be cached (see why below), but POI lists and popups will work.
+### Tier 2: QGIS PDF Exports
+Export daily itinerary maps as PDFs (`offline/day-1.pdf` through `day-6.pdf`). Works on any phone with zero internet. **Most reliable** custom offline option.
 
-**What works offline:** POI list, popup details, Chinese names, day filters
-**What doesn't work offline:** Map tile background (gray/blank map)
-
-### Tier 2: QGIS-Exported PDF Maps (Reliable Fallback)
-
-Export daily itinerary maps from QGIS as print-ready PDFs. Each PDF shows one day's route with POIs labeled (English + Chinese). These work on any phone with zero internet. This is the **most reliable** offline option and should be prepared during Phase 2 (Week 4-5).
-
-**Files:** `offline/day-1.pdf` through `offline/day-6.pdf`
+### Tier 3: Service Worker (Could)
+Cache app shell + GeoJSON via service worker. Map tiles won't cache (too large), but POI data and popups will work on a blank map background.
 
 ### Why NOT Tile Pre-Download
-
-Pre-downloading map tiles sounds ideal but is impractical:
 - Shanghai at zoom 12-16 = ~50,000-100,000 tiles
-- OpenStreetMap's Tile Usage Policy prohibits bulk downloading from their servers
-- Packaging tiles into mbtiles requires tools beyond beginner scope
-- Native apps (Amap, Organic Maps) already solve this problem better
-
-### Summary
-
-| Method | Reliability in China | Effort | Covers |
-|--------|---------------------|--------|--------|
-| Amap offline maps | High | Low (just download) | Full navigation |
-| QGIS PDF exports | High | Medium (must create) | Daily itinerary reference |
-| Service worker cache | Medium (needs initial load) | Medium (must implement) | App shell + POI data |
-| VPN + GitHub Pages | Low (VPN may fail) | Low | Full web map |
+- OSM's Tile Usage Policy prohibits bulk downloads
+- Native apps (Amap, Organic Maps) solve this better

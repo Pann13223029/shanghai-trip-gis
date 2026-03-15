@@ -26,6 +26,110 @@
         "photos": [],
         "notes": "Adjacent to Shanghai Museum. Good rest stop between Nanjing Road and The Bund."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4647, 31.2162]
+      },
+      "properties": {
+        "id": "nature-002",
+        "name_en": "Fuxing Park",
+        "name_cn": "复兴公园",
+        "category": "nature",
+        "day": null,
+        "description": "Former French Concession park laid out in formal French garden style (1909), beloved for its rose garden, shaded avenues, and lively morning exercise scenes with locals dancing and playing music",
+        "address": "2 Gaolan Rd, Huangpu District",
+        "est_duration_min": 45,
+        "est_cost_cny": 0,
+        "opening_hours": "6:00-18:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Historic green space preserved within high-density urban area; supports community wellbeing",
+        "photos": [],
+        "notes": "Come in the morning to see locals doing ballroom dancing, tai chi, and badminton. The surrounding French Concession streets are great for a post-park stroll. Rose garden is at its best in May."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5440, 31.2174]
+      },
+      "properties": {
+        "id": "nature-003",
+        "name_en": "Century Park",
+        "name_cn": "世纪公园",
+        "category": "nature",
+        "day": null,
+        "description": "Shanghai's largest inner-city park at 140 hectares, with a large lake, cycling paths, and landscaped gardens in the heart of Pudong — a green escape from the nearby skyscrapers",
+        "address": "1001 Jinxiu Rd, Pudong New Area",
+        "est_duration_min": 90,
+        "est_cost_cny": 10,
+        "opening_hours": "7:00-18:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "One of Shanghai's largest ecological green spaces; protects urban biodiversity in Pudong",
+        "photos": [],
+        "notes": "Bicycles and electric scooters available to rent inside the park. Picnic friendly. Convenient when combined with a visit to the Shanghai Science & Technology Museum (adjacent at Century Ave metro stop)."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.4940, 31.2408]
+      },
+      "properties": {
+        "id": "nature-004",
+        "name_en": "Bund Riverside Park",
+        "name_cn": "外滩滨江公园",
+        "category": "nature",
+        "day": null,
+        "description": "The landscaped riverside promenade and green space running along The Bund waterfront, offering unobstructed views of Pudong and a pleasant walking and cycling path along the Huangpu River",
+        "address": "Zhongshan East 1st Rd riverside, Huangpu District",
+        "est_duration_min": 45,
+        "est_cost_cny": 0,
+        "opening_hours": "24/7",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Improved riverside public access as part of Shanghai's urban waterfront renewal program",
+        "photos": [],
+        "notes": "The riverfront park extends south from The Bund past the Old Town all the way to the South Bund. Walk or rent a shared bike to cover the full stretch. The best sunrise spot in central Shanghai."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.5319, 31.3068]
+      },
+      "properties": {
+        "id": "nature-005",
+        "name_en": "Gongqing Forest Park",
+        "name_cn": "共青森林公园",
+        "category": "nature",
+        "day": null,
+        "description": "186-hectare urban forest in northeastern Shanghai with dense woodland, wetland areas, a lake, and rare bird populations — a genuine forest experience within city limits",
+        "address": "2000 Jungong Rd, Yangpu District",
+        "est_duration_min": 120,
+        "est_cost_cny": 15,
+        "opening_hours": "6:00-17:00",
+        "priority": "nice-to-have",
+        "weather_sensitive": true,
+        "added_by": "sample",
+        "last_verified": "2026-03",
+        "sustainability_notes": "Significant urban biodiversity corridor; key stop on migratory bird routes — over 160 bird species recorded",
+        "photos": [],
+        "notes": "Less visited by tourists, so more authentic than central parks. Birdwatching is excellent especially during spring migration (March-May). Horse riding and boat rental available. Reachable by Metro Line 8."
+      }
     }
   ]
 }
