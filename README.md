@@ -9,6 +9,9 @@
   │                                                             │
   │    Plan  →  Analyze  →  Navigate  →  Tell Stories           │
   │                                                             │
+  │    Live map: https://pann13223029.github.io/shanghai-trip-gis│
+  │    Repo:     https://github.com/Pann13223029/shanghai-trip-gis│
+  │                                                             │
   └─────────────────────────────────────────────────────────────┘
 ```
 

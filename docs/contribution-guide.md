@@ -10,6 +10,8 @@
   │   4. Commit  ──→  Describe what you changed             │
   │   5. Push    ──→  Upload to GitHub                      │
   │                                                         │
+  │                                                         │
+  │   Live map: pann13223029.github.io/shanghai-trip-gis     │
   └─────────────────────────────────────────────────────────┘
 ```
 
