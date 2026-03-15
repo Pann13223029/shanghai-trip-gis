@@ -1,1 +1,105 @@
-{ "type": "FeatureCollection", "features": [] }
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.8053, 31.1434],
+          [121.4687, 31.2300]
+        ]
+      },
+      "properties": {
+        "day": 1,
+        "from_id": "transport-001",
+        "from_name": "Shanghai Pudong International Airport",
+        "to_id": "transport-004",
+        "to_name": "People's Square Metro Station",
+        "mode": "metro",
+        "distance_km": 40.2,
+        "duration_min": 65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4687, 31.2300],
+          [121.4907, 31.2397]
+        ]
+      },
+      "properties": {
+        "day": 1,
+        "from_id": "transport-004",
+        "from_name": "People's Square Metro Station",
+        "to_id": "landmark-001",
+        "to_name": "The Bund",
+        "mode": "walking",
+        "distance_km": 2.5,
+        "duration_min": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4907, 31.2397],
+          [121.4737, 31.2353]
+        ]
+      },
+      "properties": {
+        "day": 1,
+        "from_id": "landmark-001",
+        "from_name": "The Bund",
+        "to_id": "shopping-001",
+        "to_name": "Nanjing Road Pedestrian Street",
+        "mode": "walking",
+        "distance_km": 1.8,
+        "duration_min": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4737, 31.2353],
+          [121.4935, 31.2462]
+        ]
+      },
+      "properties": {
+        "day": 1,
+        "from_id": "shopping-001",
+        "from_name": "Nanjing Road Pedestrian Street",
+        "to_id": "landmark-007",
+        "to_name": "Waibaidu Bridge",
+        "mode": "walking",
+        "distance_km": 2.4,
+        "duration_min": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4935, 31.2462],
+          [121.4693, 31.2334]
+        ]
+      },
+      "properties": {
+        "day": 1,
+        "from_id": "landmark-007",
+        "from_name": "Waibaidu Bridge",
+        "to_id": "food-002",
+        "to_name": "Yang's Fried Dumplings (Huanghe Rd)",
+        "mode": "metro",
+        "distance_km": 3.5,
+        "duration_min": 22
+      }
+    }
+  ]
+}

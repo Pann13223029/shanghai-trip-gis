@@ -1,1 +1,125 @@
-{ "type": "FeatureCollection", "features": [] }
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4687, 31.2300],
+          [121.4920, 31.2275]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "transport-004",
+        "from_name": "People's Square Metro Station",
+        "to_id": "cultural-001",
+        "to_name": "Yu Garden",
+        "mode": "metro",
+        "distance_km": 2.8,
+        "duration_min": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4920, 31.2275],
+          [121.4925, 31.2272]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "cultural-001",
+        "from_name": "Yu Garden",
+        "to_id": "food-001",
+        "to_name": "Nanxiang Steamed Bun Restaurant",
+        "mode": "walking",
+        "distance_km": 0.1,
+        "duration_min": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4925, 31.2272],
+          [121.4921, 31.2283]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "food-001",
+        "from_name": "Nanxiang Steamed Bun Restaurant",
+        "to_id": "shopping-005",
+        "to_name": "Yuyuan Bazaar",
+        "mode": "walking",
+        "distance_km": 0.1,
+        "duration_min": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4921, 31.2283],
+          [121.4590, 31.2170]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "shopping-005",
+        "from_name": "Yuyuan Bazaar",
+        "to_id": "cultural-006",
+        "to_name": "French Concession Walking Area",
+        "mode": "metro",
+        "distance_km": 4.2,
+        "duration_min": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4590, 31.2170],
+          [121.4656, 31.2133]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "cultural-006",
+        "from_name": "French Concession Walking Area",
+        "to_id": "shopping-002",
+        "to_name": "Tianzifang",
+        "mode": "walking",
+        "distance_km": 1.0,
+        "duration_min": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4656, 31.2133],
+          [121.4736, 31.2196]
+        ]
+      },
+      "properties": {
+        "day": 2,
+        "from_id": "shopping-002",
+        "from_name": "Tianzifang",
+        "to_id": "shopping-003",
+        "to_name": "Xintiandi",
+        "mode": "walking",
+        "distance_km": 1.1,
+        "duration_min": 14
+      }
+    }
+  ]
+}

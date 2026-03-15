@@ -1,1 +1,125 @@
-{ "type": "FeatureCollection", "features": [] }
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4687, 31.2300],
+          [121.4992, 31.2386]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "transport-004",
+        "from_name": "People's Square Metro Station",
+        "to_id": "transport-005",
+        "to_name": "Lujiazui Metro Station",
+        "mode": "metro",
+        "distance_km": 3.7,
+        "duration_min": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4992, 31.2386],
+          [121.4985, 31.2387]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "transport-005",
+        "from_name": "Lujiazui Metro Station",
+        "to_id": "landmark-006",
+        "to_name": "Lujiazui Skyline Viewpoint",
+        "mode": "walking",
+        "distance_km": 0.1,
+        "duration_min": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4985, 31.2387],
+          [121.5013, 31.2355]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "landmark-006",
+        "from_name": "Lujiazui Skyline Viewpoint",
+        "to_id": "landmark-003",
+        "to_name": "Shanghai Tower",
+        "mode": "walking",
+        "distance_km": 0.5,
+        "duration_min": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.5013, 31.2355],
+          [121.5001, 31.2376]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "landmark-003",
+        "from_name": "Shanghai Tower",
+        "to_id": "landmark-004",
+        "to_name": "Jin Mao Tower",
+        "mode": "walking",
+        "distance_km": 0.3,
+        "duration_min": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.5001, 31.2376],
+          [121.5007, 31.2368]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "landmark-004",
+        "from_name": "Jin Mao Tower",
+        "to_id": "landmark-005",
+        "to_name": "Shanghai World Financial Center",
+        "mode": "walking",
+        "distance_km": 0.1,
+        "duration_min": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.5007, 31.2368],
+          [121.5093, 31.2363]
+        ]
+      },
+      "properties": {
+        "day": 3,
+        "from_id": "landmark-005",
+        "from_name": "Shanghai World Financial Center",
+        "to_id": "food-003",
+        "to_name": "Din Tai Fung (IFC Mall)",
+        "mode": "walking",
+        "distance_km": 0.9,
+        "duration_min": 12
+      }
+    }
+  ]
+}

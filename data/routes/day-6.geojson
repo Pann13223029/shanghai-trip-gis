@@ -1,1 +1,145 @@
-{ "type": "FeatureCollection", "features": [] }
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4687, 31.2300],
+          [121.3195, 31.1949]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "transport-004",
+        "from_name": "People's Square Metro Station",
+        "to_id": "transport-002",
+        "to_name": "Shanghai Hongqiao Railway Station",
+        "mode": "metro",
+        "distance_km": 18.0,
+        "duration_min": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.3195, 31.1949],
+          [120.6027, 31.3145]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "transport-002",
+        "from_name": "Shanghai Hongqiao Railway Station",
+        "to_id": "suzhou-station",
+        "to_name": "Suzhou Railway Station",
+        "mode": "train",
+        "distance_km": 84.0,
+        "duration_min": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [120.6027, 31.3145],
+          [120.6275, 31.3236]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "suzhou-station",
+        "from_name": "Suzhou Railway Station",
+        "to_id": "suzhou-001",
+        "to_name": "Humble Administrator's Garden",
+        "mode": "taxi",
+        "distance_km": 3.5,
+        "duration_min": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [120.6275, 31.3236],
+          [120.6261, 31.3241]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "suzhou-001",
+        "from_name": "Humble Administrator's Garden",
+        "to_id": "suzhou-004",
+        "to_name": "Suzhou Museum",
+        "mode": "walking",
+        "distance_km": 0.2,
+        "duration_min": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [120.6261, 31.3241],
+          [120.6316, 31.3224]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "suzhou-004",
+        "from_name": "Suzhou Museum",
+        "to_id": "suzhou-003",
+        "to_name": "Pingjiang Road Historic District",
+        "mode": "walking",
+        "distance_km": 0.7,
+        "duration_min": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [120.6316, 31.3224],
+          [120.6027, 31.3145]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "suzhou-003",
+        "from_name": "Pingjiang Road Historic District",
+        "to_id": "suzhou-station",
+        "to_name": "Suzhou Railway Station",
+        "mode": "taxi",
+        "distance_km": 3.9,
+        "duration_min": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [120.6027, 31.3145],
+          [121.3195, 31.1949]
+        ]
+      },
+      "properties": {
+        "day": 6,
+        "from_id": "suzhou-station",
+        "from_name": "Suzhou Railway Station",
+        "to_id": "transport-002",
+        "to_name": "Shanghai Hongqiao Railway Station",
+        "mode": "train",
+        "distance_km": 84.0,
+        "duration_min": 28
+      }
+    }
+  ]
+}

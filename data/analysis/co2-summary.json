@@ -1,0 +1,343 @@
+{
+  "days": [
+    {
+      "day": 1,
+      "segments": [
+        {
+          "from": "Shanghai Pudong International Airport",
+          "to": "People's Square Metro Station",
+          "mode": "metro",
+          "distance_km": 40.2,
+          "duration_min": 65,
+          "co2_g": 1165.8,
+          "emission_factor": 29
+        },
+        {
+          "from": "People's Square Metro Station",
+          "to": "The Bund",
+          "mode": "walking",
+          "distance_km": 2.5,
+          "duration_min": 32,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "The Bund",
+          "to": "Nanjing Road Pedestrian Street",
+          "mode": "walking",
+          "distance_km": 1.8,
+          "duration_min": 22,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Nanjing Road Pedestrian Street",
+          "to": "Waibaidu Bridge",
+          "mode": "walking",
+          "distance_km": 2.4,
+          "duration_min": 30,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Waibaidu Bridge",
+          "to": "Yang's Fried Dumplings (Huanghe Rd)",
+          "mode": "metro",
+          "distance_km": 3.5,
+          "duration_min": 22,
+          "co2_g": 101.5,
+          "emission_factor": 29
+        }
+      ],
+      "total_co2_g": 1267.3,
+      "total_distance_km": 50.4,
+      "mode_breakdown": {
+        "metro": {
+          "distance_km": 43.7,
+          "co2_g": 1267.3,
+          "segments": 2
+        },
+        "walking": {
+          "distance_km": 6.699999999999999,
+          "co2_g": 0.0,
+          "segments": 3
+        }
+      },
+      "all_taxi_co2_g": 6048.0,
+      "co2_saved_vs_taxi_g": 4780.7,
+      "co2_saved_vs_taxi_pct": 79.0
+    },
+    {
+      "day": 2,
+      "segments": [
+        {
+          "from": "People's Square Metro Station",
+          "to": "Yu Garden",
+          "mode": "metro",
+          "distance_km": 2.8,
+          "duration_min": 18,
+          "co2_g": 81.2,
+          "emission_factor": 29
+        },
+        {
+          "from": "Yu Garden",
+          "to": "Nanxiang Steamed Bun Restaurant",
+          "mode": "walking",
+          "distance_km": 0.1,
+          "duration_min": 2,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Nanxiang Steamed Bun Restaurant",
+          "to": "Yuyuan Bazaar",
+          "mode": "walking",
+          "distance_km": 0.1,
+          "duration_min": 2,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Yuyuan Bazaar",
+          "to": "French Concession Walking Area",
+          "mode": "metro",
+          "distance_km": 4.2,
+          "duration_min": 25,
+          "co2_g": 121.8,
+          "emission_factor": 29
+        },
+        {
+          "from": "French Concession Walking Area",
+          "to": "Tianzifang",
+          "mode": "walking",
+          "distance_km": 1.0,
+          "duration_min": 13,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Tianzifang",
+          "to": "Xintiandi",
+          "mode": "walking",
+          "distance_km": 1.1,
+          "duration_min": 14,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        }
+      ],
+      "total_co2_g": 203.0,
+      "total_distance_km": 9.3,
+      "mode_breakdown": {
+        "metro": {
+          "distance_km": 7.0,
+          "co2_g": 203.0,
+          "segments": 2
+        },
+        "walking": {
+          "distance_km": 2.3,
+          "co2_g": 0.0,
+          "segments": 4
+        }
+      },
+      "all_taxi_co2_g": 1116.0,
+      "co2_saved_vs_taxi_g": 913.0,
+      "co2_saved_vs_taxi_pct": 81.8
+    },
+    {
+      "day": 3,
+      "segments": [
+        {
+          "from": "People's Square Metro Station",
+          "to": "Lujiazui Metro Station",
+          "mode": "metro",
+          "distance_km": 3.7,
+          "duration_min": 13,
+          "co2_g": 107.3,
+          "emission_factor": 29
+        },
+        {
+          "from": "Lujiazui Metro Station",
+          "to": "Lujiazui Skyline Viewpoint",
+          "mode": "walking",
+          "distance_km": 0.1,
+          "duration_min": 2,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Lujiazui Skyline Viewpoint",
+          "to": "Shanghai Tower",
+          "mode": "walking",
+          "distance_km": 0.5,
+          "duration_min": 7,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Shanghai Tower",
+          "to": "Jin Mao Tower",
+          "mode": "walking",
+          "distance_km": 0.3,
+          "duration_min": 4,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Jin Mao Tower",
+          "to": "Shanghai World Financial Center",
+          "mode": "walking",
+          "distance_km": 0.1,
+          "duration_min": 2,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Shanghai World Financial Center",
+          "to": "Din Tai Fung (IFC Mall)",
+          "mode": "walking",
+          "distance_km": 0.9,
+          "duration_min": 12,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        }
+      ],
+      "total_co2_g": 107.3,
+      "total_distance_km": 5.6,
+      "mode_breakdown": {
+        "metro": {
+          "distance_km": 3.7,
+          "co2_g": 107.3,
+          "segments": 1
+        },
+        "walking": {
+          "distance_km": 1.9,
+          "co2_g": 0.0,
+          "segments": 5
+        }
+      },
+      "all_taxi_co2_g": 672.0,
+      "co2_saved_vs_taxi_g": 564.7,
+      "co2_saved_vs_taxi_pct": 84.0
+    },
+    {
+      "day": 6,
+      "segments": [
+        {
+          "from": "People's Square Metro Station",
+          "to": "Shanghai Hongqiao Railway Station",
+          "mode": "metro",
+          "distance_km": 18.0,
+          "duration_min": 45,
+          "co2_g": 522.0,
+          "emission_factor": 29
+        },
+        {
+          "from": "Shanghai Hongqiao Railway Station",
+          "to": "Suzhou Railway Station",
+          "mode": "train",
+          "distance_km": 84.0,
+          "duration_min": 28,
+          "co2_g": 504.0,
+          "emission_factor": 6
+        },
+        {
+          "from": "Suzhou Railway Station",
+          "to": "Humble Administrator's Garden",
+          "mode": "taxi",
+          "distance_km": 3.5,
+          "duration_min": 12,
+          "co2_g": 420.0,
+          "emission_factor": 120
+        },
+        {
+          "from": "Humble Administrator's Garden",
+          "to": "Suzhou Museum",
+          "mode": "walking",
+          "distance_km": 0.2,
+          "duration_min": 3,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Suzhou Museum",
+          "to": "Pingjiang Road Historic District",
+          "mode": "walking",
+          "distance_km": 0.7,
+          "duration_min": 10,
+          "co2_g": 0.0,
+          "emission_factor": 0
+        },
+        {
+          "from": "Pingjiang Road Historic District",
+          "to": "Suzhou Railway Station",
+          "mode": "taxi",
+          "distance_km": 3.9,
+          "duration_min": 14,
+          "co2_g": 468.0,
+          "emission_factor": 120
+        },
+        {
+          "from": "Suzhou Railway Station",
+          "to": "Shanghai Hongqiao Railway Station",
+          "mode": "train",
+          "distance_km": 84.0,
+          "duration_min": 28,
+          "co2_g": 504.0,
+          "emission_factor": 6
+        }
+      ],
+      "total_co2_g": 2418.0,
+      "total_distance_km": 194.3,
+      "mode_breakdown": {
+        "metro": {
+          "distance_km": 18.0,
+          "co2_g": 522.0,
+          "segments": 1
+        },
+        "train": {
+          "distance_km": 168.0,
+          "co2_g": 1008.0,
+          "segments": 2
+        },
+        "taxi": {
+          "distance_km": 7.4,
+          "co2_g": 888.0,
+          "segments": 2
+        },
+        "walking": {
+          "distance_km": 0.8999999999999999,
+          "co2_g": 0.0,
+          "segments": 2
+        }
+      },
+      "all_taxi_co2_g": 23316.0,
+      "co2_saved_vs_taxi_g": 20898.0,
+      "co2_saved_vs_taxi_pct": 89.6
+    }
+  ],
+  "trip_total": {
+    "total_distance_km": 259.6,
+    "total_co2_g": 3995.6,
+    "total_co2_kg": 4.0,
+    "all_taxi_co2_g": 31152.0,
+    "all_taxi_co2_kg": 31.15,
+    "co2_saved_g": 27156.4,
+    "co2_saved_pct": 87.2,
+    "avg_daily_co2_g": 998.9,
+    "days_computed": 4
+  },
+  "emission_factors": {
+    "walking": 0,
+    "cycling": 0,
+    "metro": 29,
+    "bus": 65,
+    "taxi": 120,
+    "e-taxi": 45,
+    "train": 6,
+    "maglev": 95
+  },
+  "context": {
+    "shanghai_commuter_daily_g": 580,
+    "flight_bkk_sha_one_way_kg": 250
+  }
+}

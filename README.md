@@ -17,7 +17,12 @@
 
 A collaborative GIS project for planning, visualizing, and navigating a 5-6 day group trip to Shanghai and Suzhou. Built by 2 sustainability and tourism students as both a practical travel tool and a hands-on introduction to Geographic Information Systems, with a focus on sustainable urban tourism analysis.
 
-This project connects GIS skills to sustainable tourism through spatial analysis of transport modes, walkability, and responsible travel planning — aligning with **SDG 11** (Sustainable Cities and Communities) and **SDG 12** (Responsible Consumption and Production).
+This project connects GIS skills to sustainable tourism through spatial analysis, measuring against specific UN Sustainable Development Goal indicators:
+- **SDG 11.2** — Transit accessibility: % of itinerary POIs within 800m of a metro station
+- **SDG 11.4** — Heritage preservation: structured assessment of adaptive reuse approaches at cultural POIs
+- **SDG 12.b** — Sustainable tourism monitoring: demonstrating how GIS-based spatial analysis supports destination management
+
+See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for full methodology, emission factor sources, and limitations.
 
 ## How It Works
 
