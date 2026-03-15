@@ -22,7 +22,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Green space in urban core; observe local community use of public parks",
+        "sustainability_notes": "Converted from the pre-1949 Shanghai Race Club grounds into a public park in 1952; provides approximately 10 ha of green space in the highest-density part of the urban core, serving as a heat-island mitigation buffer and the primary accessible green space for residents of central Huangpu District.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Adjacent to Shanghai Museum. Good rest stop between Nanjing Road and The Bund."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Historic green space preserved within high-density urban area; supports community wellbeing",
+        "sustainability_notes": "One of Shanghai's oldest surviving designed parks (1909); its mature plane-tree canopy provides measurable urban cooling — Shanghai Municipal Greening Bureau data indicates street-tree canopy reduces ambient temperature by 2-4°C in surrounding French Concession blocks. The park functions as the social commons of the district, supporting daily exercise and community gathering without commercial infrastructure.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Come in the morning to see locals doing ballroom dancing, tai chi, and badminton. The surrounding French Concession streets are great for a post-park stroll. Rose garden is at its best in May."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "One of Shanghai's largest ecological green spaces; protects urban biodiversity in Pudong",
+        "sustainability_notes": "At 140 ha, Century Park is the largest green lung in Pudong and one of the few spaces in the district providing meaningful stormwater retention — the central lake (approximately 20 ha) functions as an urban wetland buffer. Shanghai's 2035 Master Plan designates the park as a key biodiversity habitat corridor linking the Huangpu riverfront with the eastern wetlands.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 3,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Bicycles and electric scooters available to rent inside the park. Picnic friendly. Convenient when combined with a visit to the Shanghai Science & Technology Museum (adjacent at Century Ave metro stop)."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Improved riverside public access as part of Shanghai's urban waterfront renewal program",
+        "sustainability_notes": "The 2010 Bund waterfront renewal project converted a six-lane elevated highway into a pedestrian riverside park, reclaiming approximately 2.5 km of riverbank for non-motorised public use and reducing vehicle emissions in the heritage zone.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "The riverfront park extends south from The Bund past the Old Town all the way to the South Bund. Walk or rent a shared bike to cover the full stretch. The best sunrise spot in central Shanghai."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Significant urban biodiversity corridor; key stop on migratory bird routes — over 160 bird species recorded",
+        "sustainability_notes": "Designated urban biodiversity reserve under Shanghai's ecological network plan; over 160 bird species recorded including nationally protected raptors, making it a key stopover on the East Asian–Australasian Flyway. The 186 ha of contiguous woodland provide carbon sequestration estimated at approximately 3,500 tonnes CO2/year (Shanghai Municipal Forestry Bureau data).",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 3,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Less visited by tourists, so more authentic than central parks. Birdwatching is excellent especially during spring migration (March-May). Horse riding and boat rental available. Reachable by Metro Line 8."
       }

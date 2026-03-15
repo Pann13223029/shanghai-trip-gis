@@ -22,7 +22,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Maglev to Longyang Rd: 8 min, 50 CNY. Metro Line 2 to city center: ~60 min, 7 CNY."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "High-speed rail is the most sustainable intercity transport option",
+        "sustainability_notes": "Shanghai-Suzhou HSR emits approximately 6 g CO2/km per passenger (China State Railway Group figures), versus approximately 250 g/km for a comparable domestic flight — a 40-fold difference. For the 100 km Shanghai-Suzhou journey, choosing HSR over flying saves roughly 24 kg CO2 per person per round trip.",
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Shanghai to Suzhou: 25-30 min, ~40 CNY. Book tickets in advance via 12306 app or Trip.com."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "T2 is linked to Hongqiao Railway Station by a 10-minute walking connection. Metro Lines 2 and 10 serve the hub. Terminal 1 is for older domestic routes and is a separate building."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "The underground concourse is huge — allow extra time when transferring between lines. Adjacent to Shanghai Museum, People's Park, and Nanjing Road. Most useful hub for trip planning."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Exit 1 leads toward the riverfront; Exit 2 toward the skyscrapers. From People's Square, take Line 2 east (2 stops). The circular underground walkway connecting the three towers is a useful dry-weather shortcut."
       }
@@ -152,7 +182,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Less common for high-speed rail than Hongqiao or Hongqiao Railway Station, but useful for overnight trains (e.g., to Beijing or Guangzhou). The north and south squares can be confusing — check your ticket for the correct entrance."
       }

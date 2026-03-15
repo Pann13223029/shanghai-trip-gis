@@ -22,7 +22,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Fully pedestrianised since 1999; the car-free eastern section substantially reduces vehicle emissions in the highest-footfall retail corridor in China. However, the concentration of fast-fashion international chains and souvenir manufacturing raises standard mass-tourism consumption concerns.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "The east end connects to The Bund. Very crowded on evenings and weekends."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Adaptive reuse of historic lilong (lane) housing; supports independent local artisans and small businesses",
+        "sustainability_notes": "Tianzifang preserved shikumen lilong fabric that would likely have been demolished, but the transition from residential to commercial use displaced many original lane households — a documented gentrification tension noted in the 2009 community consultation records. Some resident-artisans still occupy upper floors, providing a partial mixed-use model, but ground-floor commerce has progressively displaced local living functions.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Best for browsing unique Shanghai-themed art prints, ceramics, and gifts. Some resident artists still live and work on upper floors. Enter via Taikang Rd or Ruijin 2nd Rd."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Historic Shikumen architecture preserved and adaptively reused rather than demolished",
+        "sustainability_notes": "Shikumen facades were preserved by developer Shui On Land, but the 2001-2005 redevelopment cleared all original residents from the blocks and replaced genuinely affordable housing with premium-priced retail and F&B — a corporate-led preservation model that conserves architectural skin while eliminating community function. Contrasts with the more organically evolved preservation approach at Tianzifang.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "North block is more commercial (shops/restaurants); South block is quieter with galleries and the Shikumen Open House Museum (20 CNY). Good for evening dining and drinks. Walking distance to Tianzifang."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Bargaining is expected and necessary — start at 10-20% of the asking price. Best for electronics accessories, tailor-made clothing, and luggage. The adjacent Science & Technology Museum is worth a visit if you have kids."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Traditional-style architecture rebuilt in the 1990s to evoke Ming-Qing streetscapes; not original fabric, so heritage value is aesthetic rather than structural. High tourist volume generates significant single-use packaging waste from food stalls, partially offset by the walkable, transit-accessible setting.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "Prices are tourist-level but the setting is picturesque. Good for Chinese tea sets, silk scarves, and traditional snacks as gifts. The zigzag bridge over the koi pond is a classic Shanghai photo spot."
       }
@@ -152,7 +182,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Industrial heritage building adaptively reused; supports emerging Chinese contemporary artists",
+        "sustainability_notes": "The 1930s-50s Chunming Textile Mill complex was adaptively reused from 1999 onward as artist studios without demolition; the community_impact is mixed — early organic occupation by independent artists supported emerging local talent, but subsequent rent increases have displaced smaller studios in favour of commercial galleries, replicating gentrification dynamics seen at similar art districts globally.",
+        "transit_access": 2,
+        "heritage_value": 2,
+        "community_impact": "mixed",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "Free to enter the complex. Individual galleries are free or charge a small fee. Best on weekends when more studios are open. The building facades are covered in murals and street art. Good cafe options inside."
       }

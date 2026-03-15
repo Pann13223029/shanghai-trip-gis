@@ -22,7 +22,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Ming Dynasty garden (1559) listed under the 2010 Shanghai municipal heritage protection scheme; surrounding bazaar generates high tourist footfall but the walled garden itself maintains managed visitor density.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Arrive early to avoid crowds. The surrounding bazaar area is free to explore."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Free admission supports broad public access to national-level cultural heritage; timed-entry system actively manages crowd density to protect collections.",
+        "transit_access": 3,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 11,
         "photos": [],
         "notes": "Free admission but timed-entry tickets required — book online in advance via the official WeChat channel or website. English audio guide available. The bronze gallery and ancient ceramics collection are highlights."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Active working temple (not merely a heritage exhibit) that balances religious function with tourism; municipal-level heritage protection status. The 2016 renovation maintained original architectural fabric while improving accessibility.",
+        "transit_access": 2,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "The reclining jade Buddha on the upper floor is the more impressive of the two. Respectful dress required (no shorts/sleeveless). The temple vegetarian restaurant is popular at lunch (open 11:00-14:00)."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The Ohel Moshe Synagogue (1927) is preserved as a protected heritage building; the surrounding Tilanqiao neighbourhood retains a concentration of original 1930s-40s structures under the Hongkou district heritage protection plan.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Deeply affecting exhibit with personal stories, photographs, and artifacts. The surrounding Tilanqiao area still has many original 1930s-40s buildings from the Jewish ghetto. Allow extra time to walk the neighborhood."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Private collector-run institution preserving ephemeral political print culture that would otherwise be lost; operates in an existing residential building without dedicated heritage status.",
+        "transit_access": 2,
+        "heritage_value": 1,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 7,
         "photos": [],
         "notes": "Easy to miss — look for the small sign in the residential compound. Run by a passionate private collector. High-quality reproduction prints available to buy. Combine with French Concession walking tour nearby."
       }
@@ -152,7 +182,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Many historic heritage buildings preserved; walkable neighborhood that rewards foot exploration over taxi",
+        "sustainability_notes": "Over 600 protected heritage buildings (Shanghai Municipal Heritage Protection List) in this area reward foot exploration; the district is best navigated by walking or shared bike, making it one of the most transit- and pedestrian-friendly cultural zones in the city.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Start at Wukang Mansion (武康大楼) at the tip of Wukang Rd — the iconic bow-fronted building is a beloved photo spot. Walk to Fuxing Park, Xintiandi, and Tianzifang. Best explored on foot or by bike. Weekend afternoons are lively."
       }
@@ -178,7 +214,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Industrial heritage building given new life through adaptive reuse; champions sustainable urban renewal",
+        "sustainability_notes": "The 2012 adaptive reuse of the Nanshi Power Plant avoided demolition of a 35,000 m² industrial structure; the 165m chimney was preserved as a public observation tower rather than demolished. Conversion retained the original turbine hall, overhead cranes, and structural steelwork, avoiding the embodied-carbon cost of new construction at equivalent scale.",
+        "transit_access": 2,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 3,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Free admission. The industrial architecture is as impressive as the art. The 165m chimney lookout (open on weekends) offers a different perspective of the city. Located on the South Bund waterfront — combine with a riverfront walk."
       }

@@ -22,7 +22,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Ground floor is cheaper but longer queue. Upper floors have table service at higher prices."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Order at the counter, pay first, then collect. 4 dumplings per order. Bite a small hole to let steam out before eating or you'll burn your mouth. Lines move fast."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "More expensive than local alternatives but zero-risk quality. Open kitchen lets you watch dumpling wrappers being folded. Convenient if already visiting Lujiazui."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Opens early and often sells out by noon. Cash only. No English menu — point at what others are eating. A 5-minute walk from Yang's Fried Dumplings."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Yunnan cuisine uses diverse wild mushrooms and herbs; menu changes seasonally",
+        "sustainability_notes": "Operates in a restored Bund-area heritage building; Yunnan cuisine draws on biodiverse highland ingredients including foraged mushrooms and wild herbs, with a seasonal menu that reflects ingredient availability rather than standardised supply chains.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Reservations strongly recommended for dinner. Try the cross-bridge noodles, grilled goat cheese, and Yunnan ham. Excellent cocktail program. Worth the splurge."
       }
@@ -152,7 +182,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Prices are tourist-inflated but the variety and atmosphere are worth it. Go hungry. Popular items: 酒酿圆子 (glutinous rice balls in sweet wine), 梨膏糖 (pear candy). Adjacent to Yu Garden."
       }
@@ -178,7 +214,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Less touristy than Chenghuangmiao. Good for a proper sit-down meal of authentic Shanghainese cuisine. Lunch sets are good value."
       }
@@ -204,7 +246,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Convenient when exploring West Nanjing Road and Jing'an Temple area. Good for an affordable lunch or afternoon snack break."
       }
@@ -230,7 +278,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Reservations recommended. Long-standing local favorite that doesn't pander to tourists. Good choice for a proper Shanghainese dinner. English menu available."
       }
@@ -256,7 +310,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Expect waits of 1-2 hours on weekend evenings — add your name to the queue app (扫码取号) as soon as you know you want to go. The service spectacle is part of the experience."
       }
@@ -282,7 +342,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": null,
+        "transit_access": null,
+        "heritage_value": null,
+        "community_impact": null,
+        "walkability": null,
+        "environmental_sensitivity": null,
+        "sustainability_score": null,
         "photos": [],
         "notes": "Book via uvbypp.cc months in advance. Pickup by minivan from a meeting point. Extremely exclusive — only 10 seats per night. For serious food enthusiasts with a large budget."
       }

@@ -22,7 +22,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The Bund's 52 heritage buildings (mostly 1920s-30s) are protected under the Shanghai Municipal Heritage Conservation Plan; the 2010 waterfront renovation reclaimed 25m of road space from traffic to create a fully pedestrianised riverside promenade.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Best visited at sunset for skyline photos. Very crowded on weekends."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "High-energy-intensity tourist attraction with no documented mitigation measures; its primary role as a functioning broadcast tower slightly offsets the tourist-infrastructure energy cost.",
+        "transit_access": 3,
+        "heritage_value": 1,
+        "community_impact": "neutral",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "Book tickets online to skip the queue."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "LEED Platinum certified; features double-skin facade and wind turbines for renewable energy",
+        "sustainability_notes": "LEED Platinum certified (2016); 121 vertical-axis wind turbines on the upper floors supply approximately 1.2 GWh/year. The double-skin twisted glass facade reduces solar heat gain and wind load, cutting HVAC energy demand by 21% versus a conventional curtain wall (Gensler design data). Rainwater recycling system collects from the atrium cavity for grey-water reuse, reducing potable water consumption by an estimated 40%.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "neutral",
+        "walkability": 3,
+        "environmental_sensitivity": 3,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Book tickets in advance online. The elevator to the 119th floor is the world's fastest at 18m/s. Clear days offer views 100km out."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Completed 1999; no major green certification documented. Pagoda-inspired tiered setbacks reduce wind tunnel effects at street level — a passive urban design benefit, though the building predates systematic sustainability reporting for Shanghai high-rises.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "neutral",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 7,
         "photos": [],
         "notes": "Observation deck on 88th floor. The Grand Hyatt atrium is worth seeing even if not staying. Good alternative if Shanghai Tower is sold out."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The trapezoid void at the crown is a passive wind-pressure reduction feature rather than merely aesthetic, reducing structural steel requirements. No LEED or comparable green certification published; energy performance data not publicly available.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "neutral",
+        "walkability": 3,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 7,
         "photos": [],
         "notes": "The 100th floor sky walk has transparent glass panels. Nicknamed 'the bottle opener' by locals. All three Lujiazui towers make a great combined visit."
       }
@@ -152,7 +182,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Free public riverfront park with zero entry infrastructure; the 2010 Lujiazui waterfront renewal added landscaped green verges and a continuous pedestrian path, improving non-motorised access along the Pudong riverfront.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "Free alternative to paid observation decks. Walk the riverside path for changing angles on all three towers. Stunning at night when the towers are lit up."
       }
@@ -178,7 +214,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The 1908 steel Warren truss bridge was disassembled, repaired in a Jiangnan shipyard, and reinstated in 2009 — a restoration rather than a replacement, preserving 116-year-old structural fabric. Listed under Shanghai Municipal Heritage Protection.",
+        "transit_access": 3,
+        "heritage_value": 2,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Just a 5-minute walk north of The Bund. The view from the bridge looking south toward Pudong is excellent. Good for early-morning photography."
       }
@@ -204,7 +246,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "Large-footprint theme park on previously agricultural Pudong land; Disney has published green building and waste-reduction targets for the Shanghai resort but third-party verified data on energy and water performance is not publicly available.",
+        "transit_access": 3,
+        "heritage_value": 0,
+        "community_impact": "mixed",
+        "walkability": 2,
+        "environmental_sensitivity": 1,
+        "sustainability_score": 6,
         "photos": [],
         "notes": "Reachable via Metro Line 11. Book tickets well in advance especially for weekends and holidays. Full day needed. The Zootopia land opened in 2023 is unique to Shanghai."
       }
@@ -230,7 +278,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Historic preservation area; explore on foot or by gondola to reduce environmental impact",
+        "sustainability_notes": "National-level historic and cultural town (中国历史文化名镇) designation protects canal-side Ming and Qing streetscapes; the canal network is best explored on foot or by gondola, keeping the historic core car-free. Tourism commercialisation of snack streets has increased but permanent residents remain in core lanes.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "mixed",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "About 40km west of central Shanghai; take Bus 1000 from Pu'an Rd or Metro Line 17 to Zhujiajiao station. Free to wander — individual temples and mansions charge 5-20 CNY each. Try the sticky rice dumplings (粽子)."
       }
@@ -256,7 +310,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The Longhua Pagoda (977 AD) is a national-level protected monument under NCHA (National Cultural Heritage Administration); the active monastic community maintains the complex under its own stewardship, limiting tourist-driven commercialisation relative to purely secular heritage sites.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 9,
         "photos": [],
         "notes": "Adjacent to Longhua Martyrs Memorial Cemetery. The temple complex is active — dress respectfully. Peach blossom festival in March draws large crowds."
       }

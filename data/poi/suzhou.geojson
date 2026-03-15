@@ -22,7 +22,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "UNESCO World Heritage Site; example of traditional Chinese sustainable garden design",
+        "sustainability_notes": "Inscribed on the UNESCO World Heritage List in 1997 as part of the 'Classical Gardens of Suzhou' (comprising nine gardens total); the garden's design philosophy of borrowed scenery (借景) and water-centred layout embodies passive cooling and stormwater management principles that predate modern sustainable design by 500 years. Timed-entry capacity limits introduced post-2019 reduce peak crowding and physical damage to original earthworks.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Arrive at opening to avoid tour groups. Audio guide available in English."
       }
@@ -48,7 +54,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "",
+        "sustainability_notes": "The Yunyan Pagoda (961 AD) is a national-level protected monument (NCHA); structural stabilisation works in the 1980s-90s halted further lean without disturbing original fabric, a conservation approach praised in the ICOMOS 1994 Nara Document on Authenticity. The surrounding hillside gardens are managed to maintain vegetation cover that stabilises the artificial hill structure.",
+        "transit_access": 1,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 2,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 8,
         "photos": [],
         "notes": "The pagoda cannot be entered due to structural preservation, but the hill itself has multiple interesting sites including Sword Pool (剑池), the alleged burial site of the King of Wu. Arrive early. About 15 min by taxi from the garden cluster."
       }
@@ -74,7 +86,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "One of China's best examples of living historic urban fabric; residents still live alongside the canal",
+        "sustainability_notes": "Designated a national Historic and Cultural District; the street plan and canal alignment have remained continuous since the Song Dynasty (approx. 1229 map preserved in Suzhou Museum). Permanent residents continue to live alongside the canal in traditionally maintained courtyard houses, making Pingjiang one of the few Chinese heritage streets where living community function has not been wholly replaced by tourism commerce.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Free to walk. Start at the south end near the Suzhou Museum and walk north. Great for photography — the canal reflections are beautiful. A gondola ride on the canal (~100 CNY/person) is worth the splurge. Afternoon light is best for photos."
       }
@@ -100,7 +118,13 @@
         "weather_sensitive": false,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "Architecture references traditional Suzhou whitewash-and-tile aesthetic using modern sustainable materials",
+        "sustainability_notes": "I.M. Pei's 2006 design uses grey Suzhou granite and white-painted steel to reference traditional whitewash-and-tile (粉墙黛瓦) aesthetics, sourcing materials regionally where possible. The central courtyard's abstract rockery functions as a passive thermal mass, moderating internal temperatures. Built adjacent to the Humble Administrator's Garden, the museum consolidates heritage visitor traffic into a single walkable cluster, reducing dispersed car travel.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 2,
+        "sustainability_score": 10,
         "photos": [],
         "notes": "Free but timed-entry reservation required — book in advance online. The central courtyard with its abstract rockery inspired by Song Dynasty painting is stunning. Directly adjacent to the Humble Administrator's Garden — combine in the same morning."
       }
@@ -126,7 +150,13 @@
         "weather_sensitive": true,
         "added_by": "sample",
         "last_verified": "2026-03",
-        "sustainability_notes": "UNESCO World Heritage Site; one of four classic Suzhou gardens on the World Heritage list",
+        "sustainability_notes": "One of nine Suzhou gardens inscribed on the UNESCO World Heritage List (1997, extended 2000); the Taihu limestone rockery (太湖石) was assembled in 1342 using stone formations naturally eroded by Lake Taihu rather than quarried, reflecting a traditional practice of minimal environmental extraction. The garden's compact footprint and fully pedestrianised layout make it among the lowest-impact heritage attractions in the Suzhou cluster.",
+        "transit_access": 2,
+        "heritage_value": 3,
+        "community_impact": "positive",
+        "walkability": 3,
+        "environmental_sensitivity": 3,
+        "sustainability_score": 11,
         "photos": [],
         "notes": "Smaller and quicker to visit than Humble Administrator's Garden. The maze of caves and tunnels through the rockery is genuinely fun to explore. Combines well with the Suzhou Museum (a 5-minute walk). I.M. Pei visited as a child and incorporated its forms into his later work."
       }
