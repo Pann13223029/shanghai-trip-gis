@@ -5,7 +5,7 @@
   │                                                             │
   │    🗺  SHANGHAI & SUZHOU TRIP PLANNER                        │
   │                                                             │
-  │    GIS-powered travel planning with a sustainability lens   │
+  │    GIS-powered trip planning + learning by doing            │
   │                                                             │
   │    Plan  →  Analyze  →  Navigate  →  Tell Stories           │
   │                                                             │
@@ -15,14 +15,30 @@
   └─────────────────────────────────────────────────────────────┘
 ```
 
-A collaborative GIS project for planning, visualizing, and navigating a 5-6 day group trip to Shanghai and Suzhou. Built by 2 sustainability and tourism students as both a practical travel tool and a hands-on introduction to Geographic Information Systems, with a focus on sustainable urban tourism analysis.
+## What Is This?
 
-This project connects GIS skills to sustainable tourism through spatial analysis, measuring against specific UN Sustainable Development Goal indicators:
-- **SDG 11.2** — Transit accessibility: % of itinerary POIs within 800m of a metro station
-- **SDG 11.4** — Heritage preservation: structured assessment of adaptive reuse approaches at cultural POIs
-- **SDG 12.b** — Sustainable tourism monitoring: demonstrating how GIS-based spatial analysis supports destination management
+A collaborative GIS project for planning a 5-6 day group trip to Shanghai and Suzhou. Two tourism students use Geographic Information Systems to organize, visualize, and navigate their trip — while learning GIS skills they can use in their careers.
 
-See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for full methodology, emission factor sources, and limitations.
+```
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                                                                 │
+  │   WHAT    A trip planner built with real GIS tools              │
+  │           Interactive web map + offline PDFs + QGIS analysis    │
+  │                                                                 │
+  │   WHY     Learn GIS by building something real                  │
+  │           Turn a real trip into a portfolio piece                │
+  │                                                                 │
+  │   HOW     Collect POIs in GeoJSON  ──→  Analyze in QGIS         │
+  │           Build a web map          ──→  Use it on the ground    │
+  │           Take photos + notes      ──→  Create a story map      │
+  │                                                                 │
+  │   GAIN    Hands-on GIS skills (QGIS, Leaflet, GeoJSON)         │
+  │           A working map you can actually use while traveling    │
+  │           A portfolio piece showcasing spatial analysis          │
+  │           Sustainability analysis connecting GIS to SDGs        │
+  │                                                                 │
+  └─────────────────────────────────────────────────────────────────┘
+```
 
 ## How It Works
 
@@ -35,16 +51,28 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
    Collect POIs     QGIS buffers     Web map on       Photos +
    in GeoJSON       distances        phones           reflections
                     clusters         PDF fallbacks     portfolio
-                    CO2 analysis     Amap in China     SDG analysis
 ```
 
 ## What This Project Does
 
-- **Plan** — Curate and organize points of interest across categories (food, landmarks, culture, shopping, nature)
-- **Visualize** — Interactive web map with themed layers, day-by-day itineraries, and route visualization
-- **Navigate** — Mobile-friendly map for on-the-ground use in Shanghai and Suzhou
-- **Analyze** — Walking distances, spatial clustering, transport mode sustainability analysis
-- **Tell Stories** — Post-trip story map combining photos, notes, and sustainability reflections into a portfolio piece
+- **Plan** — Curate 50+ points of interest across 8 categories (food, landmarks, culture, shopping, nature, transport, accommodation, Suzhou)
+- **Visualize** — Interactive web map with themed layers, day-by-day routes, and a sustainability scoring overlay
+- **Navigate** — Mobile-friendly map + offline PDF backups for on-the-ground use in China
+- **Analyze** — Walking distances, spatial clustering, transit accessibility, and transport CO2 analysis in QGIS
+- **Tell Stories** — Post-trip story map combining photos, notes, and reflections into a portfolio piece
+
+### Sustainability Analysis
+
+The project files contain a deeper sustainability analytical layer (separate from the itinerary planning sheet):
+
+- **CO2 transport analysis** — Shanghai-specific emission factors, per-day and trip-total (`tools/co2-calculator.py`)
+- **Transit accessibility** — 800m metro buffer analysis measuring SDG 11.2 (`docs/transit-analysis-guide.md`)
+- **Heritage preservation** — Comparative analysis of 6 adaptive reuse sites (`docs/adaptive-reuse-analysis.md`)
+- **POI scorecards** — 5-dimension sustainability scores on all POIs in the GeoJSON data
+- **Carbon context** — Trip CO2 vs flight/commuter comparisons (`docs/carbon-context.md`)
+- **Web map toggle** — Sustainability score overlay layer on the interactive map
+
+See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for full methodology, SDG indicator mapping, and limitations.
 
 ## Tech Stack
 
@@ -73,6 +101,8 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
   shanghai-trip-gis/
   │
   ├── README.md                      ← you are here
+  ├── index.html                     Root redirect to web map
+  ├── serve.sh                       Local dev server helper
   ├── .github/
   │   ├── workflows/validate-geojson.yml  CI: auto-validates GeoJSON
   │   └── ISSUE_TEMPLATE/                 POI + bug report templates
@@ -86,37 +116,30 @@ See [docs/sustainability-methodology.md](docs/sustainability-methodology.md) for
   │   ├── glossary.md                GIS terms in plain English
   │   ├── qgis-quickstart.md         Visual guide to QGIS
   │   ├── overpass-queries.md        Ready-to-use OSM queries
-  │   ├── sustainability-methodology.md  Scoring criteria, emission factors, SDG mapping
+  │   ├── sustainability-methodology.md  Scoring criteria, emission factors
   │   ├── transit-analysis-guide.md  800m metro buffer analysis (QGIS)
   │   ├── adaptive-reuse-analysis.md 6-site heritage preservation comparison
   │   └── carbon-context.md          Trip CO2 vs commuter, taxi, flight
   │
   ├── data/                          All spatial data (GeoJSON)
   │   ├── poi/                       Points of interest (8 files, 50 POIs)
-  │   │   ├── landmarks.geojson      The Bund, Shanghai Tower...
-  │   │   ├── food.geojson           Dumplings, hot pot...
-  │   │   ├── shopping.geojson       Nanjing Rd, Tianzifang...
-  │   │   ├── cultural.geojson       Yu Garden, museums...
-  │   │   ├── nature.geojson         Parks, riverside...
-  │   │   ├── transport.geojson      Airports, metro hubs...
-  │   │   ├── accommodation.geojson  Hotel (anchor point)
-  │   │   └── suzhou.geojson         Day trip POIs
   │   ├── routes/                    Daily walking routes (24 segments)
   │   ├── areas/                     District boundaries
-  │   └── analysis/                  Computed outputs
-  │       └── co2-summary.json       CO2 per segment, day, and trip
+  │   └── analysis/                  Computed outputs (co2-summary.json)
   │
-  ├── tools/                         Analysis scripts
-  │   └── co2-calculator.py          Transport CO2 calculator (Shanghai-specific)
+  ├── tools/                         Scripts
+  │   ├── co2-calculator.py          Transport CO2 calculator
+  │   ├── create-itinerary-sheet.py  Google Sheet initial builder
+  │   ├── rebuild-day-sheets.py      Rebuild Day 1-6 tabs
+  │   ├── rebuild-other-sheets.py    Rebuild Overview, All POIs, Checklist
+  │   ├── reset-day-tabs.py          Reset day tabs to empty frames
+  │   └── clear-day-tabs.py          Clear day tab data only
   │
-  ├── web/                           Interactive web map
-  │   ├── index.html                 Leaflet.js map + sustainability layer
-  │   ├── css/style.css              Responsive styles
-  │   ├── story-template.html        Post-trip story map
-  │   └── sw.js                      Service worker (offline)
-  │
-  ├── offline/                       QGIS-exported daily PDFs
-  └── qgis/                          QGIS project files
+  └── web/                           Interactive web map
+      ├── index.html                 Leaflet.js map + sustainability toggle
+      ├── css/style.css              Responsive styles
+      ├── story-template.html        Post-trip story map
+      └── sw.js                      Service worker (offline)
 ```
 
 ## Quick Start

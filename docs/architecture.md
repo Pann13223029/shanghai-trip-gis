@@ -19,11 +19,12 @@
   │   └── analysis/     (computed outputs)                   │
   │       └── co2-summary.json                               │
   │                                                          │
-  │   tools/            (Analysis scripts)                   │
-  │   └── co2-calculator.py  (Shanghai-specific CO2)         │
+  │   tools/            (Scripts)                            │
+  │   ├── co2-calculator.py   (Transport CO2 calculator)     │
+  │   └── *-sheet*.py         (Google Sheet management x5)   │
   │                                                          │
   │   web/              (Static Leaflet.js app)              │
-  │   ├── index.html    (main map + sustainability layer)    │
+  │   ├── index.html    (main map + sustainability toggle)   │
   │   ├── css/style.css                                      │
   │   └── story-template.html                                │
   │                                                          │
