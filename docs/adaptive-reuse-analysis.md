@@ -4,13 +4,12 @@
 
 Adaptive reuse — the practice of repurposing existing buildings or districts for new functions
 while retaining their physical fabric — is one of the most consequential tools in sustainable
-urban development. Rather than demolishing and rebuilding, adaptive reuse conserves the
+urban development (Yung & Chan, 2012). Rather than demolishing and rebuilding, adaptive reuse conserves the
 embodied carbon locked in existing structures, preserves cultural memory embedded in built
 form, and often maintains the spatial texture that makes urban places legible and liveable.
 
 In rapidly modernising Chinese cities, the stakes are particularly high. Shanghai demolished
-vast swathes of its lilong housing stock during the 1990s and 2000s in the name of
-development. The sites that survived — by design, accident, community resistance, or
+vast swathes of its lilong housing stock during the 1990s and 2000s — from over 9,200 sites in the 1950s to approximately 1,900 by 2014 (Zhong & Chen, 2017). The sites that survived — by design, accident, community resistance, or
 commercial opportunism — offer a natural experiment in which strategies of preservation
 actually work, and for whom.
 
@@ -66,7 +65,7 @@ properties. Heritage value: 0 = none, 1 = low, 2 = moderate, 3 = high.
 
 #### 1. Corporate-led: Xintiandi
 
-Xintiandi is the most studied case of heritage preservation in contemporary China, and the
+Xintiandi is the most studied case of heritage preservation in contemporary China (Ren, 2008), and the
 most instructive cautionary tale. Developer Shui On Land retained the shikumen stone-gate
 facades of the 1920s residential blocks, creating a convincing architectural simulacrum of
 the original neighbourhood. But the 2001-2005 redevelopment cleared all original residents
@@ -84,7 +83,7 @@ commercial return at the direct expense of community continuity.
 
 #### 2. Organic / Grassroots: Tianzifang and M50
 
-Both Tianzifang and M50 began through informal occupation rather than master planning.
+Both Tianzifang and M50 began through informal occupation rather than master planning (Chen, 2015).
 Artists and small studios moved into underutilised industrial and residential space ahead of
 any official redevelopment mandate. This bottom-up genesis created something Xintiandi cannot
 manufacture: genuine heterogeneity, the feeling of stumbling into a space still in process.
@@ -217,3 +216,15 @@ and structural trade-offs embedded in site records. The comparative framework co
 fieldwork-level observation to broader urban theory around gentrification, embodied carbon,
 and the politics of heritage designation, showing how GIS data can support analytical
 arguments as well as cartographic ones.
+
+---
+
+## References
+
+- Chen, Y.-T. (2015). *Tianzifang: A case study of a creative district in Shanghai* [Doctoral dissertation, University of Illinois at Urbana-Champaign].
+- Ren, X. (2008). Forward to the past: Historical preservation in globalizing Shanghai. *City & Community*, *7*(1), 23-43.
+- UNESCO World Heritage Centre. (2014). *UNESCO World Heritage sustainable tourism toolkit*. UNESCO.
+- Yung, E. H. K., & Chan, E. H. W. (2012). Implementation challenges to the adaptive reuse of heritage buildings. *Habitat International*, *36*(3), 352-361.
+- Zhong, X., & Chen, X. (2017). Demolition, rehabilitation, and conservation: Heritage in Shanghai's urban regeneration, 1990-2015. *Journal of Architecture and Urbanism*, *41*(2), 82-91.
+
+For full reference list, see [references.md](references.md).

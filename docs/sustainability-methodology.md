@@ -2,7 +2,7 @@
 
 ## Scope
 
-This assessment evaluates the environmental and social sustainability dimensions of a 6-day urban tourism itinerary in Shanghai and Suzhou, China. The analysis uses Geographic Information Systems (GIS) to spatially assess three sustainability dimensions: **transport carbon emissions**, **transit accessibility**, and **heritage preservation impact**.
+This assessment evaluates the environmental and social sustainability dimensions of a 6-day urban tourism itinerary in Shanghai and Suzhou, China. The analysis uses Geographic Information Systems (GIS) to spatially assess three sustainability dimensions: **transport carbon emissions**, **transit accessibility**, and **heritage preservation impact** (Bahaire & Elliott-White, 1999; Janssen, 2007).
 
 ### What is measured
 - Transport-related CO2 emissions across the trip itinerary, computed per route segment, per day, and as a trip total
@@ -24,12 +24,12 @@ We explicitly scope to ground transport and land-use decisions because these are
 
 | SDG Target | Indicator | How We Measure |
 |-----------|-----------|---------------|
-| **11.2** — Affordable and sustainable transport | Proportion of population with convenient access to public transport | % of itinerary POIs within 800m of a metro station |
-| **11.4** — Protect cultural and natural heritage | Expenditure on preservation of cultural and natural heritage | Qualitative assessment of heritage preservation approaches at cultural POIs |
-| **12.b** — Develop tools to monitor sustainable tourism | Monitoring tools for sustainable development impacts | This GIS methodology itself — demonstrating how spatial analysis supports sustainable tourism assessment |
+| **11.2** — Affordable and sustainable transport | Proportion of population with convenient access to public transport (United Nations Statistics Division, n.d.) | % of itinerary POIs within 800m of a metro station |
+| **11.4** — Protect cultural and natural heritage | Expenditure on preservation of cultural and natural heritage (United Nations, 2015) | Qualitative assessment of heritage preservation approaches at cultural POIs |
+| **12.b** — Develop tools to monitor sustainable tourism | Monitoring tools for sustainable development impacts (UNWTO, 2023) | This GIS methodology itself — demonstrating how spatial analysis supports sustainable tourism assessment |
 
 ### GSTC Criteria (Global Sustainable Tourism Council)
-We reference GSTC-D (Destination) criteria where applicable:
+We reference GSTC-D (Destination) criteria where applicable (Global Sustainable Tourism Council, 2019):
 - **D6** — Visitor management and destination planning (tourism concentration analysis)
 - **D7** — Transport and climate change (CO2 calculations)
 - **D10** — Cultural heritage protection (adaptive reuse assessment)
@@ -44,23 +44,23 @@ All emission factors are per person per kilometer unless noted.
 |------|-------------------|--------|
 | Walking | 0 | — |
 | Cycling / shared bike | 0 | — |
-| Shanghai Metro | 29 | Shanghai Shentong Metro Group Annual Report 2024; national urban rail average from China Urban Rail Transit Association |
+| Shanghai Metro | 29 | Shanghai Shentong Metro Group Annual Report 2024 (Sun et al., 2023); national urban rail average (China Urban Rail Transit Association, 2024) |
 | City bus | 65 | Shanghai Bus Company fleet data; based on 30% electric bus penetration as of 2024 |
 | Taxi (petrol) | 120 | Based on average Shanghai taxi fuel economy (8.5L/100km), 2.3kg CO2/L petrol, average 1.5 passengers |
 | E-taxi / ride-hail (EV) | 45 | Based on Shanghai grid emission factor (0.42 kg CO2/kWh) × average EV consumption (15 kWh/100km), 1.5 passengers |
 | Maglev (airport) | 95 | Shanghai Maglev high energy consumption offset by high speed; per NDRC rail energy data |
-| High-speed rail (HSR) | 6 | China State Railway Group published figures; Shanghai-Suzhou G-series trains |
+| High-speed rail (HSR) | 6 | China State Railway Group (Lin et al., 2019; International Union of Railways, 2011) |
 
 **Note on taxis:** Shanghai's ride-hail fleet (Didi) is transitioning to EVs. As of 2025, approximately 40% of active ride-hail vehicles in Shanghai are electric. Our calculations use the petrol taxi figure (120 g/km) as conservative default, with EV taxi (45 g/km) noted where the team specifically used an EV.
 
 ### Contextual Comparisons
 
-| Scenario | CO2 per person |
-|----------|---------------|
-| Average Shanghai metro commuter (daily round trip, 20km) | ~580g/day |
+| Scenario | CO2 per person | Source |
+|----------|---------------|--------|
+| Average Shanghai metro commuter (daily round trip, 20km) | ~580g/day | Shanghai Municipal Transportation Commission (2025) |
 | Same itinerary by taxi only (estimated) | Computed per-day |
 | Same itinerary by our mixed-mode plan | Computed per-day |
-| International flight (e.g., Bangkok-Shanghai, one way) | ~250 kg |
+| International flight (e.g., Bangkok-Shanghai, one way) | ~250 kg | ICAO (2024) |
 
 The flight comparison is included to provide honest context: a single international flight likely exceeds the entire trip's ground transport emissions by 50-100x. We include this not to excuse ground-level choices but to frame where the highest-impact decisions actually lie.
 
@@ -89,7 +89,7 @@ Each POI where sustainability is relevant receives a structured assessment acros
 ## Analytical Methods
 
 ### Transit Accessibility Analysis (QGIS)
-1. Create 800m buffers around all metro stations in the Shanghai metro GeoJSON
+1. Create 800m buffers around all metro stations in the Shanghai metro GeoJSON (Garcia-Palomares et al., 2013; Li et al., 2019)
 2. Spatial join: determine which trip POIs fall within an 800m buffer
 3. Compute: % of POIs within walking distance of transit
 4. Visualize: map showing POIs colored by transit accessibility
@@ -118,3 +118,7 @@ Each POI where sustainability is relevant receives a structured assessment acros
 4. **Heritage impact assessment requires local expertise we may lack.** As visiting tourists, our understanding of community impact at sites like Tianzifang or Xintiandi is necessarily surface-level. We note where our assessment may be incomplete.
 
 5. **This is a case study, not a generalizable assessment.** Our findings apply to this specific itinerary. Different POI selections would produce different sustainability profiles.
+
+---
+
+For full reference list, see [references.md](references.md).

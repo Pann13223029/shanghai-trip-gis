@@ -64,7 +64,8 @@ If it falls outside all buffers, it requires a taxi, bus, or additional walking.
 ### Why 800 metres?
 
 The United Nations SDG indicator 11.2.1 ("Proportion of population that has convenient
-access to public transport") uses 500m for bus stops and 1,000m for rail stations.
+access to public transport") uses 500m for bus stops and 1,000m for rail stations
+(United Nations Statistics Division, n.d.; Garcia-Palomares et al., 2013).
 We use **800m** as our threshold — a practical middle ground that:
 
 - Is stricter than the official 1,000m rail standard (our trips involve luggage and heat)
@@ -79,9 +80,10 @@ We use **800m** as our threshold — a practical middle ground that:
 sustainable transport systems for all, improving road safety, notably by expanding public
 transport."
 
-Indicator 11.2.1 was designed to measure city-wide transit access. We apply the same
+Indicator 11.2.1 was designed to measure city-wide transit access (UN-Habitat, 2016). We apply the same
 spatial logic at the itinerary level: what proportion of the places we plan to visit
-are genuinely reachable by public transit without a long walk?
+are genuinely reachable by public transit without a long walk? Research on Shanghai's metro station areas confirms
+that TOD quality varies significantly across the network (Li et al., 2019).
 
 A high percentage means our itinerary is transit-aligned. A low percentage signals that
 we are planning a car-dependent trip, with higher carbon costs and higher reliance on taxis.
@@ -921,3 +923,5 @@ specifying which transport mode will be used instead.
 *Threshold: 800m walking distance to rail transit (SDG 11.2 rail standard = 1,000m; bus = 500m)*
 *For emission factor context used alongside this analysis, see `docs/sustainability-methodology.md`*
 *For Overpass Turbo queries to download metro station data, see `docs/overpass-queries.md` Query 2*
+
+For full reference list, see [references.md](references.md).

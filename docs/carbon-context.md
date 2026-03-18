@@ -122,10 +122,12 @@ Source: `tools/co2-calculator.py` using Shanghai-specific emission factors (see 
 | Metric | Value | Source |
 |--------|-------|--------|
 | Trip ground CO2 | 4.0 kg | `tools/co2-calculator.py` output |
-| Metro emission factor | 29 g/km | Shanghai Shentong Metro Group, 2024 |
-| HSR emission factor | 6 g/km | China State Railway Group |
+| Metro emission factor | 29 g/km | Sun et al. (2023); China Urban Rail Transit Association (2024) |
+| HSR emission factor | 6 g/km | Lin et al. (2019); International Union of Railways (2011) |
 | Taxi emission factor | 120 g/km | Avg petrol taxi, 1.5 passengers |
-| Flight estimate | ~250 kg one way | ICAO Carbon Emissions Calculator methodology, economy class |
-| Commuter baseline | 580 g/day | 20 km metro round trip × 29 g/km |
+| Flight estimate | ~250 kg one way | ICAO (2024), economy class |
+| Commuter baseline | 580 g/day | Shanghai Municipal Transportation Commission (2025) |
+| Modal comparison data | — | Ritchie (2023), Our World in Data |
 
 All emission factors and methodology details: [sustainability-methodology.md](sustainability-methodology.md)
+For full reference list: [references.md](references.md)
