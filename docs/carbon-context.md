@@ -27,17 +27,13 @@ Source: `tools/co2-calculator.py` using Shanghai-specific emission factors (see 
 
 ## Comparison: Our Plan vs. All-Taxi
 
+```mermaid
+pie title CO2 by scenario (kg)
+    "Our mixed-mode plan" : 4.0
+    "CO2 saved vs all-taxi" : 27.2
 ```
-  ┌───────────────────────────────────────────────────────┐
-  │                                                       │
-  │  Our mixed-mode plan:   ██░░░░░░░░░░░░░░  4.0 kg     │
-  │  Same trips, all taxi:  █████████████████  31.2 kg    │
-  │                                                       │
-  │  CO2 saved by choosing metro/walking/HSR:             │
-  │  27.2 kg  =  87% reduction                           │
-  │                                                       │
-  └───────────────────────────────────────────────────────┘
-```
+
+Choosing metro/walking/HSR over taxi = **87% CO2 reduction** (27.2 kg saved).
 
 ## Comparison: Tourist vs. Local Commuter
 

@@ -1,3 +1,7 @@
+# Secrets
+service-account.json
+*.json.bak
+
 # macOS
 .DS_Store
 .AppleDouble

@@ -1,21 +1,17 @@
 # GIS Learning Journey
 
+```mermaid
+flowchart LR
+    M1["Module 1\nWhat is GIS?"] --> M2["Module 2\nCoordinates &\nProjections"]
+    M2 --> M3["Module 3\nGeoJSON &\nSpatial Data"]
+    M3 --> M4["Module 4\nAnalysis &\nPrint Maps"]
+    M4 --> M5A["Module 5a\nRead the\nweb map"]
+    M5A --> M5B["Module 5b\nBuild &\ndeploy"]
+    M5B --> M6["Module 6\nCartographic\ndesign"]
+    M6 --> M7["Module 7\nStory map"]
 ```
-  ┌─────────────────────────────────────────────────────────┐
-  │                  LEARNING PATH                           │
-  │                                                         │
-  │  Module 1 ──→ Module 2 ──→ Module 3 ──→ Module 4       │
-  │  What is       Coordinates   GeoJSON &    Analysis &    │
-  │  GIS?          & Projections Spatial Data  Print Maps   │
-  │                                                         │
-  │  ──→ Module 5a ──→ Module 5b ──→ Module 6 ──→ Module 7 │
-  │      Read the      Build &       Cartographic  Story    │
-  │      web map       deploy        design        map      │
-  │                                                         │
-  │  ⏱ ~18-22 hours total across all modules                │
-  │  👥 Pair learning: both people work together             │
-  └─────────────────────────────────────────────────────────┘
-```
+
+~18-22 hours total. Both people work through all modules together as pair learning sessions.
 
 A structured 7-module curriculum for 2 people. Each module combines theory, hands-on practice, and a project deliverable. Work through modules together as pair learning sessions — discuss, explore, and help each other.
 

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shanghai Trip Story Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Chart.js for Trip by the Numbers section -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -148,6 +150,107 @@
       border-top: 1px solid #eee;
     }
 
+    /* --- Trip by the Numbers Section --- */
+
+    .numbers-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .numbers-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      color: #1a1a2e;
+    }
+
+    .numbers-section .section-subtitle {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+
+    .chart-card.chart-full-width {
+      grid-column: 1 / -1;
+    }
+
+    .chart-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .chart-wrapper canvas {
+      width: 100% !important;
+    }
+
+    .chart-loading {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.85rem;
+      padding: 2rem 0;
+    }
+
+    /* Stats row under the charts */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .stat-unit {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #3498db;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 0.3rem;
+    }
+
     /* --- Mobile --- */
     @media (max-width: 600px) {
       .hero h1 { font-size: 2rem; }
@@ -155,6 +258,9 @@
       .day-section { padding: 2rem 1rem; }
       .day-map { height: 250px; }
       .day-photos { grid-template-columns: 1fr 1fr; }
+      .charts-grid { grid-template-columns: 1fr; }
+      .chart-card.chart-full-width { grid-column: 1; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -274,6 +380,46 @@
     </div>
   </section>
 
+  <!-- TRIP BY THE NUMBERS -->
+  <section class="numbers-section" id="trip-numbers">
+    <h2>Trip by the Numbers</h2>
+    <p class="section-subtitle">Transport emissions and distances across 4 tracked days</p>
+
+    <div class="charts-grid">
+
+      <!-- CO2 per day — horizontal bar -->
+      <div class="chart-card chart-full-width">
+        <h3>CO&#8322; Emissions per Day (grams)</h3>
+        <div class="chart-wrapper" style="height: 180px;">
+          <canvas id="chart-co2-per-day"></canvas>
+          <p class="chart-loading" id="loading-co2">Loading data&hellip;</p>
+        </div>
+      </div>
+
+      <!-- Transport mode split — doughnut -->
+      <div class="chart-card">
+        <h3>Transport Mode Split (by distance)</h3>
+        <div class="chart-wrapper" style="height: 220px;">
+          <canvas id="chart-mode-split"></canvas>
+          <p class="chart-loading" id="loading-mode">Loading data&hellip;</p>
+        </div>
+      </div>
+
+      <!-- Distance per day — bar -->
+      <div class="chart-card">
+        <h3>Distance per Day (km)</h3>
+        <div class="chart-wrapper" style="height: 220px;">
+          <canvas id="chart-distance"></canvas>
+          <p class="chart-loading" id="loading-dist">Loading data&hellip;</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary stat cards (populated by JS) -->
+    <div class="stats-row" id="stats-row"></div>
+  </section>
+
   <!-- REFLECTION: GIS METHODOLOGY -->
   <section class="reflection">
     <h2>GIS Methodology</h2>
@@ -296,6 +442,226 @@
 
   <!-- Mini-maps for each day section -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- ============================================================
+       TRIP BY THE NUMBERS — Chart.js visualizations
+       Loads data from co2-summary.json and renders three charts.
+       ============================================================ -->
+  <script>
+    // Shared color palette
+    const MODE_COLORS = {
+      walking: { bg: 'rgba(39, 174, 96, 0.7)',  border: '#27ae60' },
+      metro:   { bg: 'rgba(52, 152, 219, 0.7)', border: '#3498db' },
+      train:   { bg: 'rgba(155, 89, 182, 0.7)', border: '#9b59b6' },
+      taxi:    { bg: 'rgba(231, 76, 60, 0.7)',  border: '#e74c3c' },
+      bus:     { bg: 'rgba(230, 126, 34, 0.7)', border: '#e67e22' }
+    };
+
+    const DAY_COLORS = ['#3498db', '#e67e22', '#27ae60', '#9b59b6'];
+
+    function hideLoading(id) {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    }
+
+    function showLoadingError(id, msg) {
+      const el = document.getElementById(id);
+      if (el) { el.textContent = msg || 'Data unavailable'; el.style.color = '#e74c3c'; }
+    }
+
+    async function initTripCharts() {
+      let summary;
+      try {
+        const res = await fetch('../data/analysis/co2-summary.json');
+        if (!res.ok) throw new Error('Failed to fetch co2-summary.json');
+        summary = await res.json();
+      } catch (err) {
+        ['loading-co2', 'loading-mode', 'loading-dist'].forEach(id =>
+          showLoadingError(id, 'Data unavailable')
+        );
+        return;
+      }
+
+      const days = summary.days;  // array, each has .day, .total_co2_g, .total_distance_km, .mode_breakdown
+
+      // ── Chart 1: CO2 per day (horizontal bar) ──────────────────
+      try {
+        const co2Labels = days.map(d => `Day ${d.day}`);
+        const co2Data   = days.map(d => Math.round(d.total_co2_g));
+
+        hideLoading('loading-co2');
+        const ctx1 = document.getElementById('chart-co2-per-day');
+        new Chart(ctx1, {
+          type: 'bar',
+          data: {
+            labels: co2Labels,
+            datasets: [{
+              label: 'CO₂ (g)',
+              data: co2Data,
+              backgroundColor: co2Data.map((_, i) => DAY_COLORS[i % DAY_COLORS.length].replace(')', ', 0.75)').replace('rgb', 'rgba')),
+              borderColor: DAY_COLORS.map(c => c),
+              borderWidth: 2,
+              borderRadius: 6
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => ` ${ctx.parsed.x.toLocaleString()} g CO₂`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(0,0,0,0.06)' },
+                ticks: { font: { size: 11 }, color: '#666' },
+                title: { display: true, text: 'grams CO₂', font: { size: 11 }, color: '#888' }
+              },
+              y: {
+                grid: { display: false },
+                ticks: { font: { size: 12, weight: '600' }, color: '#333' }
+              }
+            }
+          }
+        });
+      } catch (e) { showLoadingError('loading-co2', 'Chart error'); }
+
+      // ── Chart 2: Transport mode split doughnut ─────────────────
+      try {
+        // Aggregate distance by mode across all days
+        const modeTotals = {};
+        days.forEach(d => {
+          if (!d.mode_breakdown) return;
+          Object.entries(d.mode_breakdown).forEach(([mode, info]) => {
+            if (!modeTotals[mode]) modeTotals[mode] = 0;
+            modeTotals[mode] += info.distance_km || 0;
+          });
+        });
+
+        const modeLabels = Object.keys(modeTotals).map(m => m.charAt(0).toUpperCase() + m.slice(1));
+        const modeData   = Object.values(modeTotals).map(v => parseFloat(v.toFixed(1)));
+        const modeBgs    = Object.keys(modeTotals).map(m =>
+          MODE_COLORS[m] ? MODE_COLORS[m].bg : 'rgba(128,128,128,0.6)'
+        );
+        const modeBorders = Object.keys(modeTotals).map(m =>
+          MODE_COLORS[m] ? MODE_COLORS[m].border : '#888'
+        );
+
+        hideLoading('loading-mode');
+        const ctx2 = document.getElementById('chart-mode-split');
+        new Chart(ctx2, {
+          type: 'doughnut',
+          data: {
+            labels: modeLabels,
+            datasets: [{
+              data: modeData,
+              backgroundColor: modeBgs,
+              borderColor: modeBorders,
+              borderWidth: 2,
+              hoverOffset: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '58%',
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: { font: { size: 11 }, padding: 10, boxWidth: 12 }
+              },
+              tooltip: {
+                callbacks: {
+                  label: ctx => {
+                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                    const pct   = ((ctx.parsed / total) * 100).toFixed(1);
+                    return ` ${ctx.label}: ${ctx.parsed} km (${pct}%)`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      } catch (e) { showLoadingError('loading-mode', 'Chart error'); }
+
+      // ── Chart 3: Distance per day (bar) ───────────────────────
+      try {
+        const distLabels = days.map(d => `Day ${d.day}`);
+        const distData   = days.map(d => parseFloat(d.total_distance_km.toFixed(1)));
+
+        hideLoading('loading-dist');
+        const ctx3 = document.getElementById('chart-distance');
+        new Chart(ctx3, {
+          type: 'bar',
+          data: {
+            labels: distLabels,
+            datasets: [{
+              label: 'Distance (km)',
+              data: distData,
+              backgroundColor: DAY_COLORS.map(c => c + 'bb'),
+              borderColor: DAY_COLORS,
+              borderWidth: 2,
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: { label: ctx => ` ${ctx.parsed.y} km` }
+              }
+            },
+            scales: {
+              y: {
+                grid: { color: 'rgba(0,0,0,0.06)' },
+                ticks: { font: { size: 11 }, color: '#666' },
+                title: { display: true, text: 'km', font: { size: 11 }, color: '#888' }
+              },
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 12, weight: '600' }, color: '#333' }
+              }
+            }
+          }
+        });
+      } catch (e) { showLoadingError('loading-dist', 'Chart error'); }
+
+      // ── Summary stat cards ─────────────────────────────────────
+      try {
+        const t = summary.trip_total;
+        const statsRow = document.getElementById('stats-row');
+        if (statsRow && t) {
+          const stats = [
+            { num: t.total_co2_kg.toFixed(1), unit: 'kg CO₂', label: 'Total trip emissions' },
+            { num: t.total_distance_km.toFixed(0), unit: 'km', label: 'Total distance covered' },
+            { num: t.co2_saved_pct.toFixed(0) + '%', unit: 'vs. all-taxi', label: 'CO₂ saved by transit' }
+          ];
+          statsRow.innerHTML = stats.map(s => `
+            <div class="stat-card">
+              <div class="stat-number">${s.num}</div>
+              <div class="stat-unit">${s.unit}</div>
+              <div class="stat-label">${s.label}</div>
+            </div>
+          `).join('');
+        }
+      } catch (e) { /* stats are non-critical */ }
+    }
+
+    // Run after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTripCharts);
+    } else {
+      initTripCharts();
+    }
+  </script>
+
   <script>
     // ============================================================
     // MINI-MAP INITIALIZATION

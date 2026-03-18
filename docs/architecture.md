@@ -2,50 +2,16 @@
 
 ## System Overview
 
-```
-  ┌─────────────────────────────────────────────────────────┐
-  │                     DATA SOURCES                         │
-  │   geojson.io  ·  QGIS  ·  Overpass API  ·  VS Code     │
-  └──────────────────────┬──────────────────────────────────┘
-                         │ GeoJSON files
-                         ▼
-  ┌─────────────────────────────────────────────────────────┐
-  │                   GIT REPOSITORY                         │
-  │                                                          │
-  │   data/                                                  │
-  │   ├── poi/          (8 category files, 50 POIs)          │
-  │   ├── routes/       (6 daily + metro, 24 segments)       │
-  │   ├── areas/        (districts + neighborhoods)          │
-  │   └── analysis/     (computed outputs)                   │
-  │       └── co2-summary.json                               │
-  │                                                          │
-  │   tools/            (Scripts)                            │
-  │   ├── co2-calculator.py   (Transport CO2 calculator)     │
-  │   └── *-sheet*.py         (Google Sheet management x5)   │
-  │                                                          │
-  │   web/              (Static Leaflet.js app)              │
-  │   ├── index.html    (main map + sustainability toggle)   │
-  │   ├── css/style.css                                      │
-  │   └── story-template.html                                │
-  │                                                          │
-  │   qgis/             (Desktop GIS project)                │
-  │   └── shanghai-trip.qgz                                  │
-  └──────────────────────┬──────────────────────────────────┘
-                         │ git push
-                         ▼
-  ┌─────────────────────────────────────────────────────────┐
-  │               GITHUB PAGES (Hosting)                     │
-  │   Static files served from repo root                     │
-  │   ⚠ May be blocked/slow in mainland China               │
-  └──────────────────────┬──────────────────────────────────┘
-                         │ HTTPS
-                         ▼
-  ┌─────────────────────────────────────────────────────────┐
-  │                    END USERS                              │
-  │   Desktop browser  ←→  Planning & analysis (pre-trip)    │
-  │   Mobile browser   ←→  Reference map (during trip)       │
-  │   Amap / Baidu     ←→  Primary navigation in China       │
-  └─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    DS["DATA SOURCES\ngeojson.io · QGIS · Overpass API · VS Code"]
+    GR["GIT REPOSITORY\ndata/ · tools/ · web/ · qgis/"]
+    GP["GITHUB PAGES\nStatic files served from repo root\n⚠ May be blocked/slow in mainland China"]
+    EU["END USERS\nDesktop browser — Planning & analysis\nMobile browser — Reference map\nAmap / Baidu — Navigation in China"]
+
+    DS -->|"GeoJSON files"| GR
+    GR -->|"git push"| GP
+    GP -->|"HTTPS"| EU
 ```
 
 ## Key Architecture Decisions
@@ -224,49 +190,57 @@
 
 ### Workflow by Location
 
-```
-  PRE-TRIP (outside China):
-  ├── Google Maps, geojson.io, GitHub ← all work freely
-  └── Build and deploy the web map
+```mermaid
+flowchart LR
+    PRE["PRE-TRIP\n(outside China)\nGoogle Maps\ngeojson.io\nGitHub\nBuild & deploy web map"]
+    DURING["DURING TRIP\n(in China)\nAmap — primary navigation\nDianping — food discovery\nWeb map via VPN/cache\nPDF maps — offline fallback"]
+    POST["POST-TRIP\n(outside China)\nAll tools work freely\nStory map creation"]
 
-  DURING TRIP (in China):
-  ├── Amap ← primary navigation
-  ├── Dianping ← food discovery
-  ├── Web map via VPN or cache ← reference
-  └── PDF maps ← reliable offline fallback
-
-  POST-TRIP (outside China):
-  └── All tools work freely for story map
+    PRE -->|"Enter China"| DURING
+    DURING -->|"Leave China"| POST
 ```
 
 ## Map Layer Architecture
 
-```
-  Base Layer:
-  └── CartoDB Voyager (colorful, good labels)
+```mermaid
+flowchart TD
+    MAP["Leaflet.js Map"]
 
-  Overlay Layers (toggleable):
-  ├── POI Layers (one per category)
-  │   ├── ■ Landmarks      (red markers)
-  │   ├── ■ Food            (orange markers)
-  │   ├── ■ Shopping        (purple markers)
-  │   ├── ■ Cultural        (blue markers)
-  │   ├── ■ Nature/Parks    (green markers)
-  │   ├── ■ Transport       (gray markers)
-  │   └── ■ Accommodation   (yellow markers)
-  │
-  ├── Route Layers (one per day)
-  │   ├── Day 1 route (dashed line)
-  │   ├── ...
-  │   └── Day 6 route (Suzhou)
-  │
-  ├── Area Layers
-  │   ├── District boundaries
-  │   └── Neighborhood highlights
-  │
-  └── Analysis Layers (from QGIS)
-      ├── Hotel walking buffer (500m, 1km)
-      └── POI clusters
+    BASE["Base Layer\nCartoDB Voyager"]
+    OVERLAYS["Overlay Layers (toggleable)"]
+
+    POI["POI Layers\none per category"]
+    ROUTES["Route Layers\none per day"]
+    AREAS["Area Layers"]
+    ANALYSIS["Analysis Layers\nfrom QGIS"]
+
+    L1["Landmarks — red"]
+    L2["Food — orange"]
+    L3["Shopping — purple"]
+    L4["Cultural — blue"]
+    L5["Nature/Parks — green"]
+    L6["Transport — gray"]
+    L7["Accommodation — yellow"]
+
+    R1["Day 1–5 routes"]
+    R2["Day 6 route (Suzhou)"]
+
+    A1["District boundaries"]
+    A2["Neighborhood highlights"]
+
+    AN1["Hotel walking buffer (500m, 1km)"]
+    AN2["POI clusters"]
+
+    MAP --> BASE
+    MAP --> OVERLAYS
+    OVERLAYS --> POI
+    OVERLAYS --> ROUTES
+    OVERLAYS --> AREAS
+    OVERLAYS --> ANALYSIS
+    POI --> L1 & L2 & L3 & L4 & L5 & L6 & L7
+    ROUTES --> R1 & R2
+    AREAS --> A1 & A2
+    ANALYSIS --> AN1 & AN2
 ```
 
 ## Popup Template

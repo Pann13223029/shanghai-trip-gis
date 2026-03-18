@@ -10,6 +10,9 @@
 
   <!-- Our custom styles -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Chart.js for radar charts in sustainability popups and other visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -44,6 +47,7 @@
     <button class="day-btn" data-day="5">D5</button>
     <button class="day-btn" data-day="6">D6</button>
     <button id="sustainability-btn" class="day-btn sustainability-btn">&#127807; Sustainability</button>
+    <button id="heatmap-btn" class="day-btn heatmap-btn">&#128293; Heatmap</button>
   </div>
 
   <!-- Sustainability legend (hidden by default) -->
@@ -83,29 +87,27 @@
   <!-- Leaflet JS — the map library (loaded from CDN) -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+  <!-- Leaflet.heat plugin for POI density heatmap -->
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
   <script>
     // ============================================================
     // CONFIGURATION
-    // Change these values to customize the map
     // ============================================================
 
-    // Where the map centers when it first loads
-    // [latitude, longitude] — note: Leaflet uses lat,lng (opposite of GeoJSON!)
     const SHANGHAI_CENTER = [31.2304, 121.4737];
     const DEFAULT_ZOOM = 12;
 
-    // Category colors — each POI category gets a distinct color
     const CATEGORY_COLORS = {
-      landmark:      '#e74c3c', // red
-      food:          '#e67e22', // orange
-      shopping:      '#9b59b6', // purple
-      cultural:      '#3498db', // blue
-      nature:        '#27ae60', // green
-      transport:     '#7f8c8d', // gray
-      accommodation: '#f1c40f'  // yellow
+      landmark:      '#e74c3c',
+      food:          '#e67e22',
+      shopping:      '#9b59b6',
+      cultural:      '#3498db',
+      nature:        '#27ae60',
+      transport:     '#7f8c8d',
+      accommodation: '#f1c40f'
     };
 
-    // Category display names
     const CATEGORY_LABELS = {
       landmark:      'Landmarks',
       food:          'Food',
@@ -116,8 +118,6 @@
       accommodation: 'Accommodation'
     };
 
-    // All POI data files to load
-    // Path is relative to this HTML file
     const DATA_FILES = [
       { path: '../data/poi/landmarks.geojson',     category: 'landmark' },
       { path: '../data/poi/food.geojson',           category: 'food' },
@@ -134,15 +134,8 @@
     // MAP INITIALIZATION
     // ============================================================
 
-    // Create the map, centered on Shanghai
     const map = L.map('map').setView(SHANGHAI_CENTER, DEFAULT_ZOOM);
 
-    // Add the base map tiles
-    // TRY CHANGING THIS to a different style:
-    //   CartoDB Voyager (colorful): https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png
-    //   CartoDB Positron (light):   https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png
-    //   CartoDB Dark:               https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
-    //   OSM Standard:               https://tile.openstreetmap.org/{z}/{x}/{y}.png
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
       maxZoom: 19
@@ -151,7 +144,6 @@
 
     // ============================================================
     // MARKER STYLING
-    // Creates a colored circle marker for each POI
     // ============================================================
 
     function createMarker(feature, latlng) {
@@ -171,23 +163,18 @@
 
     // ============================================================
     // POPUP CONTENT
-    // This controls what appears when you click a marker
-    // TRY CHANGING THIS to show different information
     // ============================================================
 
     function createPopup(feature) {
       const p = feature.properties;
       const coords = feature.geometry.coordinates;
 
-      // Build the "Open in Amap" link for on-the-ground navigation
       const amapUrl = `https://uri.amap.com/marker?position=${coords[0]},${coords[1]}&name=${encodeURIComponent(p.name_cn || p.name_en)}`;
 
-      // Day badge
       const dayBadge = p.day
         ? `<span class="popup-badge">Day ${p.day}</span>`
         : '<span class="popup-badge popup-badge-gray">Unassigned</span>';
 
-      // Category badge
       const catColor = CATEGORY_COLORS[p.category] || '#999';
       const catLabel = CATEGORY_LABELS[p.category] || p.category;
       const catBadge = `<span class="popup-badge" style="background:${catColor}">${catLabel}</span>`;
@@ -217,7 +204,6 @@
     // SUSTAINABILITY MODE HELPERS
     // ============================================================
 
-    // Return fill color based on sustainability_score (null → gray)
     function sustainabilityColor(score) {
       if (score === null || score === undefined) return '#b0b0b0';
       if (score >= 10) return '#1a5c2a';
@@ -226,7 +212,6 @@
       return '#8fc49a';
     }
 
-    // Return radius based on sustainability_score
     function sustainabilityRadius(score) {
       if (score === null || score === undefined) return 5;
       if (score >= 10) return 12;
@@ -235,7 +220,8 @@
       return 6;
     }
 
-    // Build popup content for sustainability mode
+    // Build popup HTML with a canvas placeholder for the radar chart.
+    // Each popup gets a unique canvas id derived from the POI id.
     function createSustainabilityPopup(feature) {
       const p = feature.properties;
       const coords = feature.geometry.coordinates;
@@ -247,25 +233,37 @@
 
       const scoreColor = sustainabilityColor(p.sustainability_score);
 
-      // Sub-score row helper (returns '–' if field is undefined/null)
-      function sub(val) {
-        return (val !== null && val !== undefined) ? val + '/3' : '–';
-      }
+      // Determine whether we have numeric sub-scores for the radar chart
+      const hasRadar = [p.transit_access, p.heritage_value, p.walkability, p.environmental_sensitivity]
+        .some(v => v !== null && v !== undefined);
+
+      // Unique id for the canvas element
+      const canvasId = 'radar-' + (p.id || Math.random().toString(36).slice(2));
+
+      const radarSection = hasRadar
+        ? `<div class="radar-container"><canvas id="${canvasId}" width="200" height="200"></canvas></div>`
+        : '';
+
+      const communityImpactBadge = p.community_impact
+        ? `<div class="community-impact-row">
+             <span class="community-label">Community Impact:</span>
+             <span class="community-value community-${p.community_impact}">${p.community_impact}</span>
+           </div>`
+        : '';
 
       return `
-        <div class="popup-content">
+        <div class="popup-content sustainability-popup-content" data-canvas-id="${canvasId}"
+             data-transit="${p.transit_access !== undefined ? p.transit_access : ''}"
+             data-heritage="${p.heritage_value !== undefined ? p.heritage_value : ''}"
+             data-walkability="${p.walkability !== undefined ? p.walkability : ''}"
+             data-env="${p.environmental_sensitivity !== undefined ? p.environmental_sensitivity : ''}">
           <h3 class="popup-title">${p.name_en}</h3>
           <p class="popup-chinese">${p.name_cn || ''}</p>
           <div class="sustainability-score-badge" style="background:${scoreColor}">
             &#127807; Sustainability Score: <strong>${scoreDisplay}</strong>
           </div>
-          <table class="sustainability-table">
-            <tr><td>Transit Access</td><td>${sub(p.transit_access)}</td></tr>
-            <tr><td>Heritage Value</td><td>${sub(p.heritage_value)}</td></tr>
-            <tr><td>Community Impact</td><td>${p.community_impact || '–'}</td></tr>
-            <tr><td>Walkability</td><td>${sub(p.walkability)}</td></tr>
-            <tr><td>Environmental Sensitivity</td><td>${sub(p.environmental_sensitivity)}</td></tr>
-          </table>
+          ${radarSection}
+          ${communityImpactBadge}
           ${p.sustainability_notes ? `<p class="popup-notes">${p.sustainability_notes}</p>` : ''}
           <div class="popup-footer">
             <span class="popup-id">${p.id || ''}</span>
@@ -274,6 +272,82 @@
         </div>
       `;
     }
+
+    // Registry of Chart.js instances keyed by canvas id (to allow destroy on re-open)
+    const radarCharts = {};
+
+    // Render the radar chart into the canvas that was just inserted into the DOM
+    function renderRadarChart(popupEl) {
+      const contentEl = popupEl.querySelector('.sustainability-popup-content');
+      if (!contentEl) return;
+
+      const canvasId = contentEl.dataset.canvasId;
+      if (!canvasId) return;
+
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      // Parse the data values stored on the element (empty string → null)
+      function parseVal(raw) {
+        const n = parseFloat(raw);
+        return isNaN(n) ? 0 : n;
+      }
+
+      const transit  = parseVal(contentEl.dataset.transit);
+      const heritage = parseVal(contentEl.dataset.heritage);
+      const walk     = parseVal(contentEl.dataset.walkability);
+      const env      = parseVal(contentEl.dataset.env);
+
+      // Destroy any previous chart on this canvas id
+      if (radarCharts[canvasId]) {
+        radarCharts[canvasId].destroy();
+        delete radarCharts[canvasId];
+      }
+
+      radarCharts[canvasId] = new Chart(canvas, {
+        type: 'radar',
+        data: {
+          labels: ['Transit\nAccess', 'Heritage\nValue', 'Walkability', 'Env.\nSensitivity'],
+          datasets: [{
+            data: [transit, heritage, walk, env],
+            backgroundColor: 'rgba(46, 125, 69, 0.2)',
+            borderColor: '#2e7d45',
+            borderWidth: 2,
+            pointBackgroundColor: '#2e7d45',
+            pointRadius: 3
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: { duration: 400 },
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            r: {
+              min: 0,
+              max: 3,
+              ticks: {
+                stepSize: 1,
+                font: { size: 9 },
+                color: '#888',
+                backdropColor: 'transparent'
+              },
+              grid: { color: 'rgba(0,0,0,0.1)' },
+              angleLines: { color: 'rgba(0,0,0,0.1)' },
+              pointLabels: { font: { size: 9 }, color: '#555' }
+            }
+          }
+        }
+      });
+    }
+
+    // Leaflet popupopen event — fires after the popup DOM is inserted
+    map.on('popupopen', function(e) {
+      if (sustainabilityMode) {
+        renderRadarChart(e.popup.getElement());
+      }
+    });
 
     // Apply sustainability styling to all loaded layers
     function applySustainabilityStyles() {
@@ -288,10 +362,9 @@
         });
         layer.setRadius(sustainabilityRadius(score));
 
-        // Swap popup
         layer.unbindPopup();
         layer.bindPopup(createSustainabilityPopup(layer._poiFeature), {
-          maxWidth: 300,
+          maxWidth: 320,
           className: 'custom-popup'
         });
       });
@@ -314,7 +387,6 @@
         });
         layer.setRadius(active ? 8 : 5);
 
-        // Swap popup back
         layer.unbindPopup();
         layer.bindPopup(createPopup(layer._poiFeature), {
           maxWidth: 300,
@@ -347,31 +419,29 @@
 
     // ============================================================
     // DATA LOADING
-    // Fetches all GeoJSON files and adds them to the map
     // ============================================================
 
-    // Store all layers so we can filter them later
-    const allLayers = [];         // every marker layer
-    const categoryGroups = {};    // L.layerGroup per category
+    const allLayers = [];
+    const categoryGroups = {};
     let selectedDay = 'all';
     let sustainabilityMode = false;
 
-    // Load a single GeoJSON file and add its features to the map
+    // Heatmap state
+    let heatmapLayer = null;
+    let heatmapVisible = false;
+
     async function loadGeoJSON(filePath, category) {
       try {
         const response = await fetch(filePath);
         if (!response.ok) throw new Error(`Failed to load ${filePath}`);
         const data = await response.json();
 
-        // Skip empty files
         if (!data.features || data.features.length === 0) return;
 
-        // Create a layer group for this category if it doesn't exist
         if (!categoryGroups[category]) {
           categoryGroups[category] = L.layerGroup().addTo(map);
         }
 
-        // Add each feature as a marker
         L.geoJSON(data, {
           pointToLayer: createMarker,
           onEachFeature: function (feature, layer) {
@@ -380,7 +450,6 @@
               className: 'custom-popup'
             });
 
-            // Store references for day filtering and sustainability mode
             layer._poiDay = feature.properties.day;
             layer._poiCategory = feature.properties.category || category;
             layer._poiFeature = feature;
@@ -396,12 +465,11 @@
       }
     }
 
-    // Load all data files
     async function loadAllData() {
       const promises = DATA_FILES.map(f => loadGeoJSON(f.path, f.category));
       await Promise.all(promises);
 
-      // Add layer control (the checkbox panel)
+      // Add layer control
       const overlays = {};
       for (const [cat, group] of Object.entries(categoryGroups)) {
         const label = CATEGORY_LABELS[cat] || cat;
@@ -410,6 +478,18 @@
       }
       L.control.layers(null, overlays, { collapsed: false, position: 'topleft' }).addTo(map);
 
+      // Build heatmap layer from all POI coordinates (but don't add it yet)
+      const heatPoints = allLayers.map(layer => {
+        const ll = layer.getLatLng();
+        return [ll.lat, ll.lng, 1];
+      });
+      heatmapLayer = L.heatLayer(heatPoints, {
+        radius: 25,
+        blur: 15,
+        maxZoom: 17,
+        gradient: { 0.3: '#ffffb2', 0.5: '#fd8d3c', 0.7: '#f03b20', 1.0: '#bd0026' }
+      });
+
       console.log(`Loaded ${allLayers.length} POIs across ${Object.keys(categoryGroups).length} categories`);
     }
 
@@ -417,21 +497,104 @@
 
 
     // ============================================================
-    // DAY FILTER
-    // Show only POIs assigned to a specific day
+    // HEATMAP TOGGLE
     // ============================================================
+
+    function toggleHeatmap() {
+      heatmapVisible = !heatmapVisible;
+      const btn = document.getElementById('heatmap-btn');
+
+      if (heatmapVisible) {
+        if (heatmapLayer) heatmapLayer.addTo(map);
+        btn.classList.add('active', 'heatmap-active');
+      } else {
+        if (heatmapLayer) map.removeLayer(heatmapLayer);
+        btn.classList.remove('active', 'heatmap-active');
+      }
+    }
+
+    document.getElementById('heatmap-btn').addEventListener('click', toggleHeatmap);
+
+
+    // ============================================================
+    // DAY FILTER + ANIMATED ROUTE DRAWING
+    // ============================================================
+
+    // Currently displayed animated route layer
+    let currentRouteLayer = null;
+    let animationFrame = null;
+
+    // Animate a route GeoJSON LineString / MultiLineString drawing over ~2 seconds
+    function animateRoute(geojsonData) {
+      // Cancel any in-progress animation
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+      // Remove previous route layer
+      if (currentRouteLayer) {
+        map.removeLayer(currentRouteLayer);
+        currentRouteLayer = null;
+      }
+
+      // Collect all coordinate pairs from the GeoJSON features
+      const allCoords = [];
+      if (geojsonData && geojsonData.features) {
+        geojsonData.features.forEach(f => {
+          const g = f.geometry;
+          if (!g) return;
+          if (g.type === 'LineString') {
+            allCoords.push(...g.coordinates);
+          } else if (g.type === 'MultiLineString') {
+            g.coordinates.forEach(line => allCoords.push(...line));
+          }
+        });
+      }
+
+      if (allCoords.length < 2) return;
+
+      // Convert GeoJSON [lng, lat] to Leaflet [lat, lng]
+      const latLngs = allCoords.map(c => [c[1], c[0]]);
+
+      // Create an empty polyline that we will progressively fill
+      const polyline = L.polyline([], {
+        color: '#3498db',
+        weight: 4,
+        opacity: 0.85,
+        lineJoin: 'round'
+      }).addTo(map);
+      currentRouteLayer = polyline;
+
+      const totalPoints = latLngs.length;
+      const durationMs = 2000;
+      const startTime = performance.now();
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const pointsToShow = Math.max(2, Math.floor(eased * totalPoints));
+        polyline.setLatLngs(latLngs.slice(0, pointsToShow));
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(step);
+        } else {
+          animationFrame = null;
+        }
+      }
+
+      animationFrame = requestAnimationFrame(step);
+    }
 
     function filterByDay(day) {
       selectedDay = day;
 
-      // In sustainability mode, day filter only dims/shows markers without
-      // overriding the sustainability colours.
       allLayers.forEach(layer => {
         const layerDay = layer._poiDay;
         const show = (day === 'all') || (layerDay === parseInt(day)) || (layerDay === null);
 
         if (sustainabilityMode) {
-          // Keep sustainability colours; just adjust opacity to indicate day
           const score = layer._poiSustainabilityScore;
           layer.setStyle({
             fillOpacity: show ? (score !== null && score !== undefined ? 0.88 : 0.6) : 0.15,
@@ -448,9 +611,28 @@
           }
         }
       });
+
+      // Handle route animation: only on specific day selection (not 'all')
+      if (day === 'all') {
+        // Clear any active route
+        if (animationFrame) { cancelAnimationFrame(animationFrame); animationFrame = null; }
+        if (currentRouteLayer) { map.removeLayer(currentRouteLayer); currentRouteLayer = null; }
+        return;
+      }
+
+      // Fetch and animate the selected day's route
+      fetch(`../data/routes/day-${day}.geojson`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data) animateRoute(data);
+        })
+        .catch(() => {
+          // No route file for this day — silently clear any existing route
+          if (currentRouteLayer) { map.removeLayer(currentRouteLayer); currentRouteLayer = null; }
+        });
     }
 
-    // Wire up day filter buttons (exclude the sustainability toggle)
+    // Wire up day filter buttons
     document.querySelectorAll('.day-btn[data-day]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.day-btn[data-day]').forEach(b => b.classList.remove('active'));
@@ -458,7 +640,6 @@
         filterByDay(btn.dataset.day);
       });
     });
-
 
     // Wire up sustainability toggle button
     document.getElementById('sustainability-btn').addEventListener('click', toggleSustainabilityMode);

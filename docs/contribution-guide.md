@@ -1,19 +1,14 @@
 # Contribution Guide
 
+```mermaid
+flowchart LR
+    A["1. Fetch\nGet latest changes\nfrom GitHub"] --> B["2. Edit\nAdd/modify POIs\nin your files"]
+    B --> C["3. Validate\nCheck at\ngeojsonlint.com"]
+    C --> D["4. Commit\nDescribe what\nyou changed"]
+    D --> E["5. Push\nUpload to\nGitHub"]
 ```
-  ┌─────────────────────────────────────────────────────────┐
-  │                   YOUR WORKFLOW                          │
-  │                                                         │
-  │   1. Fetch   ──→  Get latest changes from GitHub        │
-  │   2. Edit    ──→  Add/modify POIs in your files         │
-  │   3. Validate ─→  Check at geojsonlint.com              │
-  │   4. Commit  ──→  Describe what you changed             │
-  │   5. Push    ──→  Upload to GitHub                      │
-  │                                                         │
-  │                                                         │
-  │   Live map: pann13223029.github.io/shanghai-trip-gis     │
-  └─────────────────────────────────────────────────────────┘
-```
+
+Live map: pann13223029.github.io/shanghai-trip-gis
 
 A step-by-step guide for adding data and making changes to the Shanghai Trip GIS project. Written for beginners — no prior Git or GIS experience needed.
 

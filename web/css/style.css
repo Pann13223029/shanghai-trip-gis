@@ -84,6 +84,25 @@ body {
   border-color: #2e7d45;
 }
 
+/* --- Heatmap Toggle Button --- */
+
+.heatmap-btn {
+  background: #fff8f0;
+  color: #c0460a;
+  border: 1px solid #f5c4a0;
+  margin-left: 2px;
+}
+
+.heatmap-btn:hover {
+  background: #ffe8d4;
+}
+
+.heatmap-btn.heatmap-active {
+  background: #e8540a;
+  color: white;
+  border-color: #e8540a;
+}
+
 /* --- Sustainability Legend --- */
 
 #sustainability-legend {
@@ -144,6 +163,50 @@ body {
   margin-bottom: 10px;
   width: 100%;
 }
+
+/* Radar chart container — centers the canvas */
+.radar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0 8px;
+}
+
+.radar-container canvas {
+  display: block;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* Community impact row */
+.community-impact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  padding: 4px 6px;
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+
+.community-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.community-value {
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.community-positive  { background: #d4edda; color: #1a5c2a; }
+.community-neutral   { background: #e9ecef; color: #495057; }
+.community-mixed     { background: #fff3cd; color: #856404; }
+.community-negative  { background: #f8d7da; color: #842029; }
 
 .sustainability-table {
   width: 100%;
@@ -333,7 +396,12 @@ body {
   }
 
   .custom-popup .leaflet-popup-content {
-    width: 240px !important;
+    width: 260px !important;
+  }
+
+  .radar-container canvas {
+    max-width: 160px;
+    max-height: 160px;
   }
 
   .popup-chinese {

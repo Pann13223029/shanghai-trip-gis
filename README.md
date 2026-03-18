@@ -42,15 +42,11 @@ A collaborative GIS project for planning a 5-6 day group trip to Shanghai and Su
 
 ## How It Works
 
-```
-  ┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
-  │          │     │          │     │          │     │          │
-  │  PLAN    │────▶│ ANALYZE  │────▶│ NAVIGATE │────▶│  STORY   │
-  │          │     │          │     │          │     │   MAP    │
-  └──────────┘     └──────────┘     └──────────┘     └──────────┘
-   Collect POIs     QGIS buffers     Web map on       Photos +
-   in GeoJSON       distances        phones           reflections
-                    clusters         PDF fallbacks     portfolio
+```mermaid
+flowchart LR
+    A["PLAN\nCollect POIs\nin GeoJSON"] --> B["ANALYZE\nQGIS buffers\ndistances\nclusters"]
+    B --> C["NAVIGATE\nWeb map on\nphones\nPDF fallbacks"]
+    C --> D["STORY MAP\nPhotos +\nreflections\nportfolio"]
 ```
 
 ## What This Project Does

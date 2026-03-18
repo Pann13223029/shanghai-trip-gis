@@ -1,19 +1,19 @@
 # Roadmap
 
-```
-  ┌─────────────────────────────────────────────────────────┐
-  │                    PROJECT TIMELINE                      │
-  │                                                         │
-  │  Week 1-2  ████████░░░░░░░░  Phase 0: Setup             │
-  │  Week 3-4  ░░░░████████░░░░  Phase 1: Data Collection   │
-  │  Week 4-5  ░░░░░░████████░░  Phase 2: Analysis & PDFs   │
-  │  Week 5-7  ░░░░░░░░████████  Phase 3: Web Map           │
-  │  Week 7-8  ░░░░░░░░░░░░████  Phase 4: Polish            │
-  │  Trip      ░░░░░░░░░░░░░░██  Phase 5: Live Use          │
-  │  After     ░░░░░░░░░░░░░░░█  Phase 6: Story Map         │
-  │                                                         │
-  │  Team: Person 1 (Lead)  +  Person 2 (Data/Sustainability)│
-  └─────────────────────────────────────────────────────────┘
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat  WW
+    axisFormat  Week %W
+
+    section Phases
+    Phase 0 Setup            : p0, 01, 2w
+    Phase 1 Data Collection  : p1, 03, 2w
+    Phase 2 Analysis & PDFs  : p2, 04, 2w
+    Phase 3 Web Map          : p3, 05, 3w
+    Phase 4 Polish           : p4, 07, 2w
+    Phase 5 Live Use (Trip)  : milestone, p5, 09, 1w
+    Phase 6 Story Map        : p6, 10, 1w
 ```
 
 Total timeline: ~8 weeks before trip, plus during/after trip phases.
